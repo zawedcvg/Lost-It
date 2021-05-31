@@ -1,0 +1,162 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Lucida Console', monospace;
+}
+
+body {
+    margin: 0px;
+}
+
+
+.block {
+    margin: 0px;
+    padding:0px;
+    background-color: white;
+    height: 100vh;
+    overflow: auto;
+}
+
+.first.block {
+    background-image: url(./SVG/main-page.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 10%;
+    overflow: auto;
+}
+
+.arrow.top{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -11px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.block.middle {
+    background-color: black;
+    overflow: auto;
+}
+
+.slogan {
+    display: flex;
+    padding: 20% 0 15%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin: 10px;
+
+}
+.line{
+    text-align: center;
+    color: white;
+    margin: 0px;
+    padding: 10px;
+}
+
+.first {
+    font-size: 60px;
+}
+
+.second {
+    font-size: 80px;
+}
+.arrow.bottom{
+    position: relative;
+    top: 30px;
+    left: 50%;
+    margin-left: -11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 10px;
+    transform: rotate(45deg);
+}
+
+.block.end {
+    overflow:auto;
+}
+.option-body {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.login-text {
+    font-weight: normal;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 50px;
+}
+
+.button-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: stretch;
+    margin-bottom: 200px;
+}
+
+
+.signins {
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 10px 50px;
+    margin: 15px;
+    align-self: center;
+}
+
+.signins:hover {
+    text-decoration: underline;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.45), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.signins:active {
+    transform: translateY(4px);
+}
+
+.bottom-circles {
+    display: flex;
+    justify-content: center;
+
+}
+.circles.filled{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    margin:5px;
+
+}
+
+.circles.empty{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-color: black;
+    background-color: grey;
+    margin: 5px;
+}
+
+.circles.filled.white {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin:5px;
+    background-color: white;
+}

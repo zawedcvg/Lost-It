@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lucida Console', monospace;
+    overflow: auto;
+}
+body {
+    background-image: url(./SVG/log-in-man.svg);
+    background-repeat: no-repeat;
+    background-position: 1200px 0px;
+}
+
+.login {
+    font-size: 60px;
+    padding: 5% 5% 3% 5%;
+}
+
+label, input {
+    display: block;
+}
+
+.form-list {
+    padding-left: 5%;
+    font-size: 30px;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid grey;
+    width: 400px;
+    margin-right: 50px;
+    margin-bottom: 1%;
+    font-size: 20px;
+}
+
+label {
+    margin-bottom: 30px;
+}
+
+span {
+    font-size: 25px;
+    padding-left: 5%;
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+    font-size: 25px;
+    color: grey;
+}
+
+a:hover {
+    text-decoration: underline;
+}
