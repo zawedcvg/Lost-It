@@ -4,9 +4,9 @@
     overflow: auto;
 }
 body {
-    background-image: url(../SVG/log-in-man.svg);
+    background-image: url(../svg-assets/login-man-bg.svg);
     background-repeat: no-repeat;
-    background-position: 1200px 0px;
+    background-position: 20px 0px;
 }
 
 .login {

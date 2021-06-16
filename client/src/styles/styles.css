@@ -20,7 +20,7 @@ body {
 }
 
 .first.block {
-    background-image: url(../SVG/main-page.svg);
+    background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
     background-position: 50% 10%;
     overflow: auto;

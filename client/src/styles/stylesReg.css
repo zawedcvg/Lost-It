@@ -4,9 +4,9 @@
 }
 
 body {
-    background-image: url(../SVG/sign-up-woman.svg);
+    background-image: url(../svg-assets/signup-woman-plus-bg.svg);
     background-repeat: no-repeat;
-    background-position: 1200px 50px;
+    background-position: 100px 0px;
 }
 
 .signup {
