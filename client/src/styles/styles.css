@@ -42,6 +42,8 @@ body {
 .block.middle {
     background-color: black;
     overflow: auto;
+    background-image: url(../svg-assets/were-here-to-help-page-without-text.svg);
+    background-position: 10px 00px;
 }
 
 .slogan {
@@ -80,6 +82,9 @@ body {
 
 .block.end {
     overflow: auto;
+    background-image: url(../svg-assets/login-signup-page-without-buttons.svg);
+    background-repeat: no-repeat;
+    background-position: 70px 00px;
 }
 .option-body {
     position: relative;
