@@ -1,5 +1,5 @@
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -11,23 +11,22 @@ body {
     margin: 0px;
 }
 
-
 .block {
     margin: 0px;
-    padding:0px;
+    padding: 0px;
     background-color: white;
     height: 100vh;
     overflow: auto;
 }
 
 .first.block {
-    background-image: url(./SVG/main-page.svg);
+    background-image: url(../SVG/main-page.svg);
     background-repeat: no-repeat;
     background-position: 50% 10%;
     overflow: auto;
 }
 
-.arrow.top{
+.arrow.top {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -52,9 +51,8 @@ body {
     justify-content: center;
     align-items: stretch;
     margin: 10px;
-
 }
-.line{
+.line {
     text-align: center;
     color: white;
     margin: 0px;
@@ -68,7 +66,7 @@ body {
 .second {
     font-size: 80px;
 }
-.arrow.bottom{
+.arrow.bottom {
     position: relative;
     top: 30px;
     left: 50%;
@@ -81,7 +79,7 @@ body {
 }
 
 .block.end {
-    overflow:auto;
+    overflow: auto;
 }
 .option-body {
     position: relative;
@@ -95,6 +93,7 @@ body {
 }
 
 .login-text {
+    display: block;
     font-weight: normal;
     font-size: 50px;
     text-align: center;
@@ -102,49 +101,55 @@ body {
     padding-bottom: 50px;
 }
 
+.button {
+    display: block;
+    text-align: center;
+    margin: 0;
+}
 .button-list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 5px;
-    align-items: stretch;
+    align-items: center;
     margin-bottom: 200px;
 }
 
-
-.signins {
-    background-color: black;
-    color: white;
+.btn {
+    padding: 15px 25px;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 10%;
     font-size: 25px;
-    padding: 10px 50px;
-    margin: 15px;
     align-self: center;
+    text-align: center;
+}
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #404040;
 }
 
-.signins:hover {
-    text-decoration: underline;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.45), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.signins:active {
-    transform: translateY(4px);
+.btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
 }
 
 .bottom-circles {
     display: flex;
     justify-content: center;
-
 }
-.circles.filled{
+.circles.filled {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background-color: black;
-    margin:5px;
-
+    margin: 5px;
 }
 
-.circles.empty{
+.circles.empty {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -157,6 +162,11 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin:5px;
+    margin: 5px;
     background-color: white;
+}
+img {
+    width: 20px;
+    height: 20px;
+    text-align: center;
 }

@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url(./SVG/sign-up-woman.svg);
+    background-image: url(../SVG/sign-up-woman.svg);
     background-repeat: no-repeat;
     background-position: 1200px 50px;
 }
@@ -14,19 +14,27 @@ body {
     padding: 5% 5% 0% 5%;
 }
 
-label, input {
+label,
+input {
     display: block;
 }
 
 .form-list {
     padding-left: 5%;
-    font-size: 30px; 
+    font-size: 30px;
+}
+
+span {
+    font-size: 25px;
+    padding-left: 5%;
+    color: grey;
 }
 
 .optional {
     color: grey;
     font-size: 20px;
     font-style: italic;
+    padding: 0;
 }
 
 input {
@@ -45,3 +53,32 @@ label {
     display: inline-block;
 }
 
+a {
+    text-decoration: none;
+    font-size: 25px;
+    color: grey;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.btn {
+    display: block;
+    padding: 15px 25px;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 2%;
+    font-size: 20px;
+}
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #404040;
+}
+
+.btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
