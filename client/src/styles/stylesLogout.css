@@ -1,0 +1,46 @@
+html {
+    box-sizing: border-box;
+    font-family: "Lucida Console", monospace;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body {
+    background-image: url(../svg-assets/logout-page.svg);
+    background-repeat: no-repeat;
+}
+
+.thank-you {
+    display: flex;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+h1 {
+    font-size: 70px;
+}
+.seeusoon {
+    position: relative;
+    left: 30%;
+}
+
+.login {
+    position: relative;
+    top: 15%;
+    font-size: 25px;
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+    font-size: 25px;
+    color: grey;
+}
+a:hover {
+    text-decoration: underline;
+}
