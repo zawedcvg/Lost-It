@@ -1,8 +1,100 @@
 html {
     box-sizing: border-box;
 }
+
+* {
+    font-family: "Lucida Console", monospace;
+}
 *,
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+body {
+    background-image: url(../svg-assets/report-an-item.svg);
+    background-repeat: no-repeat;
+    background-position: 0 190px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.details {
+    padding: 3% 0% 0% 5%;
+    height: 100vh;
+    width: 70%;
+}
+
+h1 {
+    font-size: 70px;
+}
+
+label {
+    display: block;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.location {
+    width: 500px;
+    height: 40px;
+}
+
+textarea {
+    font-size: 20px;
+    display: block;
+    width: 600px;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.small {
+    display: inline-block;
+}
+.btn {
+    position: relative;
+    display: inline;
+    padding: 15px 25px;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 2%;
+    margin-right: 4%;
+    margin-left: 4%;
+    font-size: 25px;
+    top: 40px;
+}
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #404040;
+}
+
+.btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+span {
+    position: relative;
+    top: 40px;
+}
+
+img {
+    align-self: center;
+    width: 486px;
+    height: 475px;
+    border: 1px solid black;
 }
