@@ -1,0 +1,46 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, 
+    initial-scale = 1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Report An Item</title>
+        <link rel="stylesheet" href="../styles/stylesReport.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="details">
+                <h1>Report an Item</h1>
+                <form>
+                    <label for="location"
+                        >Approximate Location <br />of the Item :<input
+                            type="text"
+                            class="location"
+                    /></label>
+                    <label for="description"
+                        >Description of the object :
+                        <textarea
+                            id="description"
+                            class="textarea"
+                            name="description"
+                        ></textarea>
+                    </label>
+                    <label for="date-found">
+                        Date of Happening :
+                        <input type="date" class="date-found small"
+                    /></label>
+                    <label for="time"
+                        >Approximate time :<input type="time" class="small"
+                    /></label>
+                </form>
+                <button class="btn">Submit</button>
+                <span>or</span>
+                <button class="btn">Go to listings</button>
+            </div>
+            <img src="https://source.unsplash.com/random" alt="something" />
+        </div>
+    </body>
+</html>
