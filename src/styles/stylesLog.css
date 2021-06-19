@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Lucida Console', monospace;
-    overflow: auto;
+    overflow: hidden;
 }
 body {
     background-image: url(../svg-assets/login-man-bg.svg);

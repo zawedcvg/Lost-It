@@ -24,7 +24,7 @@ body {
     background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
     background-position: 50% 10%;
-    background-size: contain;
+    background-size: cover;
 }
 
 .front-text {
@@ -44,14 +44,14 @@ body {
     display: inline-block;
     padding: 10px;
     transform: rotate(45deg);
-    background-size: contain;
+    background-size: cover;
     -webkit-transform: rotate(45deg);
 }
 
 .block.middle {
     background-color: black;
     background-image: url(../svg-assets/were-here-to-help-page-without-text.svg);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: 10%;
 }
@@ -93,7 +93,7 @@ body {
 .block.end {
     background-image: url(../svg-assets/login-signup-page-without-buttons.svg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: 70px 00px;
     overflow-y: hidden;
 }
@@ -132,10 +132,11 @@ body {
 }
 
 .btn {
-    padding: 15px 25px;
+    display: block;
+    padding: 1.5rem 2.5rem;
     background-color: #ffffff;
-    box-shadow: 6px 6px 0 #404040;
-    border: solid black 1px;
+    box-shadow: 1rem 0.6rem 0px #404040;
+    border: solid black 2px;
     transition: all 0.15s linear 0s;
     position: relative;
     margin-bottom: 10%;
@@ -144,12 +145,12 @@ body {
     text-align: center;
 }
 .btn:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0 #404040;
+    transform: translate(0.2px, 0.2px);
+    box-shadow: 0.3rem 0.3rem 0 #404040;
 }
 
 .btn:active {
-    transform: translate(6px, 6px);
+    transform: translate(0.6rem, 0.6rem);
     box-shadow: none;
 }
 
