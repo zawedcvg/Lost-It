@@ -1,9 +1,11 @@
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 * {
     font-family: "Lucida Console", monospace;
+    overflow: hidden;
 }
 *,
 *:before,
@@ -14,7 +16,7 @@ html {
 body {
     background-image: url(../svg-assets/report-an-item.svg);
     background-repeat: no-repeat;
-    background-position: 0 190px;
+    background-position: 0 80%;
 }
 
 .container {
@@ -28,35 +30,35 @@ body {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 7rem;
 }
 
 label {
     display: block;
-    font-size: 25px;
-    padding-bottom: 10px;
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
 }
 
 input {
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 2rem;
+    padding: 0.5rem;
 }
 
 .location {
-    width: 500px;
-    height: 40px;
+    width: 45%;
 }
 
 textarea {
-    font-size: 20px;
+    font-size: 2rem;
     display: block;
-    width: 600px;
-    height: 200px;
+    width: 50%;
+    min-height: 20rem;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 0;
+    padding: 0.5rem;
 }
 
 .small {

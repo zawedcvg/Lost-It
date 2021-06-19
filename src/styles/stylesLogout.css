@@ -1,6 +1,10 @@
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
+}
+* {
     font-family: "Lucida Console", monospace;
+    overflow: hidden;
 }
 *,
 *:before,
@@ -10,6 +14,7 @@ html {
 body {
     background-image: url(../svg-assets/logout-page.svg);
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .thank-you {
@@ -22,7 +27,7 @@ body {
     margin: 10px;
 }
 h1 {
-    font-size: 70px;
+    font-size: 7rem;
 }
 .seeusoon {
     position: relative;
@@ -32,13 +37,13 @@ h1 {
 .login {
     position: relative;
     top: 15%;
-    font-size: 25px;
+    font-size: 2.5rem;
     color: grey;
 }
 
 a {
     text-decoration: none;
-    font-size: 25px;
+    font-size: 2.5rem;
     color: grey;
 }
 a:hover {

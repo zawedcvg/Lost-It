@@ -1,8 +1,10 @@
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 * {
     font-family: "Lucida Console", monospace;
+    overflow: hidden;
 }
 *,
 *:before,
@@ -13,7 +15,7 @@ html {
 body {
     background-image: url(../svg-assets/edit-user-details-bg.svg);
     background-repeat: no-repeat;
-    background-position: 40px 0px;
+    background-size: cover;
 }
 
 .container {
@@ -21,12 +23,11 @@ body {
     padding: 2% 2% 2% 2%;
     border-radius: 10%;
     border: 1px solid #786c78;
-    width: 50%;
-    height: 75%;
+    max-width: 100rem;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 5rem;
     align-self: center;
     position: relative;
     left: 20%;
@@ -37,31 +38,29 @@ input {
     display: block;
 }
 label {
-    margin-bottom: 30px;
-    font-size: 30px;
+    margin-bottom: 3rem;
+    font-size: 3rem;
 }
 
 input {
-    margin-bottom: 30px;
-    font-size: 30px;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
     border: 2px solid black;
 }
 .btn {
     display: inline-block;
-    padding: 05px 35px;
+    padding: 1.5rem 3.5rem;
     background-color: #ffffff;
-    box-shadow: 6px 6px 0 #404040;
+    box-shadow: 0.6rem 0.6rem 0 #404040;
     border: solid black 1px;
     transition: all 0.15s linear 0s;
     position: relative;
     margin-bottom: 2%;
-    font-size: 20px;
-    height: 10%;
-    width: 30%;
+    font-size: 2rem;
     align-self: center;
     justify-self: center;
     align-content: center;
-    overflow: auto;
     margin-right: 10%;
     top: 10%;
 }

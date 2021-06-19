@@ -1,10 +1,12 @@
 html {
     scroll-behavior: smooth;
+    font-size: 62.5%;
 }
 
 * {
     box-sizing: border-box;
-    font-family: 'Lucida Console', monospace;
+    font-family: "Lucida Console", monospace;
+    overflow-x: hidden;
 }
 
 body {
@@ -16,19 +18,25 @@ body {
     padding: 0px;
     background-color: white;
     height: 100vh;
-    overflow: auto;
 }
 
 .first.block {
     background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
     background-position: 50% 10%;
-    overflow: auto;
+    background-size: cover;
+}
+
+.front-text {
+    position: relative;
+    top: 80%;
+    font-size: 7rem;
+    left: 55%;
 }
 
 .arrow.top {
-    position: absolute;
-    bottom: 20px;
+    position: relative;
+    top: 5%;
     left: 50%;
     margin-left: -11px;
     border: solid black;
@@ -36,19 +44,21 @@ body {
     display: inline-block;
     padding: 10px;
     transform: rotate(45deg);
+    background-size: cover;
     -webkit-transform: rotate(45deg);
 }
 
 .block.middle {
     background-color: black;
-    overflow: auto;
     background-image: url(../svg-assets/were-here-to-help-page-without-text.svg);
-    background-position: 10px 00px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10%;
 }
 
 .slogan {
     display: flex;
-    padding: 20% 0 15%;
+    padding: 20% 0 5%;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
@@ -62,15 +72,15 @@ body {
 }
 
 .first {
-    font-size: 60px;
+    font-size: 6rem;
 }
 
 .second {
-    font-size: 80px;
+    font-size: 8rem;
 }
 .arrow.bottom {
     position: relative;
-    top: 30px;
+    top: 5%;
     left: 50%;
     margin-left: -11px;
     border: solid white;
@@ -81,10 +91,11 @@ body {
 }
 
 .block.end {
-    overflow: auto;
     background-image: url(../svg-assets/login-signup-page-without-buttons.svg);
     background-repeat: no-repeat;
+    background-size: cover;
     background-position: 70px 00px;
+    overflow-y: hidden;
 }
 .option-body {
     position: relative;
@@ -93,17 +104,17 @@ body {
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 100%;
-    padding: 1.25rem;
+    padding: 25rem;
     text-align: center;
 }
 
 .login-text {
     display: block;
     font-weight: normal;
-    font-size: 50px;
+    font-size: 5rem;
     text-align: center;
-    padding-top: 200px;
-    padding-bottom: 50px;
+    padding-top: 20rem;
+    padding-bottom: 5rem;
 }
 
 .button {
@@ -121,42 +132,45 @@ body {
 }
 
 .btn {
-    padding: 15px 25px;
+    display: block;
+    padding: 1.5rem 2.5rem;
     background-color: #ffffff;
-    box-shadow: 6px 6px 0 #404040;
-    border: solid black 1px;
+    box-shadow: 1rem 0.6rem 0px #404040;
+    border: solid black 2px;
     transition: all 0.15s linear 0s;
     position: relative;
     margin-bottom: 10%;
-    font-size: 25px;
+    font-size: 2.5rem;
     align-self: center;
     text-align: center;
 }
 .btn:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0 #404040;
+    transform: translate(0.2px, 0.2px);
+    box-shadow: 0.3rem 0.3rem 0 #404040;
 }
 
 .btn:active {
-    transform: translate(6px, 6px);
+    transform: translate(0.6rem, 0.6rem);
     box-shadow: none;
 }
 
 .bottom-circles {
     display: flex;
     justify-content: center;
+    position: relative;
+    top: 2%;
 }
 .circles.filled {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background-color: black;
     margin: 5px;
 }
 
 .circles.empty {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     border-color: black;
     background-color: grey;
@@ -164,8 +178,8 @@ body {
 }
 
 .circles.filled.white {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     margin: 5px;
     background-color: white;

@@ -1,12 +1,13 @@
 * {
     box-sizing: border-box;
     font-family: 'Lucida Console', monospace;
+    overflow: hidden;
 }
 
 body {
     background-image: url(../svg-assets/signup-woman-plus-bg.svg);
     background-repeat: no-repeat;
-    background-position: 100px 0px;
+    background-size: cover;
 }
 
 .signup {
