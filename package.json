@@ -1,28 +1,37 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "NODE_ENV=production node server",
-    "dev": "nodemon server"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@sendgrid/mail": "^7.4.4",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "express-validator": "^6.11.1",
-    "google-auth-library": "^7.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.21",
-    "mongoose": "^5.12.12",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1"
-  }
+    "name": "lost-it",
+    "version": "1.0.0",
+    "description": "Orbital Project 2021 (team not_found)",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "parcel src/index.html",
+        "format": "prettier --write \"src/**/*.{js,jsx}\"",
+        "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zawedcvg/Lost-It.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/zawedcvg/Lost-It/issues"
+    },
+    "homepage": "https://github.com/zawedcvg/Lost-It#readme",
+    "devDependencies": {
+        "eslint": "^7.18.0",
+        "eslint-config-prettier": "^8.1.0",
+        "parcel": "^1.12.3",
+        "prettier": "^2.3.1"
+    },
+    "dependencies": {
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-react": "^7.24.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    }
 }
