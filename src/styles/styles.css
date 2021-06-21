@@ -23,29 +23,14 @@ body {
 .first.block {
     background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
-    background-position: 50% 10%;
     background-size: cover;
 }
 
 .front-text {
     position: relative;
-    top: 80%;
+    top: 70%;
     font-size: 7rem;
     left: 55%;
-}
-
-.arrow.top {
-    position: relative;
-    top: 5%;
-    left: 50%;
-    margin-left: -11px;
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(45deg);
-    background-size: cover;
-    -webkit-transform: rotate(45deg);
 }
 
 .block.middle {
@@ -78,23 +63,11 @@ body {
 .second {
     font-size: 8rem;
 }
-.arrow.bottom {
-    position: relative;
-    top: 5%;
-    left: 50%;
-    margin-left: -11px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 10px;
-    transform: rotate(45deg);
-}
 
 .block.end {
     background-image: url(../svg-assets/login-signup-page-without-buttons.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 70px 00px;
     overflow-y: hidden;
 }
 .option-body {
@@ -128,7 +101,7 @@ body {
     justify-content: space-between;
     padding: 5px;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 20rem;
 }
 
 .btn {

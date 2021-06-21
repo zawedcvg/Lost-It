@@ -1,7 +1,8 @@
 * {
     box-sizing: border-box;
-    font-family: 'Lucida Console', monospace;
+    font-family: "Lucida Console", monospace;
     overflow: hidden;
+    font-size: 62.5%;
 }
 body {
     background-image: url(../svg-assets/login-man-bg.svg);
@@ -10,7 +11,7 @@ body {
 }
 
 .login {
-    font-size: 60px;
+    font-size: 6rem;
     padding: 5% 5% 3% 5%;
 }
 
@@ -21,31 +22,32 @@ input {
 
 .form-list {
     padding-left: 5%;
-    font-size: 30px;
+    font-size: 3rem;
 }
 
 input {
-    padding: 10px;
+    padding: 1rem;
     border: 2px solid grey;
-    width: 400px;
-    margin-right: 50px;
+    width: 40rem;
+    margin-right: 5rem;
     margin-bottom: 1%;
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 label {
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
+    font-size: 3rem;
 }
 
 span {
-    font-size: 25px;
+    font-size: 2.5rem;
     padding-left: 5%;
     color: grey;
 }
 
 a {
     text-decoration: none;
-    font-size: 25px;
+    font-size: 2.5rem;
     color: grey;
 }
 
@@ -54,14 +56,14 @@ a:hover {
 }
 .btn {
     display: block;
-    padding: 15px 25px;
+    padding: 1.5rem 2.5rem;
     background-color: #ffffff;
     box-shadow: 6px 6px 0 #404040;
     border: solid black 1px;
     transition: all 0.15s linear 0s;
     position: relative;
     margin-bottom: 2%;
-    font-size: 20px;
+    font-size: 2rem;
 }
 .btn:hover {
     transform: translate(2px, 2px);
