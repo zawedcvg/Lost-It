@@ -23,7 +23,7 @@ body {
 .first.block {
     background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .front-text {
