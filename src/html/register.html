@@ -7,34 +7,44 @@
                     initial-scale = 1.0"
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
+        <title>Registration</title>
         <link rel="stylesheet" href="../styles/stylesReg.css" />
     </head>
     <body>
         <h1 class="signup">Sign Up</h1>
         <div class="form-list">
             <form action="signup" method="post" id="form">
-                <label>
+                <label class="label-reg">
                     Name:
-                    <input name="name" type="text" />
+                    <input class="input-reg" name="name" type="text" />
                 </label>
-                <label>
+                <label class="label-reg">
                     Telegram Id: <span class="optional">(optional)</span>
-                    <input name="Telegram Id" type="text" />
+                    <input class="input-reg" name="Telegram Id" type="text" />
                 </label>
-                <label>
+                <label class="label-reg">
                     Email Address:
-                    <input name="Email" type="text" />
+                    <input class="input-reg" name="Email" type="text" />
                 </label>
                 <div class="sideform">
                     <form class="something" action="form">
-                        <label class="sideform">
+                        <label class="sideform label-reg">
                             Password:
-                            <input id="pswd" name="password" type="text" />
+                            <input
+                                class="input-reg"
+                                id="pswd"
+                                name="password"
+                                type="password"
+                            />
                         </label>
-                        <label class="sideform">
+                        <label class="sideform label-reg">
                             Re-enter Password:
-                            <input id="cnfrmpswd" name="reentry" type="text" />
+                            <input
+                                class="input-reg"
+                                id="cnfrmpswd"
+                                name="reentry"
+                                type="password"
+                            />
                         </label>
                     </form>
                 </div>
@@ -43,6 +53,5 @@
         </div>
         <span>Already have an account?</span>
         <a class="sign-up" href="./login.html">Login here</a>
-        <script src="./register.js"></script>
     </body>
 </html>

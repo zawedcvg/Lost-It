@@ -26,30 +26,30 @@ body {
     max-width: 100rem;
 }
 
-h1 {
+.edit-details {
     font-size: 5rem;
     align-self: center;
     position: relative;
     left: 20%;
 }
 
-label,
-input {
+.label-edit-user,
+.input-user-details {
     display: block;
 }
-label {
+.label-edit-user {
     margin-bottom: 3rem;
     font-size: 2.5rem;
 }
 
-input {
+.input-user-details {
     padding: 1rem;
     margin-bottom: 3rem;
     width: 40rem;
     font-size: 2rem;
     border: 2px solid black;
 }
-.btn {
+.btn-edit-user {
     display: inline-block;
     padding: 1.5rem 3.5rem;
     background-color: #ffffff;
@@ -65,12 +65,12 @@ input {
     margin-right: 10%;
     top: 10%;
 }
-.btn:hover {
+.btn-edit-user:hover {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0 #404040;
 }
 
-.btn:active {
+.btn-edit-user:active {
     transform: translate(6px, 6px);
     box-shadow: none;
 }
