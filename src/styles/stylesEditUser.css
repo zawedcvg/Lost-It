@@ -26,30 +26,30 @@ body {
     max-width: 100rem;
 }
 
-.edit-details {
+.edit_details {
     font-size: 5rem;
     align-self: center;
     position: relative;
     left: 20%;
 }
 
-.label-edit-user,
-.input-user-details {
+.label_edit_user,
+.input_user_details {
     display: block;
 }
-.label-edit-user {
+.label_edit_user {
     margin-bottom: 3rem;
     font-size: 2.5rem;
 }
 
-.input-user-details {
+.input_user_details {
     padding: 1rem;
     margin-bottom: 3rem;
     width: 40rem;
     font-size: 2rem;
     border: 2px solid black;
 }
-.btn-edit-user {
+.btn_edit_user {
     display: inline-block;
     padding: 1.5rem 3.5rem;
     background-color: #ffffff;
@@ -65,12 +65,12 @@ body {
     margin-right: 10%;
     top: 10%;
 }
-.btn-edit-user:hover {
+.btn_edit_user:hover {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0 #404040;
 }
 
-.btn-edit-user:active {
+.btn_edit_user:active {
     transform: translate(6px, 6px);
     box-shadow: none;
 }

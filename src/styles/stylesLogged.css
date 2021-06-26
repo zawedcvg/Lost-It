@@ -46,7 +46,7 @@ img {
     height: 20rem;
 }
 
-.user-details {
+.user_details {
     position: relative;
     font-size: 3rem;
     padding-left: 10%;
@@ -67,7 +67,7 @@ br {
     align-items: center;
     justify-content: center;
 }
-.btn-entry {
+.btn_entry {
     display: inline-block;
     padding: 1rem 2.5rem;
     background-color: #ffffff;
@@ -81,12 +81,12 @@ br {
     justify-self: center;
     align-content: center;
 }
-.btn-entry:hover {
+.btn_entry:hover {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0 #404040;
 }
 
-.btn-entry:active {
+.btn_entry:active {
     transform: translate(6px, 6px);
     box-shadow: none;
 }

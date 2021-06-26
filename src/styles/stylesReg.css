@@ -16,12 +16,12 @@ body {
     padding: 4rem 1rem 1rem 9rem;
 }
 
-.label-reg,
-.input-reg {
+.label_reg,
+.input_reg {
     display: block;
 }
 
-.form-list {
+.form_list {
     padding-left: 5%;
     font-size: 3rem;
 }
@@ -39,7 +39,7 @@ span {
     padding: 0;
 }
 
-.input-reg {
+.input_reg {
     padding: 1rem;
     border: 2px solid grey;
     width: 40rem;
@@ -47,7 +47,7 @@ span {
     font-size: 2rem;
 }
 
-.label-reg {
+.label_reg {
     margin-bottom: 3rem;
     font-size: 3rem;
 }

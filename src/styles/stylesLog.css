@@ -15,17 +15,17 @@ body {
     padding: 5% 5% 3% 5%;
 }
 
-.login-label,
-.login-input {
+.login_label,
+.login_input {
     display: block;
 }
 
-.form-list {
+.form_list {
     padding-left: 5%;
     font-size: 3rem;
 }
 
-.login-input {
+.login_input {
     padding: 1rem;
     border: 2px solid grey;
     width: 40rem;
@@ -34,7 +34,7 @@ body {
     font-size: 2rem;
 }
 
-.login-label {
+.login_label {
     margin-bottom: 3rem;
     font-size: 3rem;
 }
@@ -54,7 +54,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
-.btn-login {
+.btn_login {
     display: block;
     padding: 1.5rem 2.5rem;
     background-color: #ffffff;
@@ -65,7 +65,7 @@ a:hover {
     margin-bottom: 2%;
     font-size: 2rem;
 }
-.btn-login:hover {
+.btn_login:hover {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0 #404040;
 }

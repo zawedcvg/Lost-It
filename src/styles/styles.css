@@ -35,7 +35,7 @@ body {
     background-size: contain;
 }
 
-.front-text {
+.front_text {
     position: absolute;
     top: 70rem;
     font-size: 7rem;
@@ -79,7 +79,7 @@ body {
     background-size: cover;
     overflow-y: hidden;
 }
-.option-body {
+.option_body {
     position: relative;
     top: 50%;
     left: 50%;
@@ -90,7 +90,7 @@ body {
     text-align: center;
 }
 
-.login-text {
+.login_text {
     display: block;
     font-weight: normal;
     font-size: 5rem;
@@ -99,7 +99,7 @@ body {
     padding-bottom: 5rem;
 }
 
-.button-list {
+.button_list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -108,7 +108,7 @@ body {
     margin-bottom: 20rem;
 }
 
-.btn-main {
+.btn_main {
     display: block;
     padding: 1.5rem 2.5rem;
     background-color: #ffffff;
@@ -121,12 +121,12 @@ body {
     align-self: center;
     text-align: center;
 }
-.btn-main:hover {
+.btn_main:hover {
     transform: translate(0.2px, 0.2px);
     box-shadow: 0.3rem 0.3rem 0 #404040;
 }
 
-.btn-main:active {
+.btn_main:active {
     transform: translate(0.6rem, 0.6rem);
     box-shadow: none;
 }
