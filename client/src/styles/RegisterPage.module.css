@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lucida Console', monospace;
+    font-size: 62.5%;
+}
+
+body {
+    background-image: url(../svg-assets/signup-woman-plus-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.scroll {
+    overflow: hidden;
+}
+
+.signup {
+    font-size: 6rem;
+    padding: 4rem 1rem 1rem 9rem;
+}
+
+.label_reg,
+.input_reg {
+    display: block;
+}
+
+.form_list {
+    padding-left: 5%;
+    font-size: 3rem;
+}
+
+span {
+    font-size: 2.5rem;
+    padding-left: 5%;
+    color: grey;
+}
+
+.optional {
+    color: grey;
+    font-size: 2rem;
+    font-style: italic;
+    padding: 0;
+}
+
+.input_reg {
+    padding: 1rem;
+    border: 2px solid grey;
+    width: 40rem;
+    margin-right: 5rem;
+    font-size: 2rem;
+}
+
+.label_reg {
+    margin-bottom: 3rem;
+    font-size: 3rem;
+}
+
+.sideform {
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: grey;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.btn {
+    display: block;
+    padding: 1.5rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0.6rem 0.6rem 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 2%;
+    font-size: 2rem;
+}
+.btn:hover {
+    transform: translate(0.2rem, 0.2rem);
+    box-shadow: 0.3rem 0.3rem 0 #404040;
+}
+
+.btn:active {
+    transform: translate(0.6rem, 0.6rem);
+    box-shadow: none;
+}

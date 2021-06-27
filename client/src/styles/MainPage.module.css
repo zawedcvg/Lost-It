@@ -1,0 +1,137 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    font-family: "Lucida Console", monospace;
+}
+
+body {
+    margin: 0px;
+}
+
+.scroll {
+    overflow-x: hidden;
+}
+
+.block {
+    margin: 0px;
+    padding: 1rem;
+    background-color: white;
+    height: 100vh;
+}
+
+.first.block {
+    background-image: url(../svg-assets/landing-page-bg-without-text.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.front_text {
+    position: absolute;
+    top: 70rem;
+    font-size: 7rem;
+    left: 55%;
+}
+
+.block.middle {
+    background-color: black;
+    background-image: url(../svg-assets/were-here-to-help-page-without-text.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10%;
+}
+
+.slogan {
+    display: flex;
+    padding: 20% 0 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin: 10px;
+}
+.line {
+    text-align: center;
+    color: white;
+    margin: 0px;
+    padding: 10px;
+}
+
+.first {
+    font-size: 6rem;
+}
+
+.second {
+    font-size: 8rem;
+}
+
+.block.end {
+    background-image: url(../svg-assets/login-signup-page-without-buttons.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+}
+.option_body {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 100%;
+    padding: 25rem;
+    text-align: center;
+}
+
+.login_text {
+    display: block;
+    font-weight: normal;
+    font-size: 5rem;
+    text-align: center;
+    padding-top: 20rem;
+    padding-bottom: 5rem;
+}
+
+.button_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    margin-bottom: 20rem;
+}
+
+.btn_main {
+    display: block;
+    padding: 1.5rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 1rem 0.6rem 0px #404040;
+    border: solid black 2px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 10%;
+    font-size: 2.5rem;
+    align-self: center;
+    text-align: center;
+}
+.btn_main:hover {
+    transform: translate(0.2px, 0.2px);
+    box-shadow: 0.3rem 0.3rem 0 #404040;
+}
+
+.btn_main:active {
+    transform: translate(0.6rem, 0.6rem);
+    box-shadow: none;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}

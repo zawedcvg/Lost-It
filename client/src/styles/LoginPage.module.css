@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    font-family: "Lucida Console", monospace;
+    font-size: 62.5%;
+}
+body {
+    background-image: url(../svg-assets/login-man-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.scroll {
+    overflow: hidden;
+    
+}
+
+.login {
+    font-size: 6rem;
+    padding: 5% 5% 3% 5%;
+}
+
+.login_label,
+.login_input {
+    display: block;
+}
+
+.form_list {
+    padding-left: 5%;
+    font-size: 3rem;
+}
+
+.login_input {
+    padding: 1rem;
+    border: 2px solid grey;
+    width: 40rem;
+    margin-right: 5rem;
+    margin-bottom: 1%;
+    font-size: 2rem;
+}
+
+.login_label {
+    margin-bottom: 3rem;
+    font-size: 3rem;
+}
+
+span {
+    font-size: 2.5rem;
+    padding-left: 5%;
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: grey;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.btn_login {
+    display: block;
+    padding: 1.5rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 2%;
+    font-size: 2rem;
+}
+.btn_login:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #404040;
+}
+
+.btn-login:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+.forgot {
+    padding-left: 5%;
+}

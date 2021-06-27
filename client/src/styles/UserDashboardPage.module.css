@@ -1,0 +1,99 @@
+html {
+    box-sizing: border-box;
+}
+
+* {
+    font-family: "Lucida Console", monospace;
+    font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.scroll {
+    overflow: hidden;
+}
+
+body {
+    background-image: url(../svg-assets/user-dashboard.svg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
+
+.container {
+    margin: 3% 5% 5% 2%;
+    padding: 2% 2% 2% 0%;
+    border-radius: 10%;
+    border: 1px solid #786c78;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+}
+
+img {
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    width: 20rem;
+    height: 20rem;
+}
+
+.user_details {
+    position: relative;
+    font-size: 3rem;
+    padding-left: 10%;
+}
+
+p {
+    position: relative;
+    top: 2rem;
+    font-size: 3rem;
+}
+br {
+    line-height: 200%;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn_entry {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #404040;
+    border: solid black 1px;
+    transition: all 0.15s linear 0s;
+    position: relative;
+    margin-bottom: 10%;
+    font-size: 2rem;
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+}
+.btn_entry:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #404040;
+}
+
+.btn_entry:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+.logout {
+    top: 4rem;
+}
