@@ -1,0 +1,38 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+* {
+    font-family: "Lucida Console", monospace;
+}
+.scroll_sent_auth {
+    overflow: hidden;
+}
+body {
+    background-image: url(../svg-assets/email-has-been-sent-reset-password.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.email_auth_container {
+    display: flex;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    text-align: center;
+}
+
+.email_auth_text {
+    font-size: 7rem;
+}
+
+.check_email {
+    font-size: 3rem;
+}
