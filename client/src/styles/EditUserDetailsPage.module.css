@@ -16,7 +16,8 @@ html {
     
 }
 
-body {
+.EditUserDetailsPage {
+    height: 100vh;
     background-image: url(../svg-assets/edit-user-details-bg.svg);
     background-repeat: no-repeat;
     background-size: cover;

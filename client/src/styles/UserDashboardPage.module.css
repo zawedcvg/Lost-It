@@ -16,7 +16,7 @@ html {
     overflow: hidden;
 }
 
-body {
+.UserDashboardPage {
     background-image: url(../svg-assets/user-dashboard.svg);
     background-repeat: no-repeat;
     height: 100vh;

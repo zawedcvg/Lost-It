@@ -48,7 +48,7 @@ const userController = {
             };
 
             const activationToken = createActivationToken(newUser);
-            const url = `${CLIENT_URL}/user/activate/${activationToken}`;
+            const url = `${CLIENT_URL}/user/activation/${activationToken}`;
             sendMail(email, url, "Verify your email address");
 
             res.json({

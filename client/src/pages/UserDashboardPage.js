@@ -124,11 +124,20 @@ function UserDashBoardPage() {
 
     const handleLogout = async () => {
         try {
-            await axios.get("/user/logout");
+            console.log(1);
+
+            console.log(2);
+            const res = await axios.post("/user/logout");
+            console.log(res);
             localStorage.removeItem("firstLogin");
             window.location.href = "/logout";
+
+            console.log(3);
+
+            //history.push("/logout");
         } catch (err) {
-            window.location.href = "/logout";
+            console.log("errrrr");
+            //window.location.href = "/logout";
         }
     };
 
@@ -162,38 +171,38 @@ function UserDashBoardPage() {
         }
     };
 
-    const handleUpdate = () => {
-        if (name || avatar) updateInfor();
-        if (password) updatePassword();
-    };
+    // const handleUpdate = () => {
+    //     if (name || avatar) updateInfor();
+    //     if (password) updatePassword();
+    // };
 
     const handletemp = () => {
         history.push("/");
     };
 
-    const handleDelete = async (id) => {
-        try {
-            if (user._id !== id) {
-                if (
-                    window.confirm(
-                        "Are you sure you want to delete this account?"
-                    )
-                ) {
-                    setLoading(true);
-                    await axios.delete(`/user/delete/${id}`, {
-                        headers: { Authorization: token },
-                    });
-                    setLoading(false);
-                    setCallback(!callback);
-                }
-            }
-        } catch (err) {
-            setData({ ...data, err: err.response.data.msg, success: "" });
-        }
-    };
+    // const handleDelete = async (id) => {
+    //     try {
+    //         if (user._id !== id) {
+    //             if (
+    //                 window.confirm(
+    //                     "Are you sure you want to delete this account?"
+    //                 )
+    //             ) {
+    //                 setLoading(true);
+    //                 await axios.delete(`/user/delete/${id}`, {
+    //                     headers: { Authorization: token },
+    //                 });
+    //                 setLoading(false);
+    //                 setCallback(!callback);
+    //             }
+    //         }
+    //     } catch (err) {
+    //         setData({ ...data, err: err.response.data.msg, success: "" });
+    //     }
+    // };
 
     return (
-        <div className="UserDashboard">
+        <div className={UserDashboardPageCSS.UserDashboardPage}>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
@@ -209,24 +218,26 @@ function UserDashBoardPage() {
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
                         <img
-                            src={avatar ? avatar : user.avatar}
+                            src="https://source.unsplash.com/random/300x300"
                             alt="***random***"
                         />
                         <form className={UserDashboardPageCSS.side}>
                             <button
-                                formaction="./edit-user-details.html"
+                                onClick={(e) =>
+                                    history.push("/edituserdetails")
+                                }
                                 className={UserDashboardPageCSS.btn_entry}
                             >
                                 Edit Details
                             </button>
                             <button
-                                onClick={handletemp}
+                                onClick={(e) => history.push("/listings")}
                                 className={UserDashboardPageCSS.btn_entry}
                             >
                                 View listings
                             </button>
                             <button
-                                formaction="https://www.google.com/"
+                                onClick={(e) => history.push("/reportitem")}
                                 className={UserDashboardPageCSS.btn_entry}
                             >
                                 Report item
@@ -248,7 +259,7 @@ function UserDashBoardPage() {
                             <br />
                             {user.email}
                         </p>
-                        <form>
+                        <form onSubmit={handleLogout}>
                             <button
                                 onClick={handleLogout}
                                 className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}

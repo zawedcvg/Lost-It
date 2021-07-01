@@ -78,7 +78,7 @@ const MainPage = () => {
                             </form>
                             <form>
                                 <button
-                                    formaction="http://stackoverflow.com"
+                                    formAction="http://stackoverflow.com"
                                     className={MainPageCSS.btn_main}
                                 >
                                     <Logo style={logostyle} />

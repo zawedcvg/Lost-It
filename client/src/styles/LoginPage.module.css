@@ -3,7 +3,10 @@
     font-family: "Lucida Console", monospace;
     font-size: 62.5%;
 }
-body {
+
+
+.LoginPage {
+    height: 100vh;
     background-image: url(../svg-assets/login-man-bg.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,7 +14,6 @@ body {
 
 .scroll {
     overflow: hidden;
-    
 }
 
 .login {

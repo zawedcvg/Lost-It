@@ -2,58 +2,52 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
 }
-* {
-    font-family: "Lucida Console", monospace;
-}
 *,
 *:before,
 *:after {
     box-sizing: inherit;
 }
+* {
+    font-family: "Lucida Console", monospace;
+}
+
+.EmailHasBeenSentForActivationPage {
+    height: 100vh;
+    background-image: url(../svg-assets/activation-successful.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .scroll {
     overflow: hidden;
-    
 }
 
-.LogoutPage {
-    background-image: url(../svg-assets/logout-page.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-}
-
-.thank_you {
+.email_container {
     display: flex;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 1rem;
+    text-align: center;
 }
 
-h1 {
+.email_sent {
     font-size: 7rem;
 }
 
-.seeusoon {
-    position: relative;
-    left: 30%;
+.check_email {
+    font-size: 3rem;
 }
 
-.login {
-    position: relative;
-    top: 15%;
-    font-size: 2.5rem;
-    color: grey;
-}
-
-a {
+.return {
+    position: absolute;
     text-decoration: none;
     font-size: 2.5rem;
     color: grey;
+    bottom: 2rem;
 }
-a:hover {
+.return:hover {
     text-decoration: underline;
 }

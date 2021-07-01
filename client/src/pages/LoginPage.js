@@ -26,15 +26,18 @@ function LoginPage() {
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value, err: "", success: "" });
-        console.log(user);
+        //console.log(user);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/user/login", { email, password });
+            const res = await axios.post("/user/login", {
+                email,
+                password,
+            });
             setUser({ ...user, err: "", success: res.data.msg });
-            
+
             localStorage.setItem("firstLogin", true);
 
             dispatch(dispatchLogin());
@@ -86,17 +89,18 @@ function LoginPage() {
     // };
 
     return (
-        <div className="LoginPage">
+        <div className={LoginPageCSS.LoginPage}>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
                     name="viewport"
                     content="width=device-width, 
-    initial-scale = 1.0"
+                    initial-scale = 1.0"
                 />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                 <title>Document</title>
             </MetaTags>
+
             <div className={LoginPageCSS.scroll}>
                 <h1 className={LoginPageCSS.login}>Log In</h1>
                 <div className={LoginPageCSS.form_list}>
@@ -111,6 +115,7 @@ function LoginPage() {
                                 className={LoginPageCSS.login_input}
                                 name="email"
                                 type="text"
+                                value={email}
                                 onChange={handleChangeInput}
                                 required
                             />
@@ -122,6 +127,7 @@ function LoginPage() {
                             <input
                                 className={LoginPageCSS.login_input}
                                 name="password"
+                                value={password}
                                 onChange={handleChangeInput}
                                 type="password"
                                 required

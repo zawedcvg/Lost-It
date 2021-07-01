@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const userRouter = require("./routes/userRouter.js");
 const upload = require("./routes/upload.js");
+const postRouter = require("./routes/postRouter.js");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(
 
 app.use("/user", userRouter);
 app.use("/api", upload);
+app.use("/listings", postRouter);
 
 const URI = process.env.MONGODB_URL;
 mongoose.connect(
