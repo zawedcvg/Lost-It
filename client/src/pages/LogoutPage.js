@@ -1,9 +1,10 @@
 import LogoutPageCSS from "../styles/LogoutPage.module.css";
 import MetaTags from "react-meta-tags";
+import { Link } from "react-router-dom";
 
 const LogoutPage = () => {
     return (
-        <div className="LogoutPage">
+        <div className={LogoutPageCSS.LogoutPage}>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
@@ -21,7 +22,7 @@ const LogoutPage = () => {
                         See you soon.
                     </span>
                     <span className={LogoutPageCSS.login}>
-                        Click here to <a href="login.html">Log Back In</a>
+                        Click here to <Link to="/login">Log Back In</Link>
                     </span>
                 </div>
             </div>

@@ -4,7 +4,8 @@
     font-size: 62.5%;
 }
 
-body {
+.RegisterPage {
+    height: 100vh;
     background-image: url(../svg-assets/signup-woman-plus-bg.svg);
     background-repeat: no-repeat;
     background-size: cover;

@@ -61,7 +61,7 @@ function EditUserDetailsPage() {
     };
 
     return (
-        <div className="EditUserDetailsPage">
+        <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
@@ -115,10 +115,16 @@ function EditUserDetailsPage() {
                             />
                         </label>
                     </form>
-                    <button className={EditUserDetailsPageCSS.btn_edit_user}>
+                    <button
+                        onClick={handleUpdate}
+                        className={EditUserDetailsPageCSS.btn_edit_user}
+                    >
                         Apply Changes
                     </button>
-                    <button className={EditUserDetailsPageCSS.btn_edit_user}>
+                    <button
+                        onClick={(e) => history.push("/userdashboard")}
+                        className={EditUserDetailsPageCSS.btn_edit_user}
+                    >
                         Discard Changes
                     </button>
                 </div>

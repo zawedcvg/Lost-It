@@ -5,12 +5,15 @@ html {
 
 * {
     font-family: "Lucida Console", monospace;
-    overflow: hidden;
 }
 *,
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+.scroll {
+    overflow: hidden;
 }
 
 body {

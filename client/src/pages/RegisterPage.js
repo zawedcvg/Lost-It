@@ -93,14 +93,14 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post("http://localhost:5000/user/register", {
+            const res = await axios.post("/user/register", {
                 name,
                 email,
                 password,
             });
 
             setUser({ ...user, err: "", success: res.data.msg });
-            history.push("/activation_email");
+            history.push("/emailhasbeensentforactivation");
             // toast.success(res.data.msg);
         } catch (err) {
             err.response.data.msg &&
@@ -109,7 +109,7 @@ const Register = () => {
     };
 
     return (
-        <div className="RegisterPage">
+        <div className={RegisterPageCSS.RegisterPage}>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
