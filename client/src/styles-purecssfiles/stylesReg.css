@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Lucida Console', monospace;
+    font-family: "Lucida Console", monospace;
     overflow: hidden;
     font-size: 62.5%;
 }
@@ -81,7 +81,29 @@ a:hover {
     box-shadow: 0.3rem 0.3rem 0 #404040;
 }
 
+.hint {
+    display: block;
+    font-size: 1.5rem;
+    color: red;
+    width: 40rem;
+    padding: 0.25rem;
+    min-height: 6rem;
+}
+.small_hint {
+    display: block;
+    font-size: 1.5rem;
+    color: red;
+    width: 40rem;
+    padding: 0.25rem;
+    min-height: 3rem;
+}
 .btn:active {
     transform: translate(0.6rem, 0.6rem);
     box-shadow: none;
+}
+
+
+.input_reg:invalid:focus {
+    background-color: pink;
+    border: 2px solid red;
 }

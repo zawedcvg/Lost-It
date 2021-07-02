@@ -8,7 +8,7 @@
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Registration</title>
-        <link rel="stylesheet" href="../styles/stylesReg.css" />
+        <link rel="stylesheet" href="../styles-purecssfiles/stylesReg.css" />
     </head>
     <body>
         <h1 class="signup">Sign Up</h1>
@@ -16,42 +16,71 @@
             <form action="signup" method="post" id="form">
                 <label class="label_reg">
                     Name:
-                    <input class="input_reg" name="name" type="text" />
+                    <input
+                        class="input_reg"
+                        name="name"
+                        type="text"
+                        id="name"
+                        required
+                    />
+                    <span id="name_hint" class="small_hint"
+                        >Please enter your name</span
+                    >
                 </label>
                 <label class="label_reg">
                     Telegram Id: <span class="optional">(optional)</span>
                     <input class="input_reg" name="Telegram Id" type="text" />
+                    <span class="small_hint"></span>
                 </label>
                 <label class="label_reg">
                     Email Address:
-                    <input class="input_reg" name="Email" type="text" />
+                    <input
+                        class="input_reg"
+                        name="Email"
+                        type="email"
+                        id="email"
+                        required
+                    />
+                    <span id="email_hint" class="small_hint"
+                        >Enter a valid email address</span
+                    >
                 </label>
-                <div class="sideform">
-                    <form class="something" action="form">
-                        <label class="sideform label_reg">
-                            Password:
-                            <input
-                                class="input_reg"
-                                id="pswd"
-                                name="password"
-                                type="password"
-                            />
-                        </label>
-                        <label class="sideform label_reg">
-                            Re-enter Password:
-                            <input
-                                class="input_reg"
-                                id="cnfrmpswd"
-                                name="reentry"
-                                type="password"
-                            />
-                        </label>
-                    </form>
-                </div>
-                <button class="btn" type="form" id="something">Sign Up</button>
+                <label class="sideform label_reg">
+                    Password:
+                    <input
+                        class="input_reg"
+                        id="pswd"
+                        name="password"
+                        type="password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        required
+                    />
+                    <span id="password_hint" class="hint"
+                        >Must contain at least one number, one uppercase, one
+                        lowercase letter, and at least 8 or more
+                        characters</span
+                    >
+                </label>
+                <label class="sideform label_reg">
+                    Re-enter Password:
+                    <input
+                        class="input_reg"
+                        id="cnfrmpswd"
+                        name="reentry"
+                        type="password"
+                        required
+                    />
+                    <span id="confirm_password_hint" class="hint"
+                        >Passwords don't match</span
+                    >
+                </label>
+                <button class="btn" type="button" id="something">
+                    Sign Up
+                </button>
             </form>
         </div>
         <span>Already have an account?</span>
         <a class="sign_up" href="./login.html">Login here</a>
+        <script src="../js-files/register.js"></script>
     </body>
 </html>
