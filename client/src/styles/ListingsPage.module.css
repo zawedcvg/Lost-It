@@ -48,7 +48,7 @@ nav {
     background-color: white;
 }
 
-nav a {
+nav .options_button {
     text-decoration: none;
     font-size: 2rem;
     padding: 0 3rem;
@@ -56,17 +56,19 @@ nav a {
     transition: all 0.15s linear 0s;
 }
 
-a:hover {
+.options_button:hover {
     border-radius: 2.5rem;
     color: white;
     background-color: black;
 }
 
-a:focus {
-    border-radius: 2.5rem;
-    color: white;
-    background-color: black;
-}
+/*
+ *.options_button:focus {
+ *    border-radius: 2.5rem;
+ *    color: white;
+ *    background-color: black;
+ *}
+ */
 
 .bottom_part {
     display: flex;
@@ -123,4 +125,10 @@ img {
 .btn_listings:active {
     transform: translate(0.6rem, 0.6rem);
     box-shadow: none;
+}
+
+.options_button {
+    background: none;
+    border: none;
+    padding: 0 ;
 }
