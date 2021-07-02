@@ -62,13 +62,11 @@ nav .options_button {
     background-color: black;
 }
 
-/*
- *.options_button:focus {
- *    border-radius: 2.5rem;
- *    color: white;
- *    background-color: black;
- *}
- */
+.options_button:focus {
+    border-radius: 2.5rem;
+    color: white;
+    background-color: black;
+}
 
 .bottom_part {
     display: flex;
@@ -130,5 +128,5 @@ img {
 .options_button {
     background: none;
     border: none;
-    padding: 0 ;
+    padding: 0;
 }

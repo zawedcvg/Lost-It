@@ -1,3 +1,4 @@
+import React from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
 const ListingsPage = () => {
@@ -22,21 +23,24 @@ const ListingsPage = () => {
         },
     ];
 
-    var requiredItems = Items;
+    const [requiredItems, setRequiredItems] = React.useState(Items);
 
     function clickedEvent(e) {
+        console.log(e.target);
         var searchParams = e.target.innerHTML;
         switch (searchParams) {
             case "Found":
-                console.log(searchParams);
-                requiredItems = Items.filter((items) => items.type === "found");
-                console.log(requiredItems);
+                setRequiredItems(
+                    Items.filter((items) => items.type === "found")
+                );
                 break;
             case "Lost":
-                console.log(searchParams);
+                setRequiredItems(
+                    Items.filter((items) => items.type === "lost")
+                );
                 break;
             case "Both":
-                console.log(searchParams);
+                setRequiredItems(Items);
                 break;
         }
     }
