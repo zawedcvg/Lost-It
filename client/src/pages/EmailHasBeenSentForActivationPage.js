@@ -1,15 +1,7 @@
-// import {showErrMsg, showSuccessMsg} from '../../utils/notification/Notification'
 import MetaTags from "react-meta-tags";
-// import { Link, useHistory } from "react-router-dom";
 import EmailHasBeenSentForActivationPageCSS from "../styles/EmailHasBeenSentForActivationPage.module.css";
 
 function EmailHasBeenSentForActivation() {
-    // const history = useHistory();
-
-    // const handleLoginClick = () => {
-    //     history.push("/login");
-    // };
-
     return (
         <div
             className={

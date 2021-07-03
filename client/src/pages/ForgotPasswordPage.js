@@ -2,8 +2,6 @@ import { MetaTags } from "react-meta-tags";
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import {isEmail} from '../../utils/validation/Validation'
-// import {showErrMsg, showSuccessMsg} from '../../utils/notification/Notification'
 import ForgotPasswordPageCSS from "../styles/ForgotPasswordPage.module.css";
 
 const isEmail = (email) => {

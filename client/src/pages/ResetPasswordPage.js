@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import MetaTags from "react-meta-tags";
 import { useParams, useHistory } from "react-router-dom";
-//import {showErrMsg, showSuccessMsg} from '../../utils/notification/Notification'
 import ResetPasswordPageCSS from "../styles/ResetPasswordPage.module.css";
 
 const isSmall = (password) => {
@@ -59,8 +58,8 @@ function ResetPasswordPage() {
             );
 
             setData({ ...data, err: "", success: res.data.msg });
-
             history.push("/resetsuccessful");
+
         } catch (err) {
             err.response.data.msg &&
                 setData({ ...data, err: err.response.data.msg, success: "" });

@@ -1,6 +1,6 @@
 import React from "react";
 import MetaTags from "react-meta-tags";
-import ReportItemCSS from "../styles/ReportItemPage.module.css"
+import ReportItemCSS from "../styles/ReportItemPage.module.css";
 
 function ReportItem() {
     return (
@@ -22,7 +22,10 @@ function ReportItem() {
                         <label htmlFor="location">
                             Approximate Location <br />
                             of the Item :
-                            <input type="text" className={ReportItemCSS.location} />
+                            <input
+                                type="text"
+                                className={ReportItemCSS.location}
+                            />
                         </label>
                         <label htmlFor="description">
                             Description of the object :
@@ -34,7 +37,10 @@ function ReportItem() {
                         </label>
                         <label htmlFor="date-found">
                             Date of Happening :
-                            <input type="date" className={`${ReportItemCSS.date_found} ${ReportItemCSS.small}`} />
+                            <input
+                                type="date"
+                                className={`${ReportItemCSS.date_found} ${ReportItemCSS.small}`}
+                            />
                         </label>
                         <label htmlFor="time">
                             Approximate time :
@@ -43,7 +49,9 @@ function ReportItem() {
                     </form>
                     <button className={ReportItemCSS.btn}>Submit</button>
                     <span>or</span>
-                    <button className={ReportItemCSS.btn}>Go to listings</button>
+                    <button className={ReportItemCSS.btn}>
+                        Go to listings
+                    </button>
                 </div>
                 <img src="https://source.unsplash.com/random" alt="something" />
             </div>

@@ -3,7 +3,6 @@ import LoginPageCSS from "../styles/LoginPage.module.css";
 import MetaTags from "react-meta-tags";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-//import {showErrMsg, showSuccessMsg} from '../../utils/notification/Notification'
 import { dispatchLogin } from "../redux/actions/authAction";
 import { useDispatch } from "react-redux";
 // import { GoogleLogin } from 'react-google-login';
@@ -26,7 +25,6 @@ function LoginPage() {
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value, err: "", success: "" });
-        //console.log(user);
     };
 
     const handleSubmit = async (e) => {
@@ -149,7 +147,7 @@ function LoginPage() {
                 </Link>
                 <br />
                 <br />
-                <Link className={LoginPageCSS.forgot} to="/forgot">
+                <Link className={LoginPageCSS.forgot} to="/forgotpassword">
                     Forgot your password?
                 </Link>
             </div>
