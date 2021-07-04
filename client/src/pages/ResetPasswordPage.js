@@ -59,7 +59,6 @@ function ResetPasswordPage() {
 
             setData({ ...data, err: "", success: res.data.msg });
             history.push("/resetsuccessful");
-
         } catch (err) {
             err.response.data.msg &&
                 setData({ ...data, err: err.response.data.msg, success: "" });

@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { dispatchLogin } from "../redux/actions/authAction";
 import { useDispatch } from "react-redux";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
 // import FacebookLogin from 'react-facebook-login';
 
 const initialState = {
@@ -151,23 +151,22 @@ function LoginPage() {
                     Forgot your password?
                 </Link>
             </div>
-        
-        <div className="social">
-            <GoogleLogin
-                clientId="209721098919-5joiqq888tl1vd0uh0434tolb0jrnrnc.apps.googleusercontent.com"
-                buttonText="Login with Google"
-                onSuccess={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
 
-            {/* <FacebookLogin
+            <div className="social">
+                <GoogleLogin
+                    clientId="209721098919-5joiqq888tl1vd0uh0434tolb0jrnrnc.apps.googleusercontent.com"
+                    buttonText="Login with Google"
+                    onSuccess={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                />
+
+                {/* <FacebookLogin
             appId="Your facebook app id"
             autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook}
             /> */}
-
-        </div>
+            </div>
         </div>
     );
 }

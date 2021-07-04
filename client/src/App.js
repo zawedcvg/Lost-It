@@ -16,7 +16,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ResetSuccessfulPage from "./pages/ResetSuccessfulPage";
 
 function App() {
-    const auth = useSelector(state => state.auth);
+    const auth = useSelector((state) => state.auth);
     console.log(auth);
     const { isLogged, isAdmin } = auth;
 
@@ -34,6 +34,7 @@ function App() {
                     />
 
                     {/* <Route path="/listings" exact component={ListingsPage} /> */}
+
                     <Route
                         path="/emailhasbeensentforactivation"
                         exact
