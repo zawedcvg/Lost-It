@@ -46,10 +46,6 @@ function LoginPage() {
         }
     };
 
-    // const handleSignUpClick = () => {
-    //     history.push("/register")
-    // }
-
     const responseGoogle = async (response) => {
         try {
             const res = await axios.post("/user/google_login", {
@@ -141,7 +137,9 @@ function LoginPage() {
                         </button>
                     </form>
                 </div>
-                <span>New User? </span>
+
+                <br />
+                <span> New User? </span>
                 <Link className={LoginPageCSS.sign_up} to="/register">
                     Sign Up here
                 </Link>
@@ -150,9 +148,11 @@ function LoginPage() {
                 <Link className={LoginPageCSS.forgot} to="/forgotpassword">
                     Forgot your password?
                 </Link>
-            </div>
 
-            <div className="social">
+            </div>
+            <br />
+
+            <div className={LoginPageCSS.social}>
                 <GoogleLogin
                     clientId="209721098919-5joiqq888tl1vd0uh0434tolb0jrnrnc.apps.googleusercontent.com"
                     buttonText="Login with Google"

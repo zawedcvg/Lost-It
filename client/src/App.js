@@ -8,12 +8,13 @@ import NotFound from "./pages/NotFound";
 import { useSelector } from "react-redux";
 import EditUserDetailsPage from "./pages/EditUserDetailsPage";
 import LogoutPage from "./pages/LogoutPage";
-// import ListingsPage from "./pages/ListingsPage";
+import ListingsPage from "./pages/ListingsPage";
 import EmailHasBeenSentForActivationPage from "./pages/EmailHasBeenSentForActivationPage";
 import EmailHasBeenSentForResetPage from "./pages/EmailHasBeenSentForResetPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ResetSuccessfulPage from "./pages/ResetSuccessfulPage";
+import ReportItem from "./pages/ReportItem";
 
 function App() {
     const auth = useSelector((state) => state.auth);
@@ -33,7 +34,9 @@ function App() {
                         component={isLogged ? UserDashboardPage : NotFound}
                     />
 
-                    {/* <Route path="/listings" exact component={ListingsPage} /> */}
+                    <Route path="/listings" exact component={ListingsPage} />
+
+                    <Route path="/reportitem" exact component={ReportItem} />
 
                     <Route
                         path="/emailhasbeensentforactivation"

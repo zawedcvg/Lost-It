@@ -4,7 +4,7 @@ import ReportItemCSS from "../styles/ReportItemPage.module.css";
 
 function ReportItem() {
     return (
-        <div className="ReportItem">
+        <div className={ReportItemCSS.ReportItem}>
             <MetaTags>
                 <meta charset="UTF-8" />
                 <meta
