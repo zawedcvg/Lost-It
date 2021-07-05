@@ -90,6 +90,7 @@ body {
     overflow-y: hidden;
     background-attachment: fixed;
     scroll-snap-align: start;
+    background-color: #3fe0d0;
 }
 .option_body {
     position: relative;

@@ -16,12 +16,22 @@ const ListingsPage = () => {
         {
             key: 2,
             type: "lost",
-            img: "https://source.unsplash.com/random/200x200",
+            img: "https://source.unsplash.com/random/300x200",
             date: "21th August 2021",
             time: "21:00",
             location: "Near USCA",
             description: "Something, something",
         },
+        {
+            key: 3,
+            type: "found",
+            img: "https://source.unsplash.com/random/400x200",
+            date: "2nd January 2021",
+            time: "19:00",
+            location: "Near USCA",
+            description: "Rohan noob",
+
+        }
     ];
 
     const [requiredItems, setRequiredItems] = React.useState(Items);
