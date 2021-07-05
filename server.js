@@ -26,7 +26,8 @@ app.use("/user", userRouter);
 app.use("/api", upload);
 app.use("/listings", postRouter);
 
-const URI = process.env.MONGODB_URL;
+const URI = "mongodb+srv://lost-it:vutkas-basxac-sYwsy9@lostitcluster.e9301.mongodb.net/test?retryWrites=true&w=majority"; // process.env.MONGODB_URL;
+console.log(typeof URI);
 mongoose.connect(
     URI,
     {
