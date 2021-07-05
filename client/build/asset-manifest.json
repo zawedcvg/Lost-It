@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e72d2a94.chunk.css",
+    "main.js": "/static/js/main.e0f8590c.chunk.js",
+    "main.js.map": "/static/js/main.e0f8590c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4ef017fa.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4ef017fa.js.map",
+    "static/js/2.81ecdb79.chunk.js": "/static/js/2.81ecdb79.chunk.js",
+    "static/js/2.81ecdb79.chunk.js.map": "/static/js/2.81ecdb79.chunk.js.map",
+    "static/js/3.294428e2.chunk.js": "/static/js/3.294428e2.chunk.js",
+    "static/js/3.294428e2.chunk.js.map": "/static/js/3.294428e2.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.e72d2a94.chunk.css.map": "/static/css/main.e72d2a94.chunk.css.map",
+    "static/js/2.81ecdb79.chunk.js.LICENSE.txt": "/static/js/2.81ecdb79.chunk.js.LICENSE.txt",
+    "static/media/EmailHasBeenSentForActivationPage.module.css": "/static/media/activation-successful.3655115d.svg",
+    "static/media/EditUserDetailsPage.module.css": "/static/media/edit-user-details-bg.f5940844.svg",
+    "static/media/EmailHasBeenSentForResetPage.module.css": "/static/media/email-has-been-sent-reset-password.6f627e16.svg",
+    "static/media/google.173162ae.svg": "/static/media/google.173162ae.svg",
+    "static/media/MainPage.module.css": "/static/media/were-here-to-help-page-without-text.e75950b0.svg",
+    "static/media/ListingsPage.module.css": "/static/media/listings-bg.8e76da94.svg",
+    "static/media/LoginPage.module.css": "/static/media/login-man-bg.a1a39128.svg",
+    "static/media/LogoutPage.module.css": "/static/media/logout-page.c293e197.svg",
+    "static/media/ReportItemPage.module.css": "/static/media/report-an-item.e4c4c076.svg",
+    "static/media/RegisterPage.module.css": "/static/media/signup-woman-plus-bg.2a858f67.svg",
+    "static/media/UserDashboardPage.module.css": "/static/media/user-dashboard.97951e81.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ef017fa.js",
+    "static/js/2.81ecdb79.chunk.js",
+    "static/css/main.e72d2a94.chunk.css",
+    "static/js/main.e0f8590c.chunk.js"
+  ]
+}
