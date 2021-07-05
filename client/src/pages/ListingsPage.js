@@ -1,6 +1,7 @@
 import React from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
+
 const ListingsPage = () => {
     const Items = [
         {

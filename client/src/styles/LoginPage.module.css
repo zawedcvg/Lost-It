@@ -21,6 +21,10 @@
     padding: 5% 5% 3% 5%;
 }
 
+.social {
+    padding-left: 5%;
+}
+
 .login_label,
 .login_input {
     display: block;

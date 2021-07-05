@@ -12,14 +12,12 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    overflow-y: hidden;
-}
 
 .scroll_listings {
     background-image: url(../svg-assets/listings-bg.svg);
     background-size: cover;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .container {

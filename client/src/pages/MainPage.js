@@ -4,9 +4,10 @@ import MainPageCSS from "../styles/MainPage.module.css";
 import { useHistory } from "react-router-dom";
 
 const MainPage = () => {
-    const logostyle = { width: "25px", height: "25px", textAlign: "center" };
+    // const logostyle = { width: "25px", height: "25px", textAlign: "center" };
 
     let history = useHistory();
+
     const handleLoginClick = () => {
         history.push("/login");
     };
@@ -22,7 +23,7 @@ const MainPage = () => {
                 <meta
                     name="viewport"
                     content="width=device-width, 
-    initial-scale = 1.0"
+                    initial-scale = 1.0"
                 />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                 <title>Document</title>
@@ -60,23 +61,21 @@ const MainPage = () => {
                             Lost-It - a digitized lost & found, right with you
                         </h1>
                         <section className={MainPageCSS.button_list}>
-                            <form>
-                                <button
-                                    onClick={handleSignUpClick}
-                                    className={MainPageCSS.btn_main}
-                                >
-                                    Sign Me Up!
-                                </button>
-                            </form>
-                            <form>
-                                <button
-                                    onClick={handleLoginClick}
-                                    className={MainPageCSS.btn_main}
-                                >
-                                    Log In
-                                </button>
-                            </form>
-                            <form>
+                            <button
+                                onClick={handleSignUpClick}
+                                className={MainPageCSS.btn_main}
+                            >
+                                Sign Me Up!
+                            </button>
+
+                            <button
+                                onClick={handleLoginClick}
+                                className={MainPageCSS.btn_main}
+                            >
+                                Log In
+                            </button>
+
+                            {/* <form>
                                 <button
                                     formAction="http://stackoverflow.com"
                                     className={MainPageCSS.btn_main}
@@ -84,7 +83,7 @@ const MainPage = () => {
                                     <Logo style={logostyle} />
                                     &nbsp;Connect to Google
                                 </button>
-                            </form>
+                            </form> */}
                         </section>
                     </div>
                 </section>
