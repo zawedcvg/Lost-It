@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const postController = require("../controllers/postController");
-const authPosts = require("../middleware/authPostss");
+const postController = require("../server/controllers/postController");
+const authPosts = require("../server/middleware/authPostss");
 
 router
     .route("/posts")
