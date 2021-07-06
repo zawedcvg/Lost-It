@@ -43,6 +43,7 @@ function App() {
                         exact
                         component={EmailHasBeenSentForActivationPage}
                     />
+                    
                     <Route
                         path="/emailhasbeensentforreset"
                         exact
