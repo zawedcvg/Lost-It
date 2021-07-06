@@ -20,16 +20,18 @@ class APIfeatures {
 const postController = {
     createPost: async (req, res) => {
         try {
-            const { content, images } = req.body;
-
-            if (images.length === 0)
-                return res.status(400).json({ msg: "Please add your photo." });
+            const { name, isLost, img, date, location, description } = req.body;
 
             const newPost = new Posts({
-                content,
-                images,
+                name, 
+                isLost,
+                img,
+                date, 
+                location, 
+                description,
                 user: req.user._id,
             });
+
             await newPost.save();
 
             res.json({
@@ -51,14 +53,6 @@ const postController = {
             ).paginating();
 
             const posts = await features.query.sort("-createdAt");
-            // .populate("user likes", "avatar username fullname followers")
-            // .populate({
-            //     path: "comments",
-            //     populate: {
-            //         path: "user likes",
-            //         select: "-password"
-            //     }
-            // })
 
             res.json({
                 msg: "Success!",
@@ -66,39 +60,63 @@ const postController = {
                 posts,
             });
         } catch (err) {
-            return res.status(500).json({ msg: err.message });
+            return res.status(500).json({ 
+                msg: err.message 
+            });
         }
     },
     updatePost: async (req, res) => {
         try {
-            const { content, images } = req.body;
+            let { name, isLost, img, date, location, description } = req.body;
+
+            const postTobeUpdated = await Posts.findById({ _id: req.params.id });
+            
+            if (name == null || name == '') {
+                name = postTobeUpdated.name;
+            }
+
+            if (isLost == null || isLost == '') {
+                isLost = postTobeUpdated.isLost;
+            }
+
+            if (img == null || img == '') {
+                img = postTobeUpdated.img;
+            }
+
+            if (date == null || date == '') {
+                date = postTobeUpdated.date;
+            }
+
+            if (location == null || location == '') {
+                location = postTobeUpdated.location;
+            }
+
+            if (description == null || description == '') {
+                description = postTobeUpdated.description;
+            }
 
             const post = await Posts.findOneAndUpdate(
                 { _id: req.params.id },
                 {
-                    content,
-                    images,
+                    name, 
+                    isLost, 
+                    img, 
+                    date, 
+                    location, 
+                    description
                 }
             );
-            // .populate("user likes", "avatar username fullname")
-            // .populate({
-            //     path: "comments",
-            //     populate: {
-            //         path: "user likes",
-            //         select: "-password"
-            //     }
-            // })
 
             res.json({
                 msg: "Updated Post!",
-                newPost: {
-                    ...post._doc,
-                    content,
-                    images,
+                updatedPost: {
+                    ...post._doc
                 },
             });
         } catch (err) {
-            return res.status(500).json({ msg: err.message });
+            return res.status(500).json({ 
+                msg: err.message 
+            });
         }
     },
     likePost: async (req, res) => {

@@ -155,7 +155,7 @@ const userController = {
                     }
 
                     const access_token = createAccessToken({ id: user.id });
-                    res.json({ access_token });
+                    res.json({ access_token, user });
                 }
             );
         } catch (err) {

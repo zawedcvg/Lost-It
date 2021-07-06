@@ -19,18 +19,18 @@ function EditUserDetailsPage() {
     const [success, setSuccess] = useState(false);
     const [num, setNum] = useState(0);
 
-    useEffect(() => {
-        if (users.length !== 0) {
-            users.forEach((user) => {
-                if (user._id === id) {
-                    setEditUser(user);
-                    setCheckAdmin(user.role === 1 ? true : false);
-                }
-            });
-        } else {
-            history.push("/profile");
-        }
-    }, [users, id, history]);
+    // useEffect(() => {
+    //     if (users.length !== 0) {
+    //         users.forEach((user) => {
+    //             if (user._id === id) {
+    //                 setEditUser(user);
+    //                 setCheckAdmin(user.role === 1 ? true : false);
+    //             }
+    //         });
+    //     } else {
+    //         history.push("/profile");
+    //     }
+    // }, [users, id, history]);
 
     const handleUpdate = async () => {
         try {
@@ -53,12 +53,12 @@ function EditUserDetailsPage() {
         }
     };
 
-    const handleCheck = () => {
-        setSuccess("");
-        setErr("");
-        setCheckAdmin(!checkAdmin);
-        setNum(num + 1);
-    };
+    // const handleCheck = () => {
+    //     setSuccess("");
+    //     setErr("");
+    //     setCheckAdmin(!checkAdmin);
+    //     setNum(num + 1);
+    // };
 
     return (
         <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
