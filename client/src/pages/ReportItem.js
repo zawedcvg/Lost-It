@@ -1,8 +1,12 @@
 import React from "react";
 import MetaTags from "react-meta-tags";
 import ReportItemCSS from "../styles/ReportItemPage.module.css";
+import { useHistory } from "react-router-dom";
 
 function ReportItem() {
+
+    const history = useHistory();
+    
     return (
         <div className={ReportItemCSS.ReportItem}>
             <MetaTags>
@@ -49,7 +53,7 @@ function ReportItem() {
                     </form>
                     <button className={ReportItemCSS.btn}>Submit</button>
                     <span>or</span>
-                    <button className={ReportItemCSS.btn}>
+                    <button onClick={e => history.push("/listings")} className={ReportItemCSS.btn}>
                         Go to listings
                     </button>
                 </div>

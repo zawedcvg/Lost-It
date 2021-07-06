@@ -13,6 +13,7 @@ const postSchema = new mongoose.Schema(
                 true,
                 "Please specify whether the item was something you lost, or something you found?",
             ],
+            default: true,
         },
         img: {
             type: Array,

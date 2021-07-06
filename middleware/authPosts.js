@@ -19,9 +19,6 @@ const authPosts = async (req, res, next) => {
             });
         }
 
-        // console.log("**********");
-        // console.log(decoded);
-
         const user = await Users.findOne({
             _id: decoded.id,
         });

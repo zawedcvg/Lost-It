@@ -1,0 +1,12 @@
+.post_content {
+    font-size: 2rem;
+}
+
+.post {
+    display: flex;
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px solid black;
+    justify-content: flex-start;
+    background-color: white;
+}
