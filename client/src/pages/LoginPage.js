@@ -148,7 +148,6 @@ function LoginPage() {
                 <Link className={LoginPageCSS.forgot} to="/forgotpassword">
                     Forgot your password?
                 </Link>
-
             </div>
             <br />
 
@@ -160,7 +159,7 @@ function LoginPage() {
                     cookiePolicy={"single_host_origin"}
                 /> */}
 
-                {/* <FacebookLogin
+            {/* <FacebookLogin
             appId="Your facebook app id"
             autoLoad={false}
             fields="name,email,picture"

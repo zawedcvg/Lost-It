@@ -23,11 +23,11 @@ const postController = {
             const { name, isLost, img, date, location, description } = req.body;
 
             const newPost = new Posts({
-                name, 
+                name,
                 isLost,
                 img,
-                date, 
-                location, 
+                date,
+                location,
                 description,
                 user: req.user._id,
             });
@@ -60,8 +60,8 @@ const postController = {
                 posts,
             });
         } catch (err) {
-            return res.status(500).json({ 
-                msg: err.message 
+            return res.status(500).json({
+                msg: err.message,
             });
         }
     },
@@ -69,53 +69,55 @@ const postController = {
         try {
             let { name, isLost, img, date, location, description } = req.body;
 
-            const postTobeUpdated = await Posts.findById({ _id: req.params.id });
-            
-            if (name == null || name == '') {
+            const postTobeUpdated = await Posts.findById({
+                _id: req.params.id,
+            });
+
+            if (name == null || name == "") {
                 name = postTobeUpdated.name;
             }
 
-            if (isLost == null || isLost == '') {
+            if (isLost == null || isLost == "") {
                 isLost = postTobeUpdated.isLost;
             }
 
-            if (img == null || img == '') {
+            if (img == null || img == "") {
                 img = postTobeUpdated.img;
             }
 
-            if (date == null || date == '') {
+            if (date == null || date == "") {
                 date = postTobeUpdated.date;
             }
 
-            if (location == null || location == '') {
+            if (location == null || location == "") {
                 location = postTobeUpdated.location;
             }
 
-            if (description == null || description == '') {
+            if (description == null || description == "") {
                 description = postTobeUpdated.description;
             }
 
             const post = await Posts.findOneAndUpdate(
                 { _id: req.params.id },
                 {
-                    name, 
-                    isLost, 
-                    img, 
-                    date, 
-                    location, 
-                    description
+                    name,
+                    isLost,
+                    img,
+                    date,
+                    location,
+                    description,
                 }
             );
 
             res.json({
                 msg: "Updated Post!",
                 updatedPost: {
-                    ...post._doc
+                    ...post._doc,
                 },
             });
         } catch (err) {
-            return res.status(500).json({ 
-                msg: err.message 
+            return res.status(500).json({
+                msg: err.message,
             });
         }
     },
@@ -125,8 +127,12 @@ const postController = {
                 _id: req.params.id,
                 likes: req.user._id,
             });
-            if (post.length > 0)
-                return res.status(400).json({ msg: "You liked this post." });
+
+            if (post.length > 0) {
+                return res
+                    .status(400)
+                    .json({ msg: "You already liked this post." });
+            }
 
             const like = await Posts.findOneAndUpdate(
                 { _id: req.params.id },
@@ -136,14 +142,19 @@ const postController = {
                 { new: true }
             );
 
-            if (!like)
-                return res
-                    .status(400)
-                    .json({ msg: "This post does not exist." });
+            if (!like) {
+                return res.status(400).json({
+                    msg: "This post does not exist.",
+                });
+            }
 
-            res.json({ msg: "Liked Post!" });
+            res.json({
+                msg: "Liked Post!",
+            });
         } catch (err) {
-            return res.status(500).json({ msg: err.message });
+            return res.status(500).json({
+                msg: err.message,
+            });
         }
     },
     unLikePost: async (req, res) => {
@@ -161,7 +172,7 @@ const postController = {
                     .status(400)
                     .json({ msg: "This post does not exist." });
 
-            res.json({ msg: "UnLiked Post!" });
+            res.json({ msg: "Unliked Post!" });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
@@ -172,6 +183,7 @@ const postController = {
                 Posts.find({ user: req.params.id }),
                 req.query
             ).paginating();
+
             const posts = await features.query.sort("-createdAt");
 
             res.json({
@@ -184,15 +196,7 @@ const postController = {
     },
     getPost: async (req, res) => {
         try {
-            const post = await Posts.findById(req.params.id)
-                .populate("user likes", "avatar username fullname followers")
-                .populate({
-                    path: "comments",
-                    populate: {
-                        path: "user likes",
-                        select: "-password",
-                    },
-                });
+            const post = await Posts.findById(req.params.id).exec();
 
             if (!post)
                 return res
@@ -212,7 +216,6 @@ const postController = {
                 _id: req.params.id,
                 user: req.user._id,
             });
-            await Comments.deleteMany({ _id: { $in: post.comments } });
 
             res.json({
                 msg: "Deleted Post!",
@@ -225,54 +228,73 @@ const postController = {
             return res.status(500).json({ msg: err.message });
         }
     },
-    // savePost: async (req, res) => {
-    //     try {
-    //         const user = await Users.find({_id: req.user._id, saved: req.params.id})
-    //         if(user.length > 0) return res.status(400).json({msg: "You saved this post."})
+    savePost: async (req, res) => {
+        try {
+            const user = await Users.find({
+                _id: req.user._id,
+                saved: req.params.id,
+            });
 
-    //         const save = await Users.findOneAndUpdate({_id: req.user._id}, {
-    //             $push: {saved: req.params.id}
-    //         }, {new: true})
+            if (user.length > 0)
+                return res.status(400).json({ msg: "You saved this post." });
 
-    //         if(!save) return res.status(400).json({msg: 'This user does not exist.'})
+            const save = await Users.findOneAndUpdate(
+                { _id: req.user._id },
+                {
+                    $push: { saved: req.params.id },
+                },
+                { new: true }
+            );
 
-    //         res.json({msg: 'Saved Post!'})
+            if (!save)
+                return res
+                    .status(400)
+                    .json({ msg: "This user does not exist." });
 
-    //     } catch (err) {
-    //         return res.status(500).json({msg: err.message})
-    //     }
-    // },
-    // unSavePost: async (req, res) => {
-    //     try {
-    //         const save = await Users.findOneAndUpdate({_id: req.user._id}, {
-    //             $pull: {saved: req.params.id}
-    //         }, {new: true})
+            res.json({ msg: "Saved Post!" });
+        } catch (err) {
+            return res.status(500).json({ msg: err.message });
+        }
+    },
+    unsavePost: async (req, res) => {
+        try {
+            const save = await Users.findOneAndUpdate(
+                { _id: req.user._id },
+                {
+                    $pull: { saved: req.params.id },
+                },
+                { new: true }
+            );
 
-    //         if(!save) return res.status(400).json({msg: 'This user does not exist.'})
+            if (!save)
+                return res
+                    .status(400)
+                    .json({ msg: "This user does not exist." });
 
-    //         res.json({msg: 'unSaved Post!'})
+            res.json({ msg: "unSaved Post!" });
+        } catch (err) {
+            return res.status(500).json({ msg: err.message });
+        }
+    },
+    getSavedPosts: async (req, res) => {
+        try {
+            const features = new APIfeatures(
+                Posts.find({
+                    _id: { $in: req.user.saved },
+                }),
+                req.query
+            ).paginating();
 
-    //     } catch (err) {
-    //         return res.status(500).json({msg: err.message})
-    //     }
-    // },
-    // getSavePosts: async (req, res) => {
-    //     try {
-    //         const features = new APIfeatures(Posts.find({
-    //             _id: {$in: req.user.saved}
-    //         }), req.query).paginating()
+            const savePosts = await features.query.sort("-createdAt");
 
-    //         const savePosts = await features.query.sort("-createdAt")
-
-    //         res.json({
-    //             savePosts,
-    //             result: savePosts.length
-    //         })
-
-    //     } catch (err) {
-    //         return res.status(500).json({msg: err.message})
-    //     }
-    // },
+            res.json({
+                savePosts,
+                result: savePosts.length,
+            });
+        } catch (err) {
+            return res.status(500).json({ msg: err.message });
+        }
+    },
 };
 
 module.exports = postController;

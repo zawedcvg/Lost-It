@@ -61,21 +61,21 @@ const MainPage = () => {
                             Lost-It - a digitized lost & found, right with you
                         </h1>
                         <section className={MainPageCSS.button_list}>
-                            <form> 
-                            <button
-                                onClick={handleSignUpClick}
-                                className={MainPageCSS.btn_main}
-                            >
-                                Sign Me Up!
-                            </button>
+                            <form>
+                                <button
+                                    onClick={handleSignUpClick}
+                                    className={MainPageCSS.btn_main}
+                                >
+                                    Sign Me Up!
+                                </button>
                             </form>
                             <form>
-                            <button
-                                onClick={handleLoginClick}
-                                className={MainPageCSS.btn_main}
-                            >
-                                Log In.
-                            </button>
+                                <button
+                                    onClick={handleLoginClick}
+                                    className={MainPageCSS.btn_main}
+                                >
+                                    Log In.
+                                </button>
                             </form>
 
                             {/* <form>
