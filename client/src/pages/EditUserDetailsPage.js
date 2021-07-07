@@ -13,7 +13,6 @@ function EditUserDetailsPage() {
 
     const users = useSelector((state) => state.users);
     const token = useSelector((state) => state.token);
-
     const [checkAdmin, setCheckAdmin] = useState(false);
     const [err, setErr] = useState(false);
     const [success, setSuccess] = useState(false);

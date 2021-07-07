@@ -4,9 +4,7 @@ import ReportItemCSS from "../styles/ReportItemPage.module.css";
 import { useHistory } from "react-router-dom";
 
 function ReportItem() {
-
     const history = useHistory();
-    
     return (
         <div className={ReportItemCSS.ReportItem}>
             <MetaTags>
@@ -23,37 +21,55 @@ function ReportItem() {
                 <div className={ReportItemCSS.details}>
                     <h1>Report an Item</h1>
                     <form>
-                        <label htmlFor="location">
+                        <label
+                            className={ReportItemCSS.reportitem_label}
+                            htmlFor="location"
+                        >
                             Approximate Location <br />
                             of the Item :
                             <input
                                 type="text"
-                                className={ReportItemCSS.location}
+                                className={`${ReportItemCSS.location} ${ReportItemCSS.reportitem_input}`}
                             />
                         </label>
-                        <label htmlFor="description">
+                        <label
+                            className={ReportItemCSS.reportitem_label}
+                            htmlFor="description"
+                        >
                             Description of the object :
                             <textarea
                                 id="description"
-                                className={ReportItemCSS.textarea}
+                                className={ReportItemCSS.reportitem_textarea}
                                 name="description"
                             ></textarea>
                         </label>
-                        <label htmlFor="date-found">
+                        <label
+                            className={ReportItemCSS.reportitem_label}
+                            htmlFor="date-found"
+                        >
                             Date of Happening :
                             <input
                                 type="date"
-                                className={`${ReportItemCSS.date_found} ${ReportItemCSS.small}`}
+                                className={`${ReportItemCSS.date_found} ${ReportItemCSS.small} ${ReportItemCSS.reportitem_input}`}
                             />
                         </label>
-                        <label htmlFor="time">
+                        <label
+                            className={ReportItemCSS.reportitem_label}
+                            htmlFor="time"
+                        >
                             Approximate time :
-                            <input type="time" className="small" />
+                            <input
+                                type="time"
+                                className={`${ReportItemCSS.small} ${ReportItemCSS.reportitem_input}`}
+                            />
                         </label>
                     </form>
                     <button className={ReportItemCSS.btn}>Submit</button>
                     <span>or</span>
-                    <button onClick={e => history.push("/listings")} className={ReportItemCSS.btn}>
+                    <button
+                        onClick={(e) => history.push("/listings")}
+                        className={ReportItemCSS.btn}
+                    >
                         Go to listings
                     </button>
                 </div>

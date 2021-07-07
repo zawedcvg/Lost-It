@@ -18,7 +18,10 @@ body {
 }
 
 .scroll {
+    overflow-y: scroll;
     overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
 }
 
 .block {
@@ -32,6 +35,9 @@ body {
     background-image: url(../svg-assets/landing-page-bg-without-text.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    background-attachment: fixed;
+    scroll-snap-align: start;
+    position: relative;
 }
 
 .front_text {
@@ -40,6 +46,9 @@ body {
     font-size: 7rem;
     left: 55%;
 }
+strong {
+    font-size: 8rem;
+}
 
 .block.middle {
     background-color: black;
@@ -47,6 +56,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 10%;
+    background-attachment: fixed;
+    scroll-snap-align: start;
 }
 
 .slogan {
@@ -65,11 +76,11 @@ body {
 }
 
 .first {
-    font-size: 6rem;
+    font-size: 8rem;
 }
 
 .second {
-    font-size: 8rem;
+    font-size: 10rem;
 }
 
 .block.end {
@@ -77,6 +88,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: hidden;
+    background-attachment: fixed;
+    scroll-snap-align: start;
 }
 .option_body {
     position: relative;
