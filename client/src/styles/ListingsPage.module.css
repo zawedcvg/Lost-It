@@ -81,23 +81,12 @@ nav .options_button {
     z-index: 1;
 }
 
-.post {
-    display: flex;
-    margin: 2rem;
-    padding: 2rem;
-    border: 1px solid black;
-    justify-content: flex-start;
-    background-color: white;
-}
+
 
 img {
     margin-right: 10%;
     width: 20rem;
     height: 20rem;
-}
-
-.post_content {
-    font-size: 2rem;
 }
 
 .btn_listings {

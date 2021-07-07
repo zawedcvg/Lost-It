@@ -2,39 +2,45 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
     {
-        name : {
+        name: {
             type: String,
             required: [true, "Please enter your name"],
-            trim: true
+            trim: true,
         },
-        isLost : {
+        isLost: {
             type: Boolean,
-            required: [true, "Please specify whether the item was something you lost, or something you found?"],
+            required: [
+                true,
+                "Please specify whether the item was something you lost, or something you found?",
+            ],
+            default: true,
         },
-        img : {
+        img: {
             type: Array,
         },
-        date : {
+        date: {
             type: Date,
             required: [true, "Please specify the date of occurence"],
         },
-        location : {
+        location: {
             type: String,
             required: [true, "Please specify the location of the item"],
-            trim: true
+            trim: true,
         },
-        description : {
+        description: {
             type: String,
-            trim: true
+            trim: true,
         },
-        likes: [{ 
-            type: mongoose.Types.ObjectId, 
-            ref: "user" 
-        }],
-        user: { 
-            type: mongoose.Types.ObjectId, 
-            ref: "user" 
-        }
+        likes: [
+            {
+                type: mongoose.Types.ObjectId,
+                ref: "user",
+            },
+        ],
+        user: {
+            type: mongoose.Types.ObjectId,
+            ref: "user",
+        },
     },
     {
         timestamps: true,

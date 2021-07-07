@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please enter your name"],
             trim: true,
+            maxlength: 25,
         },
         email: {
             type: String,
@@ -25,6 +26,12 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: "",
         },
+        saved: [
+            {
+                type: mongoose.Types.ObjectId,
+                ref: "user",
+            },
+        ],
     },
     {
         timestamps: true,

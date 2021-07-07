@@ -19,10 +19,10 @@ router.patch("/post/:id/unlike", authPosts, postController.unLikePost);
 
 router.get("/user_posts/:id", authPosts, postController.getUserPosts);
 
-// router.patch('/savePost/:id', authPosts, postController.savePost)
+router.patch("/savepost/:id", authPosts, postController.savePost);
 
-// router.patch('/unSavePost/:id', authPosts, postController.unSavePost)
+router.patch("/unsavepost/:id", authPosts, postController.unsavePost);
 
-// router.get('/getSavePosts', authPosts, postController.getSavePosts)
+router.get("/getsavedposts", authPosts, postController.getSavedPosts);
 
 module.exports = router;

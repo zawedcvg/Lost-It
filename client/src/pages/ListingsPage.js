@@ -1,7 +1,8 @@
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import React from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
-
 const ListingsPage = () => {
     const Items = [
         {
@@ -16,23 +17,29 @@ const ListingsPage = () => {
         {
             key: 2,
             type: "lost",
-            img: "https://source.unsplash.com/random/300x200",
+            img: "https://source.unsplash.com/random/200x200",
             date: "21th August 2021",
             time: "21:00",
             location: "Near USCA",
             description: "Something, something",
         },
-        {
-            key: 3,
-            type: "found",
-            img: "https://source.unsplash.com/random/400x200",
-            date: "2nd January 2021",
-            time: "19:00",
-            location: "Near USCA",
-            description: "Rohan noob",
-
-        }
     ];
+
+    let listings;
+    const obtainListings = async (e) => {
+        try {
+            const res = await axios.post("/user/refresh_token");
+            listings = await axios.get("/listings/posts", {
+                headers: {
+                    Authorization: res.data.access_token,
+                },
+            });
+            console.log(listings);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const history = useHistory();
 
     const [requiredItems, setRequiredItems] = React.useState(Items);
 
@@ -53,6 +60,8 @@ const ListingsPage = () => {
             case "Both":
                 setRequiredItems(Items);
                 break;
+            default:
+                console.log("Invalid");
         }
     }
 
