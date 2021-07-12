@@ -1,28 +1,19 @@
 import PostCSS from "../styles/Post.module.css";
 
-const Post = ({ img, type, date, time, location, description }) => {
-    var type_text;
-    if (type.toLowerCase() === "lost") {
-        type_text = "Lost On";
-    } else {
-        type_text = "Found On";
-    }
+const Post = (props) => {
     return (
-        <div className={PostCSS.post} type={type}>
-            <img src={img} alt="" />
+        <div className={PostCSS.post} type={props.type}>
+            <img src={props.img} alt="" />
             <div className={PostCSS.post_content}>
                 <span>
-                    {type_text}: {date} <br />
+                    Approximate time: {props.time} <br />
                 </span>
                 <span>
-                    Approximate time: {time} <br />
-                </span>
-                <span>
-                    Location: {location}
+                    Location: {props.location}
                     <br />
                 </span>
                 <span>
-                    Description: {description} <br />
+                    Description: {props.description} <br />
                 </span>
             </div>
         </div>

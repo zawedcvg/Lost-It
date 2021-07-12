@@ -31,12 +31,12 @@ function App() {
                     <Route
                         path="/userdashboard"
                         exact
-                        component={isLogged ? UserDashboardPage : NotFound}
+                        component={isLogged ? UserDashboardPage : LoginPage}
                     />
 
-                    <Route path="/listings" exact component={ListingsPage} />
+                    <Route path="/listings" exact component={isLogged ? ListingsPage : LoginPage} />
 
-                    <Route path="/reportitem" exact component={ReportItem} />
+                    <Route path="/reportitem" exact component={isLogged ? ReportItem : LoginPage} />
 
                     <Route
                         path="/emailhasbeensentforactivation"
@@ -67,7 +67,7 @@ function App() {
 
                     <Route
                         path="/edituserdetails"
-                        component={EditUserDetailsPage}
+                        component={isLogged ? EditUserDetailsPage : LoginPage}
                         exact
                     />
                     <Route path="/logout" exact component={LogoutPage} />

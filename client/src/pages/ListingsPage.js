@@ -1,69 +1,87 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
+import { listsToObj } from "prelude-ls";
+
 const ListingsPage = () => {
-    const Items = [
-        {
-            key: 1,
-            type: "found",
-            img: "https://source.unsplash.com/random/200x200",
-            date: "20th August 2020",
-            time: "20:00",
-            location: "Near USC",
-            description: "Something, something",
-        },
-        {
-            key: 2,
-            type: "lost",
-            img: "https://source.unsplash.com/random/200x200",
-            date: "21th August 2021",
-            time: "21:00",
-            location: "Near USCA",
-            description: "Something, something",
-        },
-    ];
+    // const Items = [
+    //     {
+    //         key: 1,
+    //         type: "found",
+    //         img: "https://source.unsplash.com/random/200x200",
+    //         date: "20th August 2020",
+    //         time: "20:00",
+    //         location: "Near USC",
+    //         description: "Something, something",
+    //     },
+    //     {
+    //         key: 2,
+    //         type: "lost",
+    //         img: "https://source.unsplash.com/random/200x200",
+    //         date: "21th August 2021",
+    //         time: "21:00",
+    //         location: "Near USCA",
+    //         description: "Something, something",
+    //     },
+    // ];
+
+    // const token = useSelector((state) => {
+    //     console.log(state);
+    //     return state.token});
+
+    const [requiredItems, setRequiredItems] = useState([]);
 
     let listings;
-    const obtainListings = async (e) => {
+    const obtainListings = async e => {
         try {
             const res = await axios.post("/user/refresh_token");
+            console.log(res);
             listings = await axios.get("/listings/posts", {
                 headers: {
-                    Authorization: res.data.access_token,
+                    Authorization: res.data.access_token
                 },
             });
-            console.log(listings);
+            console.log(listings.data.posts);
+            setRequiredItems(listings.data.posts)
         } catch (err) {
             console.log(err);
         }
     };
     const history = useHistory();
 
-    const [requiredItems, setRequiredItems] = React.useState(Items);
-
-    function clickedEvent(e) {
-        console.log(e.target);
-        var searchParams = e.target.innerHTML;
-        switch (searchParams) {
-            case "Found":
-                setRequiredItems(
-                    Items.filter((items) => items.type === "found")
-                );
-                break;
-            case "Lost":
-                setRequiredItems(
-                    Items.filter((items) => items.type === "lost")
-                );
-                break;
-            case "Both":
-                setRequiredItems(Items);
-                break;
-            default:
-                console.log("Invalid");
-        }
+    const handleLost = e => {
+        setRequiredItems(requiredItems.filter(item => item.isLost));
+        console.log(requiredItems);
     }
+
+    const handleRecovered = e => {
+        setRequiredItems(requiredItems.filter(item => !item.isLost));
+        console.log(requiredItems)
+    }
+
+    // function clickedEvent(e) {
+    //     console.log(e.target);
+    //     var searchParams = e.target.innerHTML;
+    //     switch (searchParams) {
+    //         case "Found":
+    //             setRequiredItems(
+    //                 listings.filter((items) => items.type === "found")
+    //             );
+    //             break;
+    //         case "Lost":
+    //             setRequiredItems(
+    //                 listings.filter((items) => items.type === "lost")
+    //             );
+    //             break;
+    //         case "Both":
+    //             setRequiredItems(listings);
+    //             break;
+    //         default:
+    //             console.log("Invalid");
+    //     }
+    // }
 
     return (
         <div className={ListingsPageCSS.scroll_listings}>
@@ -86,18 +104,18 @@ const ListingsPage = () => {
                     <nav>
                         <button
                             className={ListingsPageCSS.options_button}
-                            onClick={clickedEvent}
+                            onClick={handleLost}
                         >
                             Lost
                         </button>
                         <button
-                            onClick={clickedEvent}
+                            onClick={handleRecovered}
                             className={ListingsPageCSS.options_button}
                         >
-                            Found
+                            Recovered
                         </button>
                         <button
-                            onClick={clickedEvent}
+                            onClick={obtainListings}
                             className={ListingsPageCSS.options_button}
                         >
                             Both
@@ -105,7 +123,7 @@ const ListingsPage = () => {
                     </nav>
                 </div>
                 <div className={ListingsPageCSS.bottom_part}>
-                    <div className={ListingsPageCSS.listings_body}>
+                    {/* <div className={ListingsPageCSS.listings_body}>
                         {requiredItems.map((items) => (
                             <Posts
                                 key={items.key}
@@ -117,9 +135,9 @@ const ListingsPage = () => {
                                 description={items.description}
                             />
                         ))}
-                    </div>
+                    </div> */}
                     <form>
-                        <button className={ListingsPageCSS.btn_listings}>
+                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/reportitem")}>
                             Make a report
                         </button>
                     </form>
