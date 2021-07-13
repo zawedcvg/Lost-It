@@ -29,9 +29,20 @@ function ReportItem() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/listings/post", {
-                name, date, location, description, isLost, img 
+            const access_res = await axios.post("/user/refresh_token");
+            console.log(access_res);
+            const userInfo = await axios.get("/user/info", {
+                headers : {
+                    Authorization : access_res.data.access_token
+                }
             });
+
+            console.log(userInfo)
+
+            const res = await axios.post("/listings/posts", {
+                name, date, location, description, isLost, img, user : userInfo.data._id 
+            });
+
             setItem({ ...item, err: "", success: res.data.msg });
             history.push("/listings");
         } catch (err) {

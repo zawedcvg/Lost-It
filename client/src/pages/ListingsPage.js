@@ -49,6 +49,21 @@ const ListingsPage = () => {
         temp();
     }, [])
 
+    // useEffect(() => {
+    //     axios.post("/user/refresh_token")
+    //         .then(res => {
+    //             axios.get("/listings/posts", {
+    //                 headers : {
+    //                     Authorization : res.data.access_token
+    //                 }
+    //             }).then(response => {
+    //                 setRequiredItems(response.data.posts);
+    //             }).catch(err => {
+    //                 console.log(err)
+    //             })
+    //         }).catch(err => )
+    // })
+
     const history = useHistory();
 
     const obtainListings = e => {

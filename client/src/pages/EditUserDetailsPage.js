@@ -8,23 +8,10 @@ import EditUserDetailsPageCSS from "../styles/EditUserDetailsPage.module.css";
 function EditUserDetailsPage() {
     const { id } = useParams();
     const history = useHistory();
-    const [editUser, setEditUser] = useState([]);
+    const [user, setUser] = useState([]);
 
     const [err, setErr] = useState(false);
     const [success, setSuccess] = useState(false);
-
-    // useEffect(() => {
-    //     if (users.length !== 0) {
-    //         users.forEach((user) => {
-    //             if (user._id === id) {
-    //                 setEditUser(user);
-    //                 setCheckAdmin(user.role === 1 ? true : false);
-    //             }
-    //         });
-    //     } else {
-    //         history.push("/profile");
-    //     }
-    // }, [users, id, history]);
 
     const handleUpdate = async () => {
         try {
@@ -32,14 +19,7 @@ function EditUserDetailsPage() {
         } catch (err) {
             err.response.data.msg && setErr(err.response.data.msg);
         }
-    // };
-
-    // const handleCheck = () => {
-    //     setSuccess("");
-    //     setErr("");
-    //     setCheckAdmin(!checkAdmin);
-    //     setNum(num + 1);
-    // };
+    }
 
     return (
         <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
