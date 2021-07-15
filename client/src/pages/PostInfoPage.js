@@ -1,11 +1,12 @@
 import Post from "./Post";
 import axios from "axios";
-import {useState, useEffect, useParams} from "react";
-import {useHistory} from "react-router-dom";
+import {useState, useEffect} from "react";
+import {useHistory, useParams} from "react-router-dom";
 
 const PostInfoPage = () => {
     const [item, setItem] = useState({});
-    const id = useParams();
+    const { id } = useParams();
+    console.log(id);
     const history = useHistory();
 
     useEffect(() => {
@@ -17,7 +18,8 @@ const PostInfoPage = () => {
                     }
                 })
                 .then(res => {
-                    setItem(res.post)
+                    console.log(res);
+                    setItem(res.data.post)
                 })
                 .catch(err => console.log(err))
             })
@@ -82,6 +84,10 @@ const PostInfoPage = () => {
         console.log(res);
     }
 
+    const handleGoBack = () => {
+        history.push("/listings");
+    }
+
     return (
         <div className="PostInfoPage">
             <div className="post_info">
@@ -106,6 +112,9 @@ const PostInfoPage = () => {
             </button>
             <button onClick={handleUnsave}>
                 Unsave Post
+            </button>
+            <button onClick={handleGoBack}>
+                Go back
             </button>
         </div>
     )

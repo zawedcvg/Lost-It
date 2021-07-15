@@ -242,11 +242,11 @@ function UserDashBoardPage() {
                             >
                                 Report item
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry}>
-                                Something
+                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/myposts")}>
+                                View my posts
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry}>
-                                Something
+                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/savedposts")}>
+                                View saved posts
                             </button>
                         </form>
                     </div>

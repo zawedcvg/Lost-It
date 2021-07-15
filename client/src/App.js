@@ -15,6 +15,10 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ResetSuccessfulPage from "./pages/ResetSuccessfulPage";
 import ReportItem from "./pages/ReportItem";
+import PostInfoPage from "./pages/PostInfoPage";
+import MyPosts from "./pages/MyPosts";
+import SavedPosts from "./pages/SavedPosts";
+import UpdatePost from "./pages/UpdatePost";
 
 function App() {
     const auth = useSelector((state) => state.auth);
@@ -70,6 +74,15 @@ function App() {
                         component={isLogged ? EditUserDetailsPage : LoginPage}
                         exact
                     />
+
+                    <Route path="/savedposts" exact component={SavedPosts} />
+
+                    <Route path="/myposts" exact component={MyPosts} />
+
+                    <Route path="/post/:id" exact component={PostInfoPage} />
+
+                    <Route path="/updatepost/:id" exact component={UpdatePost} />
+
                     <Route path="/logout" exact component={LogoutPage} />
                 </Switch>
             </Router>

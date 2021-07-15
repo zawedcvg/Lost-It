@@ -39,9 +39,24 @@ function ReportItem() {
 
             console.log(userInfo)
 
-            const res = await axios.post("/listings/posts", {
-                name, date, location, description, isLost, img, user : userInfo.data._id 
+            const toBeReported = {
+                "name" : name,
+                "date" : date, 
+                "location" : location,
+                "description" : description,
+                "isLost" : isLost,
+                "img" : img, 
+                "user" : userInfo.data._id
+            }
+
+            console.log(toBeReported);
+
+            const res = await axios.post("/listings/posts", toBeReported, {
+                headers : {
+                    Authorization : access_res.data.access_token
+                }
             });
+            console.log(res);
 
             setItem({ ...item, err: "", success: res.data.msg });
             history.push("/listings");
@@ -66,7 +81,7 @@ function ReportItem() {
             <div className={ReportItemCSS.container}>
                 <div className={ReportItemCSS.details}>
                     <h1>Report an Item</h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <label
                             className={ReportItemCSS.reportitem_label}
                             htmlFor="location">
@@ -123,8 +138,8 @@ function ReportItem() {
                                 onChange={handleChangeInput}
                             />
                         </label>
+                        <button className={ReportItemCSS.btn} type="submit" onClick={handleSubmit}>Submit</button>
                     </form>
-                    <button className={ReportItemCSS.btn} type="submit" onClick={handleSubmit}>Submit</button>
                     <span>or</span>
                     <button
                         onClick={(e) => history.push("/listings")}
