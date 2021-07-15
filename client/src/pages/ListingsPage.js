@@ -145,9 +145,10 @@ const ListingsPage = () => {
                                     time={items.time}
                                     location={items.location}
                                     description={items.description}
+                                    link={items._id}
                                 />
                             ))
-                        } 
+                        }
                         
                     </div>
                     <form>

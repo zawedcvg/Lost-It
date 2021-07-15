@@ -1,4 +1,5 @@
 import PostCSS from "../styles/Post.module.css";
+import {Link} from "react-router-dom";
 
 const Post = (props) => {
     return (
@@ -14,6 +15,9 @@ const Post = (props) => {
                 </span>
                 <span>
                     Description: {props.description} <br />
+                </span>
+                <span>
+                    <Link to={`/post/${props.link}`}>More info</Link>
                 </span>
             </div>
         </div>
