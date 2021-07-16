@@ -123,6 +123,8 @@ const postController = {
     },
     likePost: async (req, res) => {
         try {
+            console.log(req.params)
+            console.log(req.user);
             const post = await Posts.find({
                 _id: req.params.id,
                 likes: req.user._id,

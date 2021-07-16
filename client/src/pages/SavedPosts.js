@@ -33,6 +33,7 @@ const SavedPosts = () => {
                         location={items.location}
                         description={items.description}
                         link={items._id}
+                        likes={items.likes}
                     />
                 ))
             }

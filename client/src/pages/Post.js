@@ -20,7 +20,10 @@ const Post = (props) => {
                     Description: {props.description} <br />
                 </span>
                 <span>
-                    <Link to={`/post/${props.link}`}>More info</Link>
+                    <Link to={`/post/${props.link}`}>More info</Link> <br />
+                </span>
+                <span>
+                    Likes : {props.likes ? props.likes.length : 0}
                 </span>
             </div>
         </div>

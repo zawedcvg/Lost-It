@@ -147,6 +147,7 @@ const ListingsPage = () => {
                                     location={items.location}
                                     description={items.description}
                                     link={items._id}
+                                    likes={items.likes}
                                 />
                             ))
                         }
