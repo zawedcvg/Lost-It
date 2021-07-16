@@ -9,24 +9,19 @@ const SavedPosts = () => {
     useEffect(() => {
         axios.post("/user/refresh_token")
             .then(response => {
-                axios.get("/user/info", {
+                axios.get("/listings/savedposts", {
                     headers : {
                         Authorization : response.data.access_token
                     }
-                }).then(res => {
-                    axios.get(`/listings/user_posts/${res.data._id}`, {
-                        headers : {
-                            Authorization : response.data.access_token
-                        }
-                    }).then(r => {
-                        setToBeDisplayed(r.data.posts)
-                    }).catch(err => console.log(err))
+                }).then(r => {
+                    setToBeDisplayed(r.data.savedPosts)
                 }).catch(err => console.log(err))
             }).catch(err => console.log(err))
-    })
+    }, []);
 
     return (
         <div>
+            <h1>Saved</h1>
             {
                 toBeDisplayed.map((items) => (
                     <Post

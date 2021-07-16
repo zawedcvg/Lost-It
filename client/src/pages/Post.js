@@ -7,6 +7,9 @@ const Post = (props) => {
             <img src={props.img} alt="" />
             <div className={PostCSS.post_content}>
                 <span>
+                    Name: {props.name} <br />
+                </span>
+                <span>
                     Approximate time: {props.time} <br />
                 </span>
                 <span>

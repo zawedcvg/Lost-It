@@ -4,7 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserDashboardPage from "./pages/UserDashboardPage";
 import DataProvider from "./redux/store.js";
-import NotFound from "./pages/NotFound";
+// import NotFound from "./pages/NotFound";
 import { useSelector } from "react-redux";
 import EditUserDetailsPage from "./pages/EditUserDetailsPage";
 import LogoutPage from "./pages/LogoutPage";
