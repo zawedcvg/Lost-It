@@ -99,6 +99,7 @@ const Register = () => {
                 password,
             });
 
+            console.log(res);
             setUser({ ...user, err: "", success: res.data.msg });
             history.push("/emailhasbeensentforactivation");
             // toast.success(res.data.msg);
@@ -140,7 +141,7 @@ const Register = () => {
                                 id="name"
                             />
                         </label>
-                        <label className={RegisterPageCSS.label_reg}>
+                        {/* <label className={RegisterPageCSS.label_reg}>
                             Telegram Id:{" "}
                             <span className={RegisterPageCSS.optional}>
                                 (optional)
@@ -150,14 +151,14 @@ const Register = () => {
                                 name="Telegram Id"
                                 type="text"
                             />
-                        </label>
+                        </label> */}
                         <label className={RegisterPageCSS.label_reg}>
                             Email Address:
                             <input
                                 className={RegisterPageCSS.input_reg}
                                 onChange={handleChangeInput}
                                 name="email"
-                                type="text"
+                                type="email"
                                 id="email"
                                 value={email}
                             />

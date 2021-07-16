@@ -19,6 +19,7 @@ import PostInfoPage from "./pages/PostInfoPage";
 import MyPosts from "./pages/MyPosts";
 import SavedPosts from "./pages/SavedPosts";
 import UpdatePost from "./pages/UpdatePost";
+import ActivationSucessfulPage from "./pages/ActivationSuccessfulPage";
 
 function App() {
     const auth = useSelector((state) => state.auth);
@@ -48,6 +49,10 @@ function App() {
                         component={EmailHasBeenSentForActivationPage}
                     />
 
+                    <Route path="/user/activation/:activation_token" 
+                    exact 
+                    component={ActivationSucessfulPage} />
+
                     <Route
                         path="/emailhasbeensentforreset"
                         exact
@@ -64,7 +69,7 @@ function App() {
                         component={ResetPasswordPage}
                     />
                     <Route
-                        path="resetsuccessful"
+                        path="/resetsuccessful"
                         exact
                         component={ResetSuccessfulPage}
                     />

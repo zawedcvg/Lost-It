@@ -57,11 +57,12 @@ const ListingsPage = () => {
     //                     Authorization : res.data.access_token
     //                 }
     //             }).then(response => {
+    //                 setToBeDisplayed(response.data.posts);
     //                 setRequiredItems(response.data.posts);
     //             }).catch(err => {
     //                 console.log(err)
     //             })
-    //         }).catch(err => )
+    //         }).catch(err => console.log(err))
     // })
 
     const history = useHistory();
@@ -154,6 +155,9 @@ const ListingsPage = () => {
                     <form>
                         <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/reportitem")}>
                             Make a report
+                        </button>
+                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/userdashboard")}>
+                            Go back
                         </button>
                     </form>
                 </div>

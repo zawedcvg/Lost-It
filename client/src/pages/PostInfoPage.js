@@ -5,8 +5,8 @@ import {useHistory, useParams} from "react-router-dom";
 
 const PostInfoPage = () => {
     const [item, setItem] = useState({});
+    const [saved, setSaved] = useState(false);
     const { id } = useParams();
-    console.log(id);
     const history = useHistory();
 
     useEffect(() => {
@@ -19,6 +19,16 @@ const PostInfoPage = () => {
                 })
                 .then(res => {
                     console.log(res);
+                    axios.get("/user/info", {
+                        headers : {
+                            Authorization : response.data.access_token
+                        }
+                    }).then(user => {
+                        if (user.data.saved.includes(id.toString())) {
+                            setSaved(true);
+                            console.log("saved")
+                        }
+                    }).catch(err => console.log(err))
                     setItem(res.data.post)
                 })
                 .catch(err => console.log(err))
@@ -50,39 +60,73 @@ const PostInfoPage = () => {
 
     const handleSave = () => {
         const res = axios.post("/user/refresh_token")
-                            .then(response => {
-                                axios.patch(`/listings/savepost/${id}`, {
+                        .then(response => {
+                            axios.get("/user/info", {
+                                headers : {
+                                    Authorization : response.data.access_token
+                                }
+                            })
+                            .then(r => {
+                                axios.patch(`/listings/savepost/${r.data._id}`, {"user" : r.data._id}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
                                 })
                                 .then(res => {
                                     alert(res.data.msg);
+                                    setSaved(true);
                                     console.log(res);
                                 })
                                 .catch(err => console.log(err))
+                            }).catch(err => console.log(err));
+                        })
+                        .catch(err => console.log(err));
+        console.log(res);
+    }
+
+    const handleUnsave = () => {
+        const res = axios.post("/user/refresh_token")
+                        .then(response => {
+                            axios.get("/user/info", {
+                                headers : {
+                                    Authorization : response.data.access_token
+                                }
                             })
-                            .catch(err => console.log(err));
+                            .then(r => {
+                                axios.patch(`/listings/unsavepost/${r.data._id}`, {"user" : r.data._id}, {
+                                    headers : {
+                                        Authorization : response.data.access_token
+                                    }
+                                })
+                                .then(res => {
+                                    alert(res.data.msg);
+                                    setSaved(false);
+                                    console.log(res);
+                                })
+                                .catch(err => console.log(err))
+                            }).catch(err => console.log(err));
+                        })
+                        .catch(err => console.log(err));
         console.log(res);
     }
     
-    const handleUnsave = () => {
-        const res = axios.post("/user/refresh_token")
-                            .then(response => {
-                                axios.patch(`/listings/unsavepost/${id}`, {
-                                    headers : {
-                                        Authorization : response.data.access_token
-                                    }
-                                })
-                                .then(res => {
-                                    alert(res.data.msg);
-                                    console.log(res);
-                                })
-                                .catch(err => console.log(err))
-                            })
-                            .catch(err => console.log(err));
-        console.log(res);
-    }
+    // const handleUnsave = () => {
+    //     const res = axios.post("/user/refresh_token")
+    //                         .then(response => {
+    //                             axios.patch(`/listings/unsavepost/${id}`, {
+    //                                 headers : {
+    //                                     Authorization : response.data.access_token
+    //                                 }
+    //                             })
+    //                             .then(res => {
+    //                                 alert(res.data.msg);
+    //                                 console.log(res);
+    //                             })
+    //                             .catch(err => console.log(err))
+    //                         })
+    //                         .catch(err => console.log(err));
+    //     console.log(res);
+    // }
 
     const handleGoBack = () => {
         history.push("/listings");
@@ -107,12 +151,15 @@ const PostInfoPage = () => {
             <button onClick={handleUpdatePost}>
                 Update Post
             </button>
-            <button onClick={handleSave}>
-                Save Post
-            </button>
-            <button onClick={handleUnsave}>
-                Unsave Post
-            </button>
+            {
+                !saved
+                ? <button onClick={handleSave}>
+                    Save Post
+                    </button>
+                : <button onClick={handleUnsave}>
+                    Unsave Post
+                    </button>
+            }            
             <button onClick={handleGoBack}>
                 Go back
             </button>

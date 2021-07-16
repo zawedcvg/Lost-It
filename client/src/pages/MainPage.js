@@ -77,16 +77,6 @@ const MainPage = () => {
                                     Log In.
                                 </button>
                             </form>
-
-                            {/* <form>
-                                <button
-                                    formAction="http://stackoverflow.com"
-                                    className={MainPageCSS.btn_main}
-                                >
-                                    <Logo style={logostyle} />
-                                    &nbsp;Connect to Google
-                                </button>
-                            </form> */}
                         </section>
                     </div>
                 </section>
