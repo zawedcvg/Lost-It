@@ -32,7 +32,7 @@ body {
 }
 
 .first.block {
-    background-image: url(../svg-assets/landing-page-bg-without-text.svg);
+    background-image: url(../svg-assets/landing-page-svg-full-with-typography.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: fixed;

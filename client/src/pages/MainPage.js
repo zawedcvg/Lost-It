@@ -32,9 +32,7 @@ const MainPage = () => {
             <div className={MainPageCSS.scroll}>
                 <section
                     className={`${MainPageCSS.first} ${MainPageCSS.block}`}
-                >
-                    <h1 className={MainPageCSS.front_text}>Lost It</h1>
-                </section>
+                ></section>
                 <section
                     id="middlepage"
                     className={`${MainPageCSS.block} ${MainPageCSS.middle}`}

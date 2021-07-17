@@ -1,5 +1,5 @@
 import PostCSS from "../styles/Post.module.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Post = (props) => {
     return (
@@ -22,13 +22,11 @@ const Post = (props) => {
                 <span>
                     <Link to={`/post/${props.link}`}>More info</Link> <br />
                 </span>
-                <span>
-                    Likes : {props.likes ? props.likes.length : 0}
-                </span>
+                <span>Likes : {props.likes ? props.likes.length : 0}</span>
             </div>
         </div>
     );
 };
 
-
 export default Post;
+

@@ -5,19 +5,18 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function ReportItem() {
-
     const [item, setItem] = useState({
-        name : "",
-        isLost : true,
-        img : [],
-        date : "",
-        location : "",
-        description : "",
-        err : "",
-        success : ""
+        name: "",
+        isLost: true,
+        img: [],
+        date: "",
+        location: "",
+        description: "",
+        err: "",
+        success: "",
     });
 
-    const {name, isLost, img, date, location, description} = item;
+    const { name, isLost, img, date, location, description } = item;
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
@@ -32,37 +31,36 @@ function ReportItem() {
             const access_res = await axios.post("/user/refresh_token");
             console.log(access_res);
             const userInfo = await axios.get("/user/info", {
-                headers : {
-                    Authorization : access_res.data.access_token
-                }
+                headers: {
+                    Authorization: access_res.data.access_token,
+                },
             });
 
-            console.log(userInfo)
+            console.log(userInfo);
 
             const toBeReported = {
-                "name" : name,
-                "date" : date, 
-                "location" : location,
-                "description" : description,
-                "isLost" : isLost,
-                "img" : img, 
-                "user" : userInfo.data._id
-            }
+                name: name,
+                date: date,
+                location: location,
+                description: description,
+                isLost: isLost,
+                img: img,
+                user: userInfo.data._id,
+            };
 
             console.log(toBeReported);
 
             const res = await axios.post("/listings/posts", toBeReported, {
-                headers : {
-                    Authorization : access_res.data.access_token
-                }
+                headers: {
+                    Authorization: access_res.data.access_token,
+                },
             });
             console.log(res);
 
             setItem({ ...item, err: "", success: res.data.msg });
             history.push("/listings");
         } catch (err) {
-            err.response.data.msg &&
-            setItem({ ...item, err: "", success: "" });
+            err.response.data.msg && setItem({ ...item, err: "", success: "" });
         }
     };
 
@@ -84,8 +82,9 @@ function ReportItem() {
                     <form onSubmit={handleSubmit}>
                         <label
                             className={ReportItemCSS.reportitem_label}
-                            htmlFor="location">
-                            Name that you can give the item : 
+                            htmlFor="location"
+                        >
+                            Name that you can give the item :
                             <input
                                 className={`${ReportItemCSS.location} ${ReportItemCSS.reportitem_input}`}
                                 name="name"
@@ -97,7 +96,8 @@ function ReportItem() {
                         </label>
                         <label
                             className={ReportItemCSS.reportitem_label}
-                            htmlFor="location">
+                            htmlFor="location"
+                        >
                             Approximate Location <br />
                             of the Item :
                             <input
@@ -138,15 +138,21 @@ function ReportItem() {
                                 onChange={handleChangeInput}
                             />
                         </label>
-                        <button className={ReportItemCSS.btn} type="submit" onClick={handleSubmit}>Submit</button>
+                        <button
+                            className={ReportItemCSS.btn}
+                            type="submit"
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
+                        <span>or</span>
+                        <button
+                            onClick={(e) => history.push("/listings")}
+                            className={`${ReportItemCSS.btn} ${ReportItemCSS.right}`}
+                        >
+                            Go to listings
+                        </button>
                     </form>
-                    <span>or</span>
-                    <button
-                        onClick={(e) => history.push("/listings")}
-                        className={ReportItemCSS.btn}
-                    >
-                        Go to listings
-                    </button>
                 </div>
                 <img src="https://source.unsplash.com/random" alt="something" />
             </div>

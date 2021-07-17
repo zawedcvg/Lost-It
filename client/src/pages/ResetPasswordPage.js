@@ -80,7 +80,7 @@ function ResetPasswordPage() {
             <div className={ResetPasswordPageCSS.scroll}>
                 <div className={ResetPasswordPageCSS.reset_container}>
                     <h1 className={ResetPasswordPageCSS.reset_heading}>
-                        Reset you password
+                        Reset your password
                     </h1>
                     <form formAction="changepassword" onSubmit={handleSubmit}>
                         <label
