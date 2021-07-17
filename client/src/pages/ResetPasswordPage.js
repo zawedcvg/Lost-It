@@ -23,7 +23,7 @@ const initialState = {
 
 function ResetPasswordPage() {
     const [data, setData] = useState(initialState);
-    const { token } = useParams();
+    const { id } = useParams();
     const history = useHistory();
 
     const { password, confirmPassword, err, success } = data;
@@ -31,38 +31,50 @@ function ResetPasswordPage() {
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value, err: "", success: "" });
+        console.log(data);
     };
 
     const handleSubmit = async () => {
-        if (isSmall(password))
-            return setData({
-                ...data,
-                err: "Password must be at least 6 characters.",
-                success: "",
-            });
+        // if (isSmall(password))
+        //     return setData({
+        //         ...data,
+        //         err: "Password must be at least 6 characters.",
+        //         success: "",
+        //     });
 
-        if (!isMatch(password, confirmPassword))
-            return setData({
-                ...data,
-                err: "Password did not match.",
-                success: "",
-            });
+        // if (!isMatch(password, confirmPassword))
+        //     return setData({
+        //         ...data,
+        //         err: "Password did not match.",
+        //         success: "",
+        //     });
 
-        try {
-            const res = await axios.post(
-                "/user/reset",
-                { password },
-                {
-                    headers: { Authorization: token },
-                }
-            );
+        await axios.post("/user/reset", {"password" : password}, {
+            headers : {
+                Authorization : id
+            }
+        }).then(response => {
+            alert(response.data.msg)
+            history.push("/resetsuccessful")
+        }).catch(err => console.log(err))
 
-            setData({ ...data, err: "", success: res.data.msg });
-            history.push("/resetsuccessful");
-        } catch (err) {
-            err.response.data.msg &&
-                setData({ ...data, err: err.response.data.msg, success: "" });
-        }
+        // try {
+        //     console.log("******")
+        //     const res = await axios.post(
+        //         "/user/reset",
+        //         { "password" : password },
+        //         {
+        //             headers: { Authorization: id },
+        //         }
+        //     );
+
+        //     console.log(res);
+
+        //     setData({ ...data, err: "", success: res.data.msg });
+        //     history.push("/resetsuccessful");
+        // } catch (err) {
+        //     console.log(err.response.data.msg)
+        // }
     };
 
     return (
@@ -85,9 +97,9 @@ function ResetPasswordPage() {
                     <form formAction="changepassword" onSubmit={handleSubmit}>
                         <label
                             className={ResetPasswordPageCSS.password_change}
-                            for="password"
+                            htmlFor="password"
                         >
-                            Password:{" "}
+                            Password:
                             <input
                                 className={ResetPasswordPageCSS.reset_input}
                                 name="password"
@@ -100,7 +112,7 @@ function ResetPasswordPage() {
                         </label>
                         <label
                             className={ResetPasswordPageCSS.password_change}
-                            for="reset-password"
+                            htmlFor="confirmPassword"
                         >
                             Re-enter password:
                             <input
@@ -109,7 +121,7 @@ function ResetPasswordPage() {
                                 onChange={handleChangeInput}
                                 value={confirmPassword}
                                 id="confirmPassword"
-                                type="confirmPassword"
+                                type="password"
                                 required
                             />
                         </label>

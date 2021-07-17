@@ -70,7 +70,7 @@ function ForgotPasswordPage() {
                     >
                         <label
                             className={ForgotPasswordPageCSS.email_label}
-                            for="email"
+                            htmlFor="email"
                         >
                             Email:
                             <input

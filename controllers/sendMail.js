@@ -38,7 +38,7 @@ const sendMail = (to, url, txt) => {
     const mailOptions = {
         from: SENDER_EMAIL_ADDRESS,
         to: to,
-        subject: "Activation mail for Lost it",
+        subject: {txt},
         html: `
             <p>${url}</p>
         `,

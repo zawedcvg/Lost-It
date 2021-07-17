@@ -174,7 +174,7 @@ const userController = {
                     msg: "The email doesn't exist",
                 });
 
-            const access_token = createAccessToken({ id: user._id });
+            const access_token = createAccessToken({ id: user.id });
             const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
             sendMail(email, url, "Reset your password");
@@ -190,6 +190,8 @@ const userController = {
 
     resetPassword: async (req, res) => {
         try {
+            console.log(req.body)
+            console.log(req.user)
             const { password } = req.body;
             const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -313,12 +315,12 @@ function validateEmail(email) {
 
 const createActivationToken = (payload) =>
     jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {
-        expiresIn: "5m",
+        expiresIn: "10m",
     });
 
 const createAccessToken = (payload) =>
     jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: "15m",
+        expiresIn: "30m",
     });
 
 const createRefreshToken = (payload) =>
