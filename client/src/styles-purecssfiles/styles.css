@@ -50,6 +50,10 @@ body {
     text-shadow: 0.5rem 0.5rem black;
 }
 
+strong {
+    font-size: 8rem;
+}
+
 .block.middle {
     background-color: black;
     background-image: url(../svg-assets/were-here-to-help-page-without-text.svg);
@@ -124,7 +128,7 @@ body {
 .btn_main {
     display: block;
     padding: 1.5rem 2.5rem;
-    background-color: #ffffff;
+    background-color: #248076;
     box-shadow: 1rem 0.6rem 0px #404040;
     border: solid black 2px;
     transition: all 0.15s linear 0s;
@@ -133,6 +137,7 @@ body {
     font-size: 2.5rem;
     align-self: center;
     text-align: center;
+    color: white;
 }
 .btn_main:hover {
     transform: translate(0.2px, 0.2px);

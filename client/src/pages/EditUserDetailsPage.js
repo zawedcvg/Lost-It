@@ -1,3 +1,4 @@
+/* eslint-disable */
 // stashed no use
 
 import React, { useState, useEffect } from "react";
@@ -17,11 +18,10 @@ function EditUserDetailsPage() {
 
     const handleUpdate = async () => {
         try {
-            
         } catch (err) {
             err.response.data.msg && setErr(err.response.data.msg);
         }
-    }
+    };
 
     return (
         <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
