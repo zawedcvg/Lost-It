@@ -35,7 +35,8 @@ function UserDashBoardPage() {
 
     const users = useSelector((state) => state.users);
 
-    const { user, isAdmin } = auth;
+    // const { user, isAdmin } = auth;
+    const [user, setUser] = useState({});
     const [data, setData] = useState(initialState);
     const { name, password, cf_password, err, success } = data;
 
@@ -47,80 +48,91 @@ function UserDashBoardPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (isAdmin) {
-            fetchAllUsers(token).then((res) => {
-                dispatch(dispatchGetAllUsers(res));
-            });
-        }
-    }, [token, isAdmin, dispatch, callback]);
+        axios.post("/user/refresh_token")
+            .then(response => {
+                axios.get("/user/info", {
+                    headers : {
+                        Authorization : response.data.access_token
+                    }
+                }).then(res => {
+                    setUser(res.data)
+                }).catch(err => console.log(err))
+            })
+            .catch(err => console.log(err));
+        // if (isAdmin) {
+        //     fetchAllUsers(token).then((res) => {
+        //         dispatch(dispatchGetAllUsers(res));
+        //     });
+        // }
+    }, [token, dispatch, callback]);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setData({ ...data, [name]: value, err: "", success: "" });
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setData({ ...data, [name]: value, err: "", success: "" });
+    // };
 
-    const changeAvatar = async (e) => {
-        e.preventDefault();
-        try {
-            const file = e.target.files[0];
+    // const changeAvatar = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const file = e.target.files[0];
 
-            if (!file)
-                return setData({
-                    ...data,
-                    err: "No files were uploaded.",
-                    success: "",
-                });
+    //         if (!file)
+    //             return setData({
+    //                 ...data,
+    //                 err: "No files were uploaded.",
+    //                 success: "",
+    //             });
 
-            if (file.size > 1024 * 1024)
-                return setData({
-                    ...data,
-                    err: "Size too large.",
-                    success: "",
-                });
+    //         if (file.size > 1024 * 1024)
+    //             return setData({
+    //                 ...data,
+    //                 err: "Size too large.",
+    //                 success: "",
+    //             });
 
-            if (file.type !== "image/jpeg" && file.type !== "image/png")
-                return setData({
-                    ...data,
-                    err: "File format is incorrect.",
-                    success: "",
-                });
+    //         if (file.type !== "image/jpeg" && file.type !== "image/png")
+    //             return setData({
+    //                 ...data,
+    //                 err: "File format is incorrect.",
+    //                 success: "",
+    //             });
 
-            let formData = new FormData();
-            formData.append("file", file);
+    //         let formData = new FormData();
+    //         formData.append("file", file);
 
-            setLoading(true);
-            const res = await axios.post("/api/upload_avatar", formData, {
-                headers: {
-                    "content-type": "multipart/form-data",
-                    Authorization: token,
-                },
-            });
+    //         setLoading(true);
+    //         const res = await axios.post("/api/upload_avatar", formData, {
+    //             headers: {
+    //                 "content-type": "multipart/form-data",
+    //                 Authorization: token,
+    //             },
+    //         });
 
-            setLoading(false);
-            setAvatar(res.data.url);
-        } catch (err) {
-            setData({ ...data, err: err.response.data.msg, success: "" });
-        }
-    };
+    //         setLoading(false);
+    //         setAvatar(res.data.url);
+    //     } catch (err) {
+    //         setData({ ...data, err: err.response.data.msg, success: "" });
+    //     }
+    // };
 
-    const updateInfor = () => {
-        try {
-            axios.patch(
-                "/user/update",
-                {
-                    name: name ? name : user.name,
-                    avatar: avatar ? avatar : user.avatar,
-                },
-                {
-                    headers: { Authorization: token },
-                }
-            );
+    // const updateInfo = () => {
+    //     try {
+    //         axios.patch(
+    //             "/user/update",
+    //             {
+    //                 name: name ? name : user.name,
+    //                 avatar: avatar ? avatar : user.avatar,
+    //             },
+    //             {
+    //                 headers: { Authorization: token },
+    //             }
+    //         );
 
-            setData({ ...data, err: "", success: "Updated Success!" });
-        } catch (err) {
-            setData({ ...data, err: err.response.data.msg, success: "" });
-        }
-    };
+    //         setData({ ...data, err: "", success: "Updated Success!" });
+    //     } catch (err) {
+    //         setData({ ...data, err: err.response.data.msg, success: "" });
+    //     }
+    // };
 
     const handleLogout = async () => {
         try {
@@ -141,35 +153,35 @@ function UserDashBoardPage() {
         }
     };
 
-    const updatePassword = () => {
-        if (isSmall(password))
-            return setData({
-                ...data,
-                err: "Password must be at least 6 characters.",
-                success: "",
-            });
+    // const updatePassword = () => {
+    //     if (isSmall(password))
+    //         return setData({
+    //             ...data,
+    //             err: "Password must be at least 6 characters.",
+    //             success: "",
+    //         });
 
-        if (!isMatch(password, cf_password))
-            return setData({
-                ...data,
-                err: "Password did not match.",
-                success: "",
-            });
+    //     if (!isMatch(password, cf_password))
+    //         return setData({
+    //             ...data,
+    //             err: "Password did not match.",
+    //             success: "",
+    //         });
 
-        try {
-            axios.post(
-                "/user/reset",
-                { password },
-                {
-                    headers: { Authorization: token },
-                }
-            );
+    //     try {
+    //         axios.post(
+    //             "/user/reset",
+    //             { password },
+    //             {
+    //                 headers: { Authorization: token },
+    //             }
+    //         );
 
-            setData({ ...data, err: "", success: "Updated Success!" });
-        } catch (err) {
-            setData({ ...data, err: err.response.data.msg, success: "" });
-        }
-    };
+    //         setData({ ...data, err: "", success: "Updated Success!" });
+    //     } catch (err) {
+    //         setData({ ...data, err: err.response.data.msg, success: "" });
+    //     }
+    // };
 
     // const handleUpdate = () => {
     //     if (name || avatar) updateInfor();
@@ -214,7 +226,7 @@ function UserDashBoardPage() {
                 <title>User</title>
             </MetaTags>
             <div className={UserDashboardPageCSS.scroll}>
-                <div>{loading && <h3>Loading.....</h3>}</div>
+                <h1>User Dashboard</h1>
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
                         <img
@@ -222,14 +234,14 @@ function UserDashBoardPage() {
                             alt="***random***"
                         />
                         <form className={UserDashboardPageCSS.side}>
-                            <button
+                            {/* <button
                                 onClick={(e) =>
                                     history.push("/edituserdetails")
                                 }
                                 className={UserDashboardPageCSS.btn_entry}
                             >
                                 Edit Details
-                            </button>
+                            </button> */}
                             <button
                                 onClick={(e) => history.push("/listings")}
                                 className={UserDashboardPageCSS.btn_entry}
@@ -242,11 +254,11 @@ function UserDashBoardPage() {
                             >
                                 Report item
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry}>
-                                Something
+                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/myposts")}>
+                                View my posts
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry}>
-                                Something
+                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/savedposts")}>
+                                View saved posts
                             </button>
                         </form>
                     </div>

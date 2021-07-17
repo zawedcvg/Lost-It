@@ -41,8 +41,7 @@ function LoginPage() {
             dispatch(dispatchLogin());
             history.push("/userdashboard");
         } catch (err) {
-            err.response.data.msg &&
-                setUser({ ...user, err: err.response.data.msg, success: "" });
+            console.log(err);
         }
     };
 

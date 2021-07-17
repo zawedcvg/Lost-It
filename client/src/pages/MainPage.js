@@ -58,7 +58,7 @@ const MainPage = () => {
                 >
                     <div className={MainPageCSS.option_body}>
                         <h1 className={MainPageCSS.login_text}>
-                            Lost-It - a digitized lost & found, right with you
+                            Lost It - a digitized lost & found, right with you
                         </h1>
                         <section className={MainPageCSS.button_list}>
                             <form>
@@ -77,16 +77,6 @@ const MainPage = () => {
                                     Log In.
                                 </button>
                             </form>
-
-                            {/* <form>
-                                <button
-                                    formAction="http://stackoverflow.com"
-                                    className={MainPageCSS.btn_main}
-                                >
-                                    <Logo style={logostyle} />
-                                    &nbsp;Connect to Google
-                                </button>
-                            </form> */}
                         </section>
                     </div>
                 </section>

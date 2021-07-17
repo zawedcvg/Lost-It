@@ -9,10 +9,7 @@ const postSchema = new mongoose.Schema(
         },
         isLost: {
             type: Boolean,
-            required: [
-                true,
-                "Please specify whether the item was something you lost, or something you found?",
-            ],
+            required: true,
             default: true,
         },
         img: {

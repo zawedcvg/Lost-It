@@ -23,6 +23,10 @@ router.patch("/savepost/:id", authPosts, postController.savePost);
 
 router.patch("/unsavepost/:id", authPosts, postController.unsavePost);
 
-router.get("/getsavedposts", authPosts, postController.getSavedPosts);
+router.get("/savedposts", authPosts, postController.getSavedPosts);
+
+router.patch("/changestatus/:id", authPosts, postController.changeStatus);
+
+router.patch("/revertstatus/:id", authPosts, postController.revertStatus);
 
 module.exports = router;

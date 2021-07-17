@@ -1,68 +1,98 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
-const ListingsPage = () => {
-    const Items = [
-        {
-            key: 1,
-            type: "found",
-            img: "https://source.unsplash.com/random/200x200",
-            date: "20th August 2020",
-            time: "20:00",
-            location: "Near USC",
-            description: "Something, something",
-        },
-        {
-            key: 2,
-            type: "lost",
-            img: "https://source.unsplash.com/random/200x200",
-            date: "21th August 2021",
-            time: "21:00",
-            location: "Near USCA",
-            description: "Something, something",
-        },
-    ];
+import Post from "./Post";
 
-    let listings;
-    const obtainListings = async (e) => {
+const ListingsPage = () => {
+    const [requiredItems, setRequiredItems] = useState([]);
+    const [toBeDisplayed, setToBeDisplayed] = useState([]);
+
+    const getItemsData = async (token) => {
         try {
-            const res = await axios.post("/user/refresh_token");
-            listings = await axios.get("/listings/posts", {
+            const {data} = await axios.get("/listings/posts", {
                 headers: {
-                    Authorization: res.data.access_token,
-                },
+                    Authorization: token
+                }
             });
-            console.log(listings);
+            return data;
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
         }
-    };
+    }
+
+    const getPermissions = async () => {
+        try {
+            const {data} = await axios.post("/user/refresh_token");
+            return data.access_token;    
+        } catch (err) {
+            console.log(err.message);
+        }   
+    }
+
+    let componentMounted = true;
+
+    useEffect(() => {
+        const temp = async () => {
+            const token = await getPermissions();
+            const itemsData = await getItemsData(token);
+
+            if (componentMounted) {
+                setRequiredItems(itemsData.posts);
+            }
+            // console.log(itemsData)
+            return () => {
+                componentMounted = false;
+            };
+        }
+        temp();
+    }, [])
+
+    // useEffect(() => {
+    //     axios.post("/user/refresh_token")
+    //         .then(res => {
+    //             axios.get("/listings/posts", {
+    //                 headers : {
+    //                     Authorization : res.data.access_token
+    //                 }
+    //             }).then(response => {
+    //                 setToBeDisplayed(response.data.posts);
+    //                 setRequiredItems(response.data.posts);
+    //             }).catch(err => {
+    //                 console.log(err)
+    //             })
+    //         }).catch(err => console.log(err))
+    // })
+
     const history = useHistory();
 
-    const [requiredItems, setRequiredItems] = React.useState(Items);
-
-    function clickedEvent(e) {
-        console.log(e.target);
-        var searchParams = e.target.innerHTML;
-        switch (searchParams) {
-            case "Found":
-                setRequiredItems(
-                    Items.filter((items) => items.type === "found")
-                );
-                break;
-            case "Lost":
-                setRequiredItems(
-                    Items.filter((items) => items.type === "lost")
-                );
-                break;
-            case "Both":
-                setRequiredItems(Items);
-                break;
-            default:
-                console.log("Invalid");
+    const obtainListings = e => {
+        const temp = []; 
+        for (let i = 0; i < requiredItems.length; i++) {
+            temp.push(requiredItems[i]);
         }
+        setToBeDisplayed(temp);
+    };
+
+    const handleLost = e => {
+        const temp = []; 
+        for (let i = 0; i < requiredItems.length; i++) {
+            if (requiredItems[i].isLost) {
+                temp.push(requiredItems[i]);
+            }
+        }
+        setToBeDisplayed(temp);
+    }
+
+    const handleRecovered = e => {
+        const temp = []; 
+        for (let i = 0; i < requiredItems.length; i++) {
+            if (!requiredItems[i].isLost) {
+                temp.push(requiredItems[i]);
+            }
+        }
+        setToBeDisplayed(temp);
     }
 
     return (
@@ -86,18 +116,18 @@ const ListingsPage = () => {
                     <nav>
                         <button
                             className={ListingsPageCSS.options_button}
-                            onClick={clickedEvent}
+                            onClick={handleLost}
                         >
                             Lost
                         </button>
                         <button
-                            onClick={clickedEvent}
+                            onClick={handleRecovered}
                             className={ListingsPageCSS.options_button}
                         >
-                            Found
+                            Recovered
                         </button>
                         <button
-                            onClick={clickedEvent}
+                            onClick={obtainListings}
                             className={ListingsPageCSS.options_button}
                         >
                             Both
@@ -106,53 +136,32 @@ const ListingsPage = () => {
                 </div>
                 <div className={ListingsPageCSS.bottom_part}>
                     <div className={ListingsPageCSS.listings_body}>
-                        {requiredItems.map((items) => (
-                            <Posts
-                                key={items.key}
-                                type={items.type}
-                                img={items.img}
-                                date={items.date}
-                                time={items.time}
-                                location={items.location}
-                                description={items.description}
-                            />
-                        ))}
+                        {
+                            (toBeDisplayed || requiredItems).map((items) => (
+                                <Post
+                                    key={items._id}
+                                    type={items.type}
+                                    img={items.img}
+                                    date={items.date}
+                                    time={items.time}
+                                    location={items.location}
+                                    description={items.description}
+                                    link={items._id}
+                                    likes={items.likes}
+                                />
+                            ))
+                        }
+                        
                     </div>
                     <form>
-                        <button className={ListingsPageCSS.btn_listings}>
+                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/reportitem")}>
                             Make a report
+                        </button>
+                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/userdashboard")}>
+                            Go back
                         </button>
                     </form>
                 </div>
-            </div>
-        </div>
-    );
-};
-
-const Posts = ({ img, type, date, time, location, description }) => {
-    var type_text;
-    if (type.toLowerCase() === "lost") {
-        type_text = "Lost On";
-    } else {
-        type_text = "Found On";
-    }
-    return (
-        <div className={ListingsPageCSS.post} type={type}>
-            <img src={img} alt="" />
-            <div className={ListingsPageCSS.post_content}>
-                <span>
-                    {type_text}: {date} <br />
-                </span>
-                <span>
-                    Approximate time: {time} <br />
-                </span>
-                <span>
-                    Location: {location}
-                    <br />
-                </span>
-                <span>
-                    Description: {description} <br />
-                </span>
             </div>
         </div>
     );
