@@ -15,12 +15,17 @@ const LogoutPage = () => {
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                 <title>Logout</title>
             </MetaTags>
-            <div className={LogoutPageCSS.scroll}>
-                <div className={LogoutPageCSS.thank_you}>
-                    <h1>Thank you for using our service!</h1> <br />
-                    <span className={LogoutPageCSS.seeusoon}>
-                        See you soon.
-                    </span>
+            <div
+                className={`${LogoutPageCSS.scroll} ${LogoutPageCSS.thank_you}`}
+            >
+                <div className={LogoutPageCSS.thank_text}>
+                    <h1>
+                        Thank you for using our service!
+                        <br />
+                        <span className={LogoutPageCSS.seeusoon}>
+                            See you soon.
+                        </span>
+                    </h1>
                     <span className={LogoutPageCSS.login}>
                         Click here to <Link to="/login">Log Back In</Link>
                     </span>

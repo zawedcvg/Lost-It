@@ -24,13 +24,19 @@ html {
 }
 
 .container {
-    margin: 3% 5% 5% 2%;
+    margin: 3% 5% 5% 10%;
     padding: 2% 2% 2% 0%;
-    border-radius: 10%;
     border: 1px solid #786c78;
-    width: 45%;
+    border-radius: 9rem;
+    width: 40%;
     display: flex;
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+}
+
+.heading {
+    text-align: center;
 }
 
 .top {

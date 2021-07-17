@@ -48,17 +48,21 @@ function UserDashBoardPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.post("/user/refresh_token")
-            .then(response => {
-                axios.get("/user/info", {
-                    headers : {
-                        Authorization : response.data.access_token
-                    }
-                }).then(res => {
-                    setUser(res.data)
-                }).catch(err => console.log(err))
+        axios
+            .post("/user/refresh_token")
+            .then((response) => {
+                axios
+                    .get("/user/info", {
+                        headers: {
+                            Authorization: response.data.access_token,
+                        },
+                    })
+                    .then((res) => {
+                        setUser(res.data);
+                    })
+                    .catch((err) => console.log(err));
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
         // if (isAdmin) {
         //     fetchAllUsers(token).then((res) => {
         //         dispatch(dispatchGetAllUsers(res));
@@ -226,7 +230,7 @@ function UserDashBoardPage() {
                 <title>User</title>
             </MetaTags>
             <div className={UserDashboardPageCSS.scroll}>
-                <h1>User Dashboard</h1>
+                <h1 className={UserDashboardPageCSS.heading}>User Dashboard</h1>
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
                         <img
@@ -254,10 +258,16 @@ function UserDashBoardPage() {
                             >
                                 Report item
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/myposts")}>
+                            <button
+                                className={UserDashboardPageCSS.btn_entry}
+                                onClick={(e) => history.push("/myposts")}
+                            >
                                 View my posts
                             </button>
-                            <button className={UserDashboardPageCSS.btn_entry} onClick={e => history.push("/savedposts")}>
+                            <button
+                                className={UserDashboardPageCSS.btn_entry}
+                                onClick={(e) => history.push("/savedposts")}
+                            >
                                 View saved posts
                             </button>
                         </form>
