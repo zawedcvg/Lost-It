@@ -7,9 +7,9 @@ const SavedPosts = () => {
     const [toBeDisplayed, setToBeDisplayed] = useState([]);
 
     useEffect(() => {
-        axios.post("/user/refresh_token")
+        axios.post("https://lost-it.herokuapp.com/user/refresh_token")
             .then(response => {
-                axios.get("/listings/savedposts", {
+                axios.get("https://lost-it.herokuapp.com/listings/savedposts", {
                     headers : {
                         Authorization : response.data.access_token
                     }

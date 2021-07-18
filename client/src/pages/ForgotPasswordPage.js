@@ -36,7 +36,7 @@ function ForgotPasswordPage() {
         console.log(err);
 
         try {
-            const res = await axios.post("/user/forgot", { email });
+            const res = await axios.post("https://lost-it.herokuapp.com/user/forgot", { email });
 
             setData({ ...data, err: "", success: res.data.msg });
             history.push("/emailhasbeensentforreset");

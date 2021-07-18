@@ -49,10 +49,10 @@ function UserDashBoardPage() {
 
     useEffect(() => {
         axios
-            .post("/user/refresh_token")
+            .post("https://lost-it.herokuapp.com/user/refresh_token")
             .then((response) => {
                 axios
-                    .get("/user/info", {
+                    .get("https://lost-it.herokuapp.com/user/info", {
                         headers: {
                             Authorization: response.data.access_token,
                         },
@@ -143,7 +143,7 @@ function UserDashBoardPage() {
             console.log(1);
 
             console.log(2);
-            const res = await axios.post("/user/logout");
+            const res = await axios.post("https://lost-it.herokuapp.com/user/logout");
             console.log(res);
             localStorage.removeItem("firstLogin");
             window.location.href = "/logout";

@@ -13,7 +13,7 @@ const ActivationSuccessfulPage = () => {
         if (activation_token) {
             const activationEmail = async () => {
                 try {
-                    const res = await axios.post("/user/activation", {
+                    const res = await axios.post("https://lost-it.herokuapp.com/user/activation", {
                         activation_token,
                     });
                     setSuccess(res.data.msg);

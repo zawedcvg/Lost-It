@@ -13,16 +13,16 @@ const PostInfoPage = () => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.post("/user/refresh_token")
+        axios.post("https://lost-it.herokuapp.com/user/refresh_token")
             .then(response => {
-                axios.get(`/listings/post/${id}`, {
+                axios.get(`https://lost-it.herokuapp.com/listings/post/${id}`, {
                     headers : {
                         Authorization : response.data.access_token
                     }
                 })
                 .then(res => {
                     console.log(res);
-                    axios.get("/user/info", {
+                    axios.get("https://lost-it.herokuapp.com/user/info", {
                         headers : {
                             Authorization : response.data.access_token
                         }
@@ -53,9 +53,9 @@ const PostInfoPage = () => {
     }, [])
 
     const handleDelete = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                             .then(response => {
-                                axios.delete(`/listings/post/${id}`, {
+                                axios.delete(`https://lost-it.herokuapp.com/listings/post/${id}`, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -67,23 +67,23 @@ const PostInfoPage = () => {
                             })
                             .catch(err => console.log(err));
         console.log(res);
-        history.push("/listings")
+        history.push("https://lost-it.herokuapp.com/listings")
     }
 
     const handleUpdatePost = () => {
-        history.push(`/updatepost/${id}`);
+        history.push(`https://lost-it.herokuapp.com/updatepost/${id}`);
     }
 
     const handleSave = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
-                            axios.get("/user/info", {
+                            axios.get("https://lost-it.herokuapp.com/user/info", {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
                             })
                             .then(r => {
-                                axios.patch(`/listings/savepost/${id}`, {user : r.data._id}, {
+                                axios.patch(`https://lost-it.herokuapp.com/listings/savepost/${id}`, {user : r.data._id}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -101,15 +101,15 @@ const PostInfoPage = () => {
     }
 
     const handleUnsave = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
-                            axios.get("/user/info", {
+                            axios.get("https://lost-it.herokuapp.com/user/info", {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
                             })
                             .then(r => {
-                                axios.patch(`/listings/unsavepost/${id}`, {user : r.data._id}, {
+                                axios.patch(`https://lost-it.herokuapp.com/listings/unsavepost/${id}`, {user : r.data._id}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -127,9 +127,9 @@ const PostInfoPage = () => {
     }
 
     const handleChangeStatus = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
-                            axios.patch(`/listings/changestatus/${id}`, {post : id}, {
+                            axios.patch(`https://lost-it.herokuapp.com/listings/changestatus/${id}`, {post : id}, {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
@@ -143,9 +143,9 @@ const PostInfoPage = () => {
     }
 
     const handleRevertStatus = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
-                            axios.patch(`/listings/revertstatus/${id}`, {post : id}, {
+                            axios.patch(`https://lost-it.herokuapp.com/listings/revertstatus/${id}`, {post : id}, {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
@@ -163,7 +163,7 @@ const PostInfoPage = () => {
     }
 
     const handleLikePost = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
                             axios.get("/user/info", {
                                 headers : {
@@ -171,7 +171,7 @@ const PostInfoPage = () => {
                                 }
                             })
                             .then(r => {
-                                axios.patch(`/listings/post/${id}/like`, {}, {
+                                axios.patch(`https://lost-it.herokuapp.com/listings/post/${id}/like`, {}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -188,7 +188,7 @@ const PostInfoPage = () => {
     }
 
     const handleUnlikePost = () => {
-        const res = axios.post("/user/refresh_token")
+        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
                         .then(response => {
                             axios.get("/user/info", {
                                 headers : {
@@ -196,7 +196,7 @@ const PostInfoPage = () => {
                                 }
                             })
                             .then(r => {
-                                axios.patch(`/listings/post/${id}/unlike`, {}, {
+                                axios.patch(`https://lost-it.herokuapp.com/listings/post/${id}/unlike`, {}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }

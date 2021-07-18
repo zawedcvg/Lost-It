@@ -28,9 +28,9 @@ function ReportItem() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const access_res = await axios.post("/user/refresh_token");
+            const access_res = await axios.post("https://lost-it.herokuapp.com/user/refresh_token");
             console.log(access_res);
-            const userInfo = await axios.get("/user/info", {
+            const userInfo = await axios.get("https://lost-it.herokuapp.com/user/info", {
                 headers: {
                     Authorization: access_res.data.access_token,
                 },
@@ -50,7 +50,7 @@ function ReportItem() {
 
             console.log(toBeReported);
 
-            const res = await axios.post("/listings/posts", toBeReported, {
+            const res = await axios.post("https://lost-it.herokuapp.com/listings/posts", toBeReported, {
                 headers: {
                     Authorization: access_res.data.access_token,
                 },
