@@ -6,4 +6,5 @@ dist/
 coverage/
 .vscode/
 .env_old
+.prettierrc
 
