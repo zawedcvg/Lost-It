@@ -22,6 +22,10 @@ app.use(
     })
 );
 
+app.get("/", function (req, res) {
+    res.send("<html><body><h1>Hello World</h1></body></html>");
+});
+
 app.use("/user", userRouter);
 app.use("/api", upload);
 app.use("/listings", postRouter);
@@ -60,6 +64,4 @@ app.listen(PORT, () => {
     console.log("Server is running on port", PORT);
 });
 
-// app.get("/", function (req, res) {
-//     res.send("<html><body><h1>Hello World</h1></body></html>");
-// });
+
