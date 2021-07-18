@@ -225,6 +225,7 @@ const userController = {
     },
 
     getCompleteInfo: async (req, res) => {
+        console.log(req);
         try {
             const users = await Users.find().select("-password");
             console.log(users);
