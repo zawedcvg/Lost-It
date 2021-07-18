@@ -78,7 +78,8 @@ function ReportItem() {
             </MetaTags>
             <div className={ReportItemCSS.container}>
                 <div className={ReportItemCSS.details}>
-                    <h1>Report an Item</h1>
+                    <h1>Report an Item </h1>
+                    {/* <span className={ReportItemCSS.spanbanner}>(this can be an item that you have lost, or something that you have found on your way)</span> */}
                     <form onSubmit={handleSubmit}>
                         <label
                             className={ReportItemCSS.reportitem_label}
