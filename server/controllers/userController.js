@@ -154,6 +154,7 @@ const userController = {
                         });
                     }
 
+                    console.log(user.id);
                     const access_token = createAccessToken({ id: user.id });
                     res.json({ access_token, user });
                 }
@@ -174,7 +175,7 @@ const userController = {
                     msg: "The email doesn't exist",
                 });
 
-            const access_token = createAccessToken({ id: user.id });
+            const access_token = createAccessToken({ id: user._id });
             const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
             sendMail(email, url, "Reset your password");
