@@ -7,14 +7,14 @@ const MyPosts = () => {
     const [toBeDisplayed, setToBeDisplayed] = useState([]);
 
     useEffect(() => {
-        axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        axios.post("/user/refresh_token")
             .then(response => {
-                axios.get("https://lost-it.herokuapp.com/user/info", {
+                axios.get("/user/info", {
                     headers : {
                         Authorization : response.data.access_token
                     }
                 }).then(res => {
-                    axios.get(`https://lost-it.herokuapp.com/listings/user_posts/${res.data._id}`, {
+                    axios.get(`/listings/user_posts/${res.data._id}`, {
                         headers : {
                             Authorization : response.data.access_token
                         }

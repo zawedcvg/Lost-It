@@ -30,18 +30,18 @@ function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://lost-it.herokuapp.com/user/login", {
+            const res = await axios.post("/user/login", {
                 email,
                 password,
             });
             setUser({ ...user, err: "", success: res.data.msg });
 
-            const token = await axios.post("https://lost-it.herokuapp.com/user/refresh_token");
+            const token = await axios.post("/user/refresh_token");
             console.log("here");
             console.log(token.data);
-            localStorage.setItem("refreshtoken", token.data.access_token);
+            // localStorage.setItem("refreshtoken", token.data.access_token);
 
-            localStorage.setItem("firstLogin", true);
+            // localStorage.setItem("firstLogin", true);
 
             dispatch(dispatchLogin());
             history.push("/userdashboard");

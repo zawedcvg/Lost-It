@@ -11,7 +11,7 @@ const ListingsPage = () => {
 
     const getItemsData = async (token) => {
         try {
-            const {data} = await axios.get("https://lost-it.herokuapp.com/listings/posts", {
+            const {data} = await axios.get("/listings/posts", {
                 headers: {
                     Authorization: token
                 }
@@ -24,7 +24,7 @@ const ListingsPage = () => {
 
     const getPermissions = async () => {
         try {
-            const {data} = await axios.post("https://lost-it.herokuapp.com/user/refresh_token");
+            const {data} = await axios.post("/user/refresh_token");
             return data.access_token;    
         } catch (err) {
             console.log(err.message);

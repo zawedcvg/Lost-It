@@ -49,7 +49,7 @@ function ResetPasswordPage() {
         //         success: "",
         //     });
 
-        await axios.post("https://lost-it.herokuapp.com/user/reset", {"password" : password}, {
+        await axios.post("/user/reset", {"password" : password}, {
             headers : {
                 Authorization : id
             }

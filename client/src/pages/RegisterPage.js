@@ -93,7 +93,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post("https://lost-it.herokuapp.com/user/register", {
+            const res = await axios.post("/user/register", {
                 name,
                 email,
                 password,

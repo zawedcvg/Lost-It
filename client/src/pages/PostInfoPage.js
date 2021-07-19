@@ -9,20 +9,21 @@ const PostInfoPage = () => {
     const [isLost, setIsLost] = useState("");
     const [saved, setSaved] = useState("");
     const [liked, setLiked] = useState("");
+    const [numOfLikes, setNumOfLikes] = useState(0);
     const { id } = useParams();
     const history = useHistory();
 
     useEffect(() => {
-        axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        axios.post("/user/refresh_token")
             .then(response => {
-                axios.get(`https://lost-it.herokuapp.com/listings/post/${id}`, {
+                axios.get(`/listings/post/${id}`, {
                     headers : {
                         Authorization : response.data.access_token
                     }
                 })
                 .then(res => {
                     console.log(res);
-                    axios.get("https://lost-it.herokuapp.com/user/info", {
+                    axios.get("/user/info", {
                         headers : {
                             Authorization : response.data.access_token
                         }
@@ -43,6 +44,7 @@ const PostInfoPage = () => {
                         } else {
                             setLiked(false);
                         }
+                        setNumOfLikes(res.data.post.likes.length || 0);
                         setItem(res.data.post)
                         setIsLost(res.data.post.isLost);
                     }).catch(err => console.log(err))
@@ -53,9 +55,9 @@ const PostInfoPage = () => {
     }, [])
 
     const handleDelete = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                             .then(response => {
-                                axios.delete(`https://lost-it.herokuapp.com/listings/post/${id}`, {
+                                axios.delete(`/listings/post/${id}`, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -67,23 +69,23 @@ const PostInfoPage = () => {
                             })
                             .catch(err => console.log(err));
         console.log(res);
-        history.push("https://lost-it.herokuapp.com/listings")
+        history.push("/listings")
     }
 
     const handleUpdatePost = () => {
-        history.push(`https://lost-it.herokuapp.com/updatepost/${id}`);
+        history.push(`/updatepost/${id}`);
     }
 
     const handleSave = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
-                            axios.get("https://lost-it.herokuapp.com/user/info", {
+                            axios.get("/user/info", {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
                             })
                             .then(r => {
-                                axios.patch(`https://lost-it.herokuapp.com/listings/savepost/${id}`, {user : r.data._id}, {
+                                axios.patch(`/listings/savepost/${id}`, {user : r.data._id}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -101,15 +103,15 @@ const PostInfoPage = () => {
     }
 
     const handleUnsave = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
-                            axios.get("https://lost-it.herokuapp.com/user/info", {
+                            axios.get("/user/info", {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
                             })
                             .then(r => {
-                                axios.patch(`https://lost-it.herokuapp.com/listings/unsavepost/${id}`, {user : r.data._id}, {
+                                axios.patch(`/listings/unsavepost/${id}`, {user : r.data._id}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -127,9 +129,9 @@ const PostInfoPage = () => {
     }
 
     const handleChangeStatus = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
-                            axios.patch(`https://lost-it.herokuapp.com/listings/changestatus/${id}`, {post : id}, {
+                            axios.patch(`/listings/changestatus/${id}`, {post : id}, {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
@@ -139,13 +141,12 @@ const PostInfoPage = () => {
                             }).catch(err => console.log(err))
                         }).catch(err => console.log(err))
         setIsLost(false);
-        console.log(res);
     }
 
     const handleRevertStatus = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
-                            axios.patch(`https://lost-it.herokuapp.com/listings/revertstatus/${id}`, {post : id}, {
+                            axios.patch(`/listings/revertstatus/${id}`, {post : id}, {
                                 headers : {
                                     Authorization : response.data.access_token
                                 }
@@ -155,7 +156,6 @@ const PostInfoPage = () => {
                             }).catch(err => console.log(err))
                         }).catch(err => console.log(err))
         setIsLost(true);
-        console.log(res);
     }
 
     const handleGoBack = () => {
@@ -163,7 +163,7 @@ const PostInfoPage = () => {
     }
 
     const handleLikePost = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
                             axios.get("/user/info", {
                                 headers : {
@@ -171,7 +171,7 @@ const PostInfoPage = () => {
                                 }
                             })
                             .then(r => {
-                                axios.patch(`https://lost-it.herokuapp.com/listings/post/${id}/like`, {}, {
+                                axios.patch(`/listings/post/${id}/like`, {}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -179,7 +179,7 @@ const PostInfoPage = () => {
                                 .then(res => {
                                     alert(res.data.msg);
                                     setLiked(true);
-                                    console.log(res);
+                                    setNumOfLikes(item.likes + 1);
                                 })
                                 .catch(err => console.log(err))
                             }).catch(err => console.log(err));
@@ -188,7 +188,7 @@ const PostInfoPage = () => {
     }
 
     const handleUnlikePost = () => {
-        const res = axios.post("https://lost-it.herokuapp.com/user/refresh_token")
+        const res = axios.post("/user/refresh_token")
                         .then(response => {
                             axios.get("/user/info", {
                                 headers : {
@@ -196,7 +196,7 @@ const PostInfoPage = () => {
                                 }
                             })
                             .then(r => {
-                                axios.patch(`https://lost-it.herokuapp.com/listings/post/${id}/unlike`, {}, {
+                                axios.patch(`/listings/post/${id}/unlike`, {}, {
                                     headers : {
                                         Authorization : response.data.access_token
                                     }
@@ -204,13 +204,12 @@ const PostInfoPage = () => {
                                 .then(res => {
                                     alert(res.data.msg);
                                     setLiked(false);
+                                    setNumOfLikes(item.likes - 1);
                                 })
                                 .catch(err => console.log(err))
                             }).catch(err => console.log(err));
                         })
                         .catch(err => console.log(err));
-        
-        console.log(res);
     }
 
     return (
@@ -224,7 +223,7 @@ const PostInfoPage = () => {
                 time={item.time}
                 location={item.location}
                 description={item.description}
-                likes={item.likes}
+                likes={numOfLikes}
             />
             </div>
             <button onClick={handleDelete}>
@@ -233,16 +232,14 @@ const PostInfoPage = () => {
             <button onClick={handleUpdatePost}>
                 Update Post
             </button>
-            {
-                isOwner 
-                ?   !saved
-                    ? <button onClick={handleSave}>
-                        Save Post
-                        </button>
-                    : <button onClick={handleUnsave}>
-                        Unsave Post
-                        </button>
-                : <span></span>
+            { 
+                !saved
+                ? <button onClick={handleSave}>
+                    Save Post
+                    </button>
+                : <button onClick={handleUnsave}>
+                    Unsave Post
+                    </button>
             } 
             {
                 isOwner 
