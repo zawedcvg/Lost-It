@@ -49,7 +49,7 @@ function UserDashBoardPage() {
 
     useEffect(() => {
         axios
-            .post("https://lost-it.herokuapp.com/user/refresh_token")
+            .post("https://lost-it.herokuapp.com/user/refresh_token", {withCredentials: true, credentials: 'include'})
             .then((response) => {
                 console.log(response);
                 axios
@@ -69,7 +69,7 @@ function UserDashBoardPage() {
         //         dispatch(dispatchGetAllUsers(res));
         //     });
         // }
-    }, [token, dispatch, callback]);
+    }, []);
 
     // const handleChange = (e) => {
     //     const { name, value } = e.target;

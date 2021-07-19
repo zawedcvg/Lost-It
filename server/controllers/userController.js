@@ -119,11 +119,16 @@ const userController = {
                 id: user._id,
             });
 
-            res.cookie("refreshtoken", refresh_token, {
-                httpOnly: true,
-                path: "/user/refresh_token",
-                maxAge: 7 * 24 * 60 * 60 * 1000,
-            });
+            // res.setHeader('Set-Cookie','visited=true; Max-Age=3000; HttpOnly, Secure');
+
+            // res.cookie("refreshtoken", refresh_token, {
+            //     httpOnly: true,
+            //     path: "https://lost-it.herokuapp.com/user/refresh_token",
+            //     secure : true,
+            //     maxAge: 7 * 24 * 60 * 60 * 1000,
+            // });
+
+            localStorage.setItem("refreshtoken", refresh_token);
 
             res.json({
                 msg: "Login successful",
@@ -136,8 +141,9 @@ const userController = {
     },
 
     getAccessToken: async (req, res) => {
+        console.log(req);
         try {
-            const rf_token = req.cookies.refreshtoken;
+            const rf_token = localStorage.getItem("refreshtoken")
             if (!rf_token) {
                 return res.status(400).json({
                     msg: "Please login again",
@@ -238,9 +244,11 @@ const userController = {
 
     logout: async (req, res) => {
         try {
-            res.clearCookie("refreshtoken", {
-                path: "/user/refresh_token",
-            });
+            // res.clearCookie("refreshtoken", {
+            //     path: "/user/refresh_token",
+            // });
+
+            localStorage.removeItem("refreshtoken")
 
             return res.json({
                 msg: "Logged out successfully",
