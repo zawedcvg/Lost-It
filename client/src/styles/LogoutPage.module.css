@@ -29,8 +29,8 @@ html {
     text-align: center;
     flex-direction: column;
     justify-content: center;
-    margin: 1rem;
 }
+
 .thank_text {
     font-size: 7rem;
 }

@@ -8,7 +8,6 @@ const PostInfoPage = () => {
     const [isOwner, setIsOwner] = useState(false);
     const [isLost, setIsLost] = useState("");
     const [saved, setSaved] = useState("");
-    const [liked, setLiked] = useState("");
     const { id } = useParams();
     const history = useHistory();
 
@@ -37,11 +36,6 @@ const PostInfoPage = () => {
                             setIsOwner(true)
                         } else {
                             setIsOwner(false);
-                        }
-                        if (res.data.post.likes.includes(user.data._id)) {
-                            setLiked(true);
-                        } else {
-                            setLiked(false);
                         }
                         setItem(res.data.post)
                         setIsLost(res.data.post.isLost);
@@ -162,57 +156,6 @@ const PostInfoPage = () => {
         history.push("/listings");
     }
 
-    const handleLikePost = () => {
-        const res = axios.post("/user/refresh_token")
-                        .then(response => {
-                            axios.get("/user/info", {
-                                headers : {
-                                    Authorization : response.data.access_token
-                                }
-                            })
-                            .then(r => {
-                                axios.patch(`/listings/post/${id}/like`, {}, {
-                                    headers : {
-                                        Authorization : response.data.access_token
-                                    }
-                                })
-                                .then(res => {
-                                    alert(res.data.msg);
-                                    setLiked(true);
-                                    console.log(res);
-                                })
-                                .catch(err => console.log(err))
-                            }).catch(err => console.log(err));
-                        })
-                        .catch(err => console.log(err));
-    }
-
-    const handleUnlikePost = () => {
-        const res = axios.post("/user/refresh_token")
-                        .then(response => {
-                            axios.get("/user/info", {
-                                headers : {
-                                    Authorization : response.data.access_token
-                                }
-                            })
-                            .then(r => {
-                                axios.patch(`/listings/post/${id}/unlike`, {}, {
-                                    headers : {
-                                        Authorization : response.data.access_token
-                                    }
-                                })
-                                .then(res => {
-                                    alert(res.data.msg);
-                                    setLiked(false);
-                                })
-                                .catch(err => console.log(err))
-                            }).catch(err => console.log(err));
-                        })
-                        .catch(err => console.log(err));
-        
-        console.log(res);
-    }
-
     return (
         <div className="PostInfoPage">
             <div className="post_info">
@@ -225,6 +168,7 @@ const PostInfoPage = () => {
                 location={item.location}
                 description={item.description}
                 likes={item.likes}
+                link={item.link}
             />
             </div>
             <button onClick={handleDelete}>
@@ -255,15 +199,6 @@ const PostInfoPage = () => {
                         </button> 
                 : <span></span>
             }
-            {
-                liked
-                ? <button onClick={handleUnlikePost}>
-                    Unlike Post
-                    </button>
-                : <button onClick={handleLikePost}>
-                    Like Post
-                    </button>
-            }   
             <button onClick={handleGoBack}>
                 Go back
             </button>
