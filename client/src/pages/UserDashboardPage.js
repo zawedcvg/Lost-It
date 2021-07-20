@@ -225,14 +225,14 @@ function UserDashBoardPage() {
                             alt="***random***"
                         />
                         <form className={UserDashboardPageCSS.side}>
-                            <button
+                            {/* <button
                                 onClick={(e) =>
                                     history.push("/edituserdetails")
                                 }
                                 className={UserDashboardPageCSS.btn_entry}
                             >
                                 Edit Details
-                            </button>
+                            </button> */}
                             <button
                                 onClick={(e) => history.push("/listings")}
                                 className={UserDashboardPageCSS.btn_entry}
