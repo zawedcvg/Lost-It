@@ -2,8 +2,6 @@ const Users = require("../models/userModel.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require("./sendMail.js");
-const LocalStorage = require('node-localstorage').LocalStorage;
-localStorage = new LocalStorage('./scratch');
 
 const CLIENT_URL = process.env.CLIENT_URL;
 
@@ -121,16 +119,11 @@ const userController = {
                 id: user._id,
             });
 
-            // res.setHeader('Set-Cookie','visited=true; Max-Age=3000; HttpOnly, Secure');
-
             res.cookie("refreshtoken", refresh_token, {
                 httpOnly: true,
                 path: "/user/refresh_token",
-                secure : true,
                 maxAge: 7 * 24 * 60 * 60 * 1000,
             });
-
-            // localStorage.setItem("refreshtoken", refresh_token);
 
             res.json({
                 msg: "Login successful",
@@ -143,9 +136,8 @@ const userController = {
     },
 
     getAccessToken: async (req, res) => {
-        console.log(req);
         try {
-            const rf_token = res.cookies.refreshtoken;
+            const rf_token = req.cookies.refreshtoken;
             if (!rf_token) {
                 return res.status(400).json({
                     msg: "Please login again",
@@ -162,7 +154,6 @@ const userController = {
                         });
                     }
 
-                    console.log(user.id);
                     const access_token = createAccessToken({ id: user.id });
                     res.json({ access_token, user });
                 }
@@ -183,7 +174,7 @@ const userController = {
                     msg: "The email doesn't exist",
                 });
 
-            const access_token = createAccessToken({ id: user._id });
+            const access_token = createAccessToken({ id: user.id });
             const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
             sendMail(email, url, "Reset your password");
@@ -233,7 +224,6 @@ const userController = {
     },
 
     getCompleteInfo: async (req, res) => {
-        console.log(req);
         try {
             const users = await Users.find().select("-password");
             console.log(users);
@@ -246,11 +236,9 @@ const userController = {
 
     logout: async (req, res) => {
         try {
-            // res.clearCookie("refreshtoken", {
-            //     path: "/user/refresh_token",
-            // });
-
-            localStorage.removeItem("refreshtoken")
+            res.clearCookie("refreshtoken", {
+                path: "/user/refresh_token",
+            });
 
             return res.json({
                 msg: "Logged out successfully",

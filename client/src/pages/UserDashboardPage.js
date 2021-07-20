@@ -51,7 +51,6 @@ function UserDashBoardPage() {
         axios
             .post("/user/refresh_token")
             .then((response) => {
-                console.log(response);
                 axios
                     .get("/user/info", {
                         headers: {
@@ -69,7 +68,7 @@ function UserDashBoardPage() {
         //         dispatch(dispatchGetAllUsers(res));
         //     });
         // }
-    }, []);
+    }, [token, dispatch, callback]);
 
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
@@ -147,11 +146,11 @@ function UserDashBoardPage() {
             const res = await axios.post("/user/logout");
             console.log(res);
             localStorage.removeItem("firstLogin");
-            //window.location.href = "/logout";
+            window.location.href = "/logout";
 
             console.log(3);
 
-            history.push("/logout");
+            //history.push("/logout");
         } catch (err) {
             console.log("errrrr");
             //window.location.href = "/logout";

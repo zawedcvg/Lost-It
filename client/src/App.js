@@ -23,7 +23,7 @@ import ActivationSucessfulPage from "./pages/ActivationSuccessfulPage";
 
 function App() {
     const auth = useSelector((state) => state.auth);
-    // console.log(auth);
+    console.log(auth);
     const { isLogged, isAdmin } = auth;
 
     return (

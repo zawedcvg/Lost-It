@@ -36,12 +36,7 @@ function LoginPage() {
             });
             setUser({ ...user, err: "", success: res.data.msg });
 
-            const token = await axios.post("/user/refresh_token");
-            console.log("here");
-            console.log(token.data);
-            // localStorage.setItem("refreshtoken", token.data.access_token);
-
-            // localStorage.setItem("firstLogin", true);
+            localStorage.setItem("firstLogin", true);
 
             dispatch(dispatchLogin());
             history.push("/userdashboard");
