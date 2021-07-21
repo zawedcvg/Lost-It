@@ -140,6 +140,7 @@ const ListingsPage = () => {
                             (toBeDisplayed || requiredItems).map((items) => (
                                 <Post
                                     key={items._id}
+                                    name={items.name}
                                     type={items.type}
                                     img={items.img}
                                     date={items.date}

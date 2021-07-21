@@ -22,8 +22,8 @@ const isSmall = (password) => {
     return false;
 };
 
-const isMatch = (password, cf_password) => {
-    if (password === cf_password) return true;
+const isMatch = (password, confirmPassword) => {
+    if (password === confirmPassword) return true;
     return false;
 };
 

@@ -3,7 +3,7 @@ import App from "./App";
 
 test("renders the output of the text display : Lost It", () => {
     render(<App />);
-    const linkElement = screen.getByText(/Lost It/);
+    const linkElement = screen.getByText(/Lost-It/);
     expect(linkElement).toBeInTheDocument();
 });
 
@@ -15,7 +15,7 @@ test("renders the output of the text display : Log In", () => {
 
 test("renders the output of the text display on Main Page", () => {
     render(<App />);
-    const linkElement = screen.getByText(/Lost It - a digitized lost & found, right with you/);
+    const linkElement = screen.getByText(/A digitized lost & found system/);
     expect(linkElement).toBeInTheDocument();
 });
 

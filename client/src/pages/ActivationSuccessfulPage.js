@@ -40,11 +40,7 @@ const ActivationSuccessfulPage = () => {
 
             <div className={ActivationSuccessfulPageCSS.no_scroll}>
                 <div className={ActivationSuccessfulPageCSS.auth_success}>
-                    <h1
-                        className={
-                            ActivationSuccessfulPageCSS.auth_success_text
-                        }
-                    >
+                    <h1 className={ActivationSuccessfulPageCSS.auth_success_text}>
                         Activation Successful
                     </h1>
                     <Link to="/login">Log In Here</Link>

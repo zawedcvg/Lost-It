@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserDashboardPage from "./pages/UserDashboardPage";
-import DataProvider from "./redux/store.js";
-// import NotFound from "./pages/NotFound";
-import { useSelector } from "react-redux";
 import EditUserDetailsPage from "./pages/EditUserDetailsPage";
 import LogoutPage from "./pages/LogoutPage";
 import ListingsPage from "./pages/ListingsPage";
@@ -22,10 +19,10 @@ import UpdatePost from "./pages/UpdatePost";
 import ActivationSucessfulPage from "./pages/ActivationSuccessfulPage";
 
 function App() {
-    let isLogged = true;
+    let isLogged = false;
 
     if (localStorage.getItem("firstLogin")) {
-        isLogged = false;
+        isLogged = true;
     }
 
     return (
@@ -75,6 +72,12 @@ function App() {
                         component={ResetSuccessfulPage}
                     />
 
+                    <Route 
+                        path="/updatepost/:id"
+                        exact
+                        component={UpdatePost}
+                    />
+
                     <Route
                         path="/edituserdetails"
                         component={isLogged ? EditUserDetailsPage : LoginPage}
@@ -86,8 +89,6 @@ function App() {
                     <Route path="/myposts" exact component={MyPosts} />
 
                     <Route path="/post/:id" exact component={PostInfoPage} />
-
-                    <Route path="/updatepost/:id" exact component={UpdatePost} />
 
                     <Route path="/logout" exact component={LogoutPage} />
                 </Switch>

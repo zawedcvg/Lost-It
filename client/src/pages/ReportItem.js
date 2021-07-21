@@ -3,6 +3,7 @@ import MetaTags from "react-meta-tags";
 import ReportItemCSS from "../styles/ReportItemPage.module.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import post from "../images/post.png"
 
 function ReportItem() {
     const [item, setItem] = useState({
@@ -154,7 +155,7 @@ function ReportItem() {
                         </button>
                     </form>
                 </div>
-                <img src="https://source.unsplash.com/random" alt="something" />
+                <img src={post} alt="something" />
             </div>
         </div>
     );

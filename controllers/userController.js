@@ -252,12 +252,12 @@ const userController = {
 
     updateUser: async (req, res) => {
         try {
-            const { name, avatar } = req.body;
+            const { name, email } = req.body;
             await Users.findOneAndUpdate(
                 { _id: req.user.id },
                 {
                     name,
-                    avatar,
+                    email,
                 }
             );
 

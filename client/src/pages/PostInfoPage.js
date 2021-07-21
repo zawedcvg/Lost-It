@@ -196,15 +196,12 @@ const PostInfoPage = () => {
         console.log(res);
     };
 
-    const handleGoBack = () => {
-        history.push("/listings");
-    };
-
     return (
         <div className="PostInfoPage">
             <div className="post_info">
                 <Post
                     key={item._id}
+                    name={item.name}
                     type={item.type}
                     img={item.img}
                     date={item.date}
@@ -212,19 +209,11 @@ const PostInfoPage = () => {
                     location={item.location}
                     description={item.description}
                     likes={item.likes}
-                    link={item.link}
+                    link={item.id}
                 />
             </div>
-            <button className={PostInfoPageCSS.btn_post} onClick={handleDelete}>
-                Delete Post
-            </button>
-            <button
-                className={PostInfoPageCSS.btn_post}
-                onClick={handleUpdatePost}
-            >
-                Update Post
-            </button>
-            {isOwner ? (
+
+            {
                 !saved ? (
                     <button
                         className={PostInfoPageCSS.btn_post}
@@ -240,9 +229,7 @@ const PostInfoPage = () => {
                         Unsave Post
                     </button>
                 )
-            ) : (
-                <span></span>
-            )}
+            }
             {isOwner ? (
                 isLost ? (
                     <button
@@ -262,8 +249,24 @@ const PostInfoPage = () => {
             ) : (
                 <span></span>
             )}
-            <button className={PostInfoPageCSS.btn_post} onClick={handleGoBack}>
-                Go back
+
+            {isOwner ? (
+                <div>
+                <button className={PostInfoPageCSS.btn_post} onClick={handleDelete}>
+                    Delete Post
+                </button>
+                <button
+                    className={PostInfoPageCSS.btn_post}
+                    onClick={handleUpdatePost}>
+                    Update Post
+                </button>
+                </div>
+            ) : (
+                <span></span>
+            )}
+
+            <button className={PostInfoPageCSS.btn_post} onClick={e => history.push("/listings")}>
+                Go back to listings
             </button>
         </div>
     );
