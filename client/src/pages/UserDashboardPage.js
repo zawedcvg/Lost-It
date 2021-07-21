@@ -5,11 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 // import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import UserDashboardPageCSS from "../styles/UserDashboardPage.module.css";
-//import {showSuccessMsg, showErrMsg} from '../../utils/notification/Notification'
-import {
-    fetchAllUsers,
-    dispatchGetAllUsers,
-} from "../redux/actions/usersAction";
 
 const isSmall = (password) => {
     if (password.length < 6) return true;
@@ -40,9 +35,6 @@ function UserDashBoardPage() {
     const [data, setData] = useState(initialState);
     const { name, password, cf_password, err, success } = data;
 
-    const [avatar, setAvatar] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [callback, setCallback] = useState(false);
     const history = useHistory();
 
     const dispatch = useDispatch();
@@ -63,12 +55,7 @@ function UserDashBoardPage() {
                     .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
-        // if (isAdmin) {
-        //     fetchAllUsers(token).then((res) => {
-        //         dispatch(dispatchGetAllUsers(res));
-        //     });
-        // }
-    }, [token, dispatch, callback]);
+    }, []);
 
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
@@ -138,7 +125,7 @@ function UserDashBoardPage() {
     //     }
     // };
 
-    const handleLogout = async () => {
+    const handleLogout = async (e) => {
         try {
             console.log(1);
 
@@ -146,11 +133,11 @@ function UserDashBoardPage() {
             const res = await axios.post("/user/logout");
             console.log(res);
             localStorage.removeItem("firstLogin");
-            window.location.href = "/logout";
+            // window.location.href = "/logout";
 
             console.log(3);
 
-            //history.push("/logout");
+            history.push("/logout");
         } catch (err) {
             console.log("errrrr");
             //window.location.href = "/logout";
@@ -281,17 +268,12 @@ function UserDashBoardPage() {
                             <br />
                             {user.email}
                         </p>
-                        <form
-                            className={UserDashboardPageCSS.logout_form}
-                            onSubmit={handleLogout}
+                        <button
+                            onClick={handleLogout}
+                            className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}
                         >
-                            <button
-                                onClick={handleLogout}
-                                className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}
-                            >
-                                Logout
-                            </button>
-                        </form>
+                            Logout
+                        </button>
                     </div>
                 </div>
             </div>
