@@ -281,7 +281,10 @@ function UserDashBoardPage() {
                             <br />
                             {user.email}
                         </p>
-                        <form onSubmit={handleLogout}>
+                        <form
+                            className={UserDashboardPageCSS.logout_form}
+                            onSubmit={handleLogout}
+                        >
                             <button
                                 onClick={handleLogout}
                                 className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}

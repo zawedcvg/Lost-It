@@ -21,14 +21,16 @@ html {
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
+    margin: auto;
 }
 
 .container {
-    margin: 3% 5% 5% 10%;
-    padding: 2% 2% 2% 0%;
+    margin: 3% 5% 16rem 10%;
+    padding: 2% 2% 6% 0%;
     border: 1px solid #786c78;
-    border-radius: 9rem;
+    border-radius: 3rem;
     width: 40%;
+    /*min-height: 100%;*/
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -36,7 +38,8 @@ html {
 }
 
 .heading {
-    text-align: center;
+    text-align: left;
+    margin-left: 16rem;
 }
 
 .top {
@@ -57,18 +60,16 @@ img {
 
 .user_details {
     position: relative;
-    font-size: 3rem;
+    font-size: 4rem;
+    padding-top: 2rem;
     padding-left: 10%;
 }
 
-p {
-    position: relative;
-    top: 2rem;
-    font-size: 3rem;
-}
-br {
-    line-height: 200%;
-}
+/*.userinfo {*/
+/*position: relative;*/
+/*top: 2rem;*/
+/*font-size: 10rem;*/
+/*}*/
 
 .side {
     display: flex;

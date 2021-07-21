@@ -9,4 +9,18 @@
     border: 1px solid black;
     justify-content: flex-start;
     background-color: white;
+    text-align: left;
 }
+
+.post_details {
+    color: black;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.post_details a {
+    color: black;
+    font-size: 2rem;
+    text-align: left;
+}
+
