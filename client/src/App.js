@@ -22,12 +22,13 @@ import UpdatePost from "./pages/UpdatePost";
 import ActivationSucessfulPage from "./pages/ActivationSuccessfulPage";
 
 function App() {
-    const auth = useSelector((state) => state.auth);
-    console.log(auth);
-    const { isLogged, isAdmin } = auth;
+    let isLogged = true;
+
+    if (localStorage.getItem("firstLogin")) {
+        isLogged = false;
+    }
 
     return (
-        <DataProvider>
             <Router>
                 <Switch>
                     <Route path="/" exact component={MainPage} />
@@ -91,7 +92,6 @@ function App() {
                     <Route path="/logout" exact component={LogoutPage} />
                 </Switch>
             </Router>
-        </DataProvider>
     );
 }
 
