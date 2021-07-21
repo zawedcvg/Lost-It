@@ -9,7 +9,7 @@ const fileUpload = require("express-fileupload");
 const userRouter = require("./routes/userRouter.js");
 const upload = require("./routes/upload.js");
 const postRouter = require("./routes/postRouter.js");
-const path = require("path");
+
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use("/api", upload);
 app.use("/listings", postRouter);
 
 const URI = `${process.env.MONGODB_URL}`;
-console.log(URI);
+// console.log(URI);
 mongoose.connect(
     URI,
     {
