@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Lucida Console', monospace;
+    font-family: "Lucida Console", monospace;
     font-size: 62.5%;
 }
 
@@ -30,7 +30,7 @@
     font-size: 3rem;
 }
 
-span {
+.account {
     font-size: 2.5rem;
     padding-left: 5%;
     color: grey;

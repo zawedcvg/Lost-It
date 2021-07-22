@@ -19,8 +19,12 @@
 }
 
 .post_details a {
-    color: black;
+    color: blue;
     font-size: 2rem;
     text-align: left;
 }
 
+.post_label {
+    color: grey;
+    font-size: 2rem;
+}

@@ -214,7 +214,9 @@ const Register = () => {
                         </button>
                     </form>
                 </div>
-                <span>Already have an account? </span>
+                <span className={RegisterPageCSS.account}>
+                    Already have an account?{" "}
+                </span>
                 <Link className={RegisterPageCSS.sign_up} to="/login">
                     Login here
                 </Link>

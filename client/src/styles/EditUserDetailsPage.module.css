@@ -13,7 +13,6 @@ html {
 
 .scroll {
     overflow: hidden;
-    
 }
 
 .EditUserDetailsPage {
@@ -21,21 +20,32 @@ html {
     background-image: url(../svg-assets/edit-user-details-bg.svg);
     background-repeat: no-repeat;
     background-size: cover;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-content: center;*/
+    /*align-items: center;*/
 }
 
 .container {
-    margin: 3%;
-    padding: 2% 2% 2% 2%;
-    border-radius: 10%;
+    width: 80rem;
+    margin: 2rem auto;
+    /*margin: 3%;*/
+    padding: 4rem 9rem 4rem;
+    border-radius: 3rem;
     border: 1px solid #786c78;
-    max-width: 100rem;
+    /*max-width: 45%;*/
+    /*background-color: white;*/
+    box-shadow: rgba(0, 0, 0, 0.35) 0rem 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
 }
 
 .edit_details {
     font-size: 5rem;
-    align-self: center;
-    position: relative;
-    left: 20%;
+    text-align: center;
 }
 
 .label_edit_user,
@@ -55,6 +65,7 @@ html {
     border: 2px solid black;
 }
 .btn_edit_user {
+    align-content: center;
     display: inline-block;
     padding: 1.5rem 3.5rem;
     background-color: #ffffff;
@@ -69,6 +80,7 @@ html {
     align-content: center;
     margin-right: 10%;
     top: 10%;
+    margin-bottom: 2rem;
 }
 .btn_edit_user:hover {
     transform: translate(2px, 2px);
@@ -78,4 +90,8 @@ html {
 .btn_edit_user:active {
     transform: translate(6px, 6px);
     box-shadow: none;
+}
+
+.prev_details {
+    font-size: 2rem;
 }
