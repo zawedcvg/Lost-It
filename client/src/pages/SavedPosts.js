@@ -59,7 +59,8 @@ const SavedPosts = () => {
             </nav>
             <h1 className="heading">Saved</h1>
             <div className={SavedPostsCSS.listings_body}>
-                {toBeDisplayed.map((items) => (
+                {toBeDisplayed.length !== 0 ? 
+                (toBeDisplayed.map((items) => (
                     <Post
                         key={items._id}
                         name={items.name}
@@ -72,7 +73,8 @@ const SavedPosts = () => {
                         link={items._id}
                         likes={items.likes}
                     />
-                ))}
+                ))) : 
+                (<p>There are no saved posts.</p>)}
             </div>
         </div>
     );

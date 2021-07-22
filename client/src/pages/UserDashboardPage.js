@@ -88,22 +88,22 @@ function UserDashBoardPage() {
         setIsAdmin(false);
     }
 
-    // const handleGetAllUsers = () => {
-    //     axios.post("/user/refresh_token")
-    //         .then(res => {
-    //             axios.get(`/user/completeinfo`, {
-    //                 headers : {
-    //                     Authorization : res.data.access_token
-    //                 }
-    //             })
-    //             .then(response => {
-    //                 alert("Please check your console for all the info")
-    //                 console.log(response.data.users);
-    //             })
-    //             .catch(err => console.log(err));
-    //         })
-    //         .catch(err => console.log(err));
-    // }
+    const handleGetAllUsers = () => {
+        axios.post("/user/refresh_token")
+            .then(res => {
+                axios.get(`/user/completeinfo`, {
+                    headers : {
+                        Authorization : res.data.access_token
+                    }
+                })
+                .then(response => {
+                    alert("Please check your console for all the info")
+                    console.log(response.data.users);
+                })
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    }
 
     const handleLogout = async (e) => {
         try {
@@ -187,12 +187,12 @@ function UserDashBoardPage() {
                                     >
                                         Delete user
                                     </button>
-                                    {/* <button
+                                    <button
                                         className={UserDashboardPageCSS.btn_entry}
                                         onClick={handleGetAllUsers}
                                     >
                                         Get info about all the users
-                                    </button> */}
+                                    </button>
                                     <button
                                         className={UserDashboardPageCSS.btn_entry}
                                         onClick={handleRevertStatusToBasicUser}
