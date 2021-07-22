@@ -3,7 +3,8 @@ import MetaTags from "react-meta-tags";
 import ReportItemCSS from "../styles/ReportItemPage.module.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import post from "../images/post.png"
+import post from "../images/post.png";
+import { Link } from "react-router-dom";
 
 function ReportItem() {
     const [item, setItem] = useState({
@@ -78,6 +79,39 @@ function ReportItem() {
                 <title>Report An Item</title>
             </MetaTags>
             <div className={ReportItemCSS.container}>
+                <nav className={ReportItemCSS.navigation} role="navigation">
+                    <ul>
+                        <li>
+                            <img
+                                className={ReportItemCSS.img1}
+                                src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                                alt="thing"
+                            />
+                            <ul class="dropdown">
+                                <li>
+                                    <Link to={`/listings`}>Listings</Link>{" "}
+                                    <br />
+                                </li>
+                                <li>
+                                    <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                    <br />
+                                </li>
+                                <li>
+                                    <Link to={`/reportitem`}>
+                                        Report An Item
+                                    </Link>{" "}
+                                </li>
+                                <li>
+                                    <Link to={`/myposts`}>My Posts</Link> <br />
+                                </li>
+                                <li>
+                                    <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                    <br />
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
                 <div className={ReportItemCSS.details}>
                     <h1>Report an Item</h1>
                     <form onSubmit={handleSubmit}>

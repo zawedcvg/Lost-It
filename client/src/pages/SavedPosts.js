@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Post from "./Post";
 import SavedPostsCSS from "../styles/SavedPosts.module.css";
@@ -26,6 +27,36 @@ const SavedPosts = () => {
 
     return (
         <div>
+            <nav className={SavedPostsCSS.navigation} role="navigation">
+                <ul>
+                    <li>
+                        <img
+                            className={SavedPostsCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                <br />
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
             <h1 className="heading">Saved</h1>
             <div className={SavedPostsCSS.listings_body}>
                 {toBeDisplayed.map((items) => (
