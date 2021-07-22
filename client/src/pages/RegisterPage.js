@@ -99,7 +99,7 @@ const Register = () => {
                 password,
             });
 
-            console.log(res);
+            // console.log(res);
             setUser({ ...user, err: "", success: res.data.msg });
             history.push("/emailhasbeensentforactivation");
             // toast.success(res.data.msg);

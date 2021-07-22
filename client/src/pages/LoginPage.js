@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { dispatchLogin } from "../redux/actions/authAction";
 import { useDispatch } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
 // import { GoogleLogin } from "react-google-login";
 // import FacebookLogin from 'react-facebook-login';
 
@@ -34,6 +35,8 @@ function LoginPage() {
                 email,
                 password,
             });
+
+            alert(res.data.msg);
             setUser({ ...user, err: "", success: res.data.msg });
 
             localStorage.setItem("firstLogin", true);
@@ -95,6 +98,7 @@ function LoginPage() {
             </MetaTags>
 
             <div className={LoginPageCSS.scroll}>
+                <ToastContainer />
                 <h1 className={LoginPageCSS.login}>Log In</h1>
                 <div className={LoginPageCSS.form_list}>
                     <form

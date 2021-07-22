@@ -1,31 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MetaTags from "react-meta-tags";
-import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import UserDashboardPageCSS from "../styles/UserDashboardPage.module.css";
 import userprofile from "../images/userprofile.png"
 
-const isSmall = (password) => {
-    if (password.length < 6) return true;
-    return false;
-};
-
-const isMatch = (password, cf_password) => {
-    if (password === cf_password) return true;
-    return false;
-};
-
-const initialState = {
-    name: "",
-    password: "",
-    cf_password: "",
-    err: "",
-    success: "",
-};
-
 function UserDashBoardPage() {
     const [user, setUser] = useState({});
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const history = useHistory();
 
@@ -40,22 +22,99 @@ function UserDashBoardPage() {
                         },
                     })
                     .then((res) => {
+                        if (res.data.role === 1) {
+                            setIsAdmin(true);
+                        } else {
+                            setIsAdmin(false);
+                        }
                         setUser(res.data);
                     })
                     .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [isAdmin]);
+
+    const handleDeleteUser = () => {
+        axios.post("/user/refresh_token")
+            .then(res => {
+                if (window.confirm("Are you sure you want to delete this account?")) {
+                    axios.delete(`/user/delete/${user._id}`, {
+                        headers : {
+                            Authorization : res.data.access_token
+                        }
+                    })
+                    .then(response => {
+                        alert(response.data.msg);
+                    })
+                    .catch(err => console.log(err))
+                }
+            })
+            .catch(err => console.log(err))
+        
+        history.push("/");
+    }
+
+    // const handleRequest = () => {
+    //     console.log("here1")
+    //     axios.post("/user/refresh_token")
+    //         .then(res => {
+    //             axios.post(`/requestadmin/${user._id}`, {
+    //                 headers : {
+    //                     Authorization : res.data.access_token
+    //                 }
+    //             })
+    //             .then(resp => {
+    //                 alert(resp.data.msg)
+    //             })
+    //             .catch(err => console.log(err));
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
+    const handleRevertStatusToBasicUser = () => {
+        axios.post("/user/refresh_token")
+            .then(res => {
+                axios.patch(`/user/update_role/${user._id}`, { role : 0 }, {
+                    headers : {
+                        Authorization : res.data.access_token
+                    }
+                })
+                .then(response => {
+                    alert(response.data.msg)
+                })
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+        setIsAdmin(false);
+    }
+
+    // const handleGetAllUsers = () => {
+    //     axios.post("/user/refresh_token")
+    //         .then(res => {
+    //             axios.get(`/user/completeinfo`, {
+    //                 headers : {
+    //                     Authorization : res.data.access_token
+    //                 }
+    //             })
+    //             .then(response => {
+    //                 alert("Please check your console for all the info")
+    //                 console.log(response.data.users);
+    //             })
+    //             .catch(err => console.log(err));
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     const handleLogout = async (e) => {
         try {
             const res = await axios.post("/user/logout");
             localStorage.removeItem("firstLogin");
+            localStorage.removeItem("refreshtoken");
+            alert(res.data.msg);
 
             history.push("/logout");
         } catch (err) {
             console.log("errrrr");
-            //window.location.href = "/logout";
         }
     };
 
@@ -112,6 +171,41 @@ function UserDashBoardPage() {
                             >
                                 View saved posts
                             </button>
+                            {/* {
+                                !isAdmin ? (
+                                    <button
+                                        className={UserDashboardPageCSS.btn_entry}
+                                        onClick={handleRequest}
+                                    >
+                                        Request admin access
+                                    </button>
+                                ) : <span></span>
+                            } */}
+                            {
+                                isAdmin ? (
+                                    <div>
+                                    <button
+                                        className={UserDashboardPageCSS.btn_entry}
+                                        onClick={handleDeleteUser}
+                                    >
+                                        Delete user
+                                    </button>
+                                    {/* <button
+                                        className={UserDashboardPageCSS.btn_entry}
+                                        onClick={handleGetAllUsers}
+                                    >
+                                        Get info about all the users
+                                    </button> */}
+                                    <button
+                                        className={UserDashboardPageCSS.btn_entry}
+                                        onClick={handleRevertStatusToBasicUser}
+                                    >
+                                        Revert my status to basic user
+                                    </button>
+
+                                    </div>
+                                ) : <span></span>
+                            }
                         </form>
                     </div>
                     <div

@@ -21,6 +21,7 @@ router.patch(
     authAdmin,
     userController.updateUserRole
 );
+router.post("/requestadmin/:id", auth, userController.requestAdminAccess);
 router.delete("/delete/:id", auth, authAdmin, userController.deleteUser);
 
 module.exports = router;

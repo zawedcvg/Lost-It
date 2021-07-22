@@ -226,7 +226,10 @@ const userController = {
     getCompleteInfo: async (req, res) => {
         try {
             const users = await Users.find().select("-password");
-            console.log(users);
+            console.log(users)
+            res.json({
+                "users" : users
+            });
         } catch (err) {
             return res.status(500).json({
                 msg: err.message,
@@ -305,6 +308,24 @@ const userController = {
             });
         }
     },
+
+    requestAdminAccess : async (req, res) => {
+        try {
+            const user = await Users.findById(req.params.id);
+
+            console.log("sending email")
+
+            sendMail("orglostit@gmail.com", `Admin access has been requested. Email :  ${user.email}, id : ${user._id}`, "Admin access");
+
+            res.json({
+                msg: "Email sent to admin to request admin access",
+            });
+        } catch (err) {
+            return res.status(500).json({
+                msg: err.message,
+            });
+        }
+    }
 };
 
 function validateEmail(email) {
