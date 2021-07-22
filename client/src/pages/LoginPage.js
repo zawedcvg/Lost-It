@@ -138,7 +138,7 @@ function LoginPage() {
                 </div>
 
                 <br />
-                <span> New User? </span>
+                <span className={LoginPageCSS.new_user}> New User? </span>
                 <Link className={LoginPageCSS.sign_up} to="/register">
                     Sign Up here
                 </Link>

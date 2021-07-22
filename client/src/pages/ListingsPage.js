@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
@@ -11,25 +12,25 @@ const ListingsPage = () => {
 
     const getItemsData = async (token) => {
         try {
-            const {data} = await axios.get("/listings/posts", {
+            const { data } = await axios.get("/listings/posts", {
                 headers: {
-                    Authorization: token
-                }
+                    Authorization: token,
+                },
             });
             return data;
         } catch (err) {
             console.log(err.message);
         }
-    }
+    };
 
     const getPermissions = async () => {
         try {
-            const {data} = await axios.post("/user/refresh_token");
-            return data.access_token;    
+            const { data } = await axios.post("/user/refresh_token");
+            return data.access_token;
         } catch (err) {
             console.log(err.message);
-        }   
-    }
+        }
+    };
 
     let componentMounted = true;
 
@@ -45,9 +46,9 @@ const ListingsPage = () => {
             return () => {
                 componentMounted = false;
             };
-        }
+        };
         temp();
-    }, [])
+    }, []);
 
     // useEffect(() => {
     //     axios.post("/user/refresh_token")
@@ -67,33 +68,33 @@ const ListingsPage = () => {
 
     const history = useHistory();
 
-    const obtainListings = e => {
-        const temp = []; 
+    const obtainListings = (e) => {
+        const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             temp.push(requiredItems[i]);
         }
         setToBeDisplayed(temp);
     };
 
-    const handleLost = e => {
-        const temp = []; 
+    const handleLost = (e) => {
+        const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             if (requiredItems[i].isLost) {
                 temp.push(requiredItems[i]);
             }
         }
         setToBeDisplayed(temp);
-    }
+    };
 
-    const handleRecovered = e => {
-        const temp = []; 
+    const handleRecovered = (e) => {
+        const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             if (!requiredItems[i].isLost) {
                 temp.push(requiredItems[i]);
             }
         }
         setToBeDisplayed(temp);
-    }
+    };
 
     return (
         <div className={ListingsPageCSS.scroll_listings}>
@@ -112,8 +113,39 @@ const ListingsPage = () => {
                     className={ListingsPageCSS.top}
                     id={ListingsPageCSS.something}
                 >
+                    <nav
+                        className={ListingsPageCSS.outer_navigation}
+                        role="navigation"
+                    >
+                        <ul>
+                            <li>
+                                <img
+                                    className={ListingsPageCSS.img1}
+                                    src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                                    alt="thing"
+                                />
+                                <ul class="dropdown">
+                                    <li>
+                                        <Link to={`/listings`}>Listings</Link>{" "}
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <Link to={`/userdashboard`}>
+                                            Dashboard
+                                        </Link>{" "}
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <Link to={`/reportitem`}>
+                                            Report An Item
+                                        </Link>{" "}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                     <h1 className={ListingsPageCSS.listings_text}>Listings</h1>
-                    <nav>
+                    <nav className={ListingsPageCSS.navigation}>
                         <button
                             className={ListingsPageCSS.options_button}
                             onClick={handleLost}
@@ -136,29 +168,32 @@ const ListingsPage = () => {
                 </div>
                 <div className={ListingsPageCSS.bottom_part}>
                     <div className={ListingsPageCSS.listings_body}>
-                        {
-                            (toBeDisplayed || requiredItems).map((items) => (
-                                <Post
-                                    key={items._id}
-                                    name={items.name}
-                                    type={items.type}
-                                    img={items.img}
-                                    date={items.date}
-                                    time={items.time}
-                                    location={items.location}
-                                    description={items.description}
-                                    link={items._id}
-                                    likes={items.likes}
-                                />
-                            ))
-                        }
-                        
+                        {(toBeDisplayed || requiredItems).map((items) => (
+                            <Post
+                                key={items._id}
+                                name={items.name}
+                                type={items.type}
+                                img={items.img}
+                                date={items.date}
+                                time={items.time}
+                                location={items.location}
+                                description={items.description}
+                                link={items._id}
+                                likes={items.likes}
+                            />
+                        ))}
                     </div>
                     <form>
-                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/reportitem")}>
+                        <button
+                            className={ListingsPageCSS.btn_listings}
+                            onClick={(e) => history.push("/reportitem")}
+                        >
                             Make a report
                         </button>
-                        <button className={ListingsPageCSS.btn_listings} onClick={e => history.push("/userdashboard")}>
+                        <button
+                            className={ListingsPageCSS.btn_listings}
+                            onClick={(e) => history.push("/userdashboard")}
+                        >
                             Go back
                         </button>
                     </form>

@@ -1,4 +1,5 @@
 import Post from "./Post";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
@@ -197,8 +198,32 @@ const PostInfoPage = () => {
     };
 
     return (
-        <div className="PostInfoPage">
-            <div className="post_info">
+        <div className={PostInfoPageCSS.PostInfoPage}>
+            <h1 className={PostInfoPageCSS.heading}>Post Info</h1>
+            <nav className={PostInfoPageCSS.navigation} role="navigation">
+                <ul>
+                    <li>
+                        <img
+                            className={PostInfoPageCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div className={PostInfoPageCSS.post_info}>
                 <Post
                     key={item._id}
                     name={item.name}
@@ -213,8 +238,8 @@ const PostInfoPage = () => {
                 />
             </div>
 
-            {
-                !saved ? (
+            <div className={PostInfoPageCSS.non_owner}>
+                {!saved ? (
                     <button
                         className={PostInfoPageCSS.btn_post}
                         onClick={handleSave}
@@ -228,44 +253,54 @@ const PostInfoPage = () => {
                     >
                         Unsave Post
                     </button>
-                )
-            }
-            {isOwner ? (
-                isLost ? (
-                    <button
-                        className={PostInfoPageCSS.btn_post}
-                        onClick={handleChangeStatus}
-                    >
-                        Change status (to recovered)
-                    </button>
+                )}
+            </div>
+            <fieldset className={PostInfoPageCSS.owner_rights}>
+                <legend>Owner Rights</legend>
+                {isOwner ? (
+                    isLost ? (
+                        <button
+                            className={PostInfoPageCSS.btn_post}
+                            onClick={handleChangeStatus}
+                        >
+                            Change status (to recovered)
+                        </button>
+                    ) : (
+                        <button
+                            className={PostInfoPageCSS.btn_post}
+                            onClick={handleRevertStatus}
+                        >
+                            Revert status (to lost)
+                        </button>
+                    )
                 ) : (
-                    <button
-                        className={PostInfoPageCSS.btn_post}
-                        onClick={handleRevertStatus}
-                    >
-                        Revert status (to lost)
-                    </button>
-                )
-            ) : (
-                <span></span>
-            )}
+                    <span></span>
+                )}
 
-            {isOwner ? (
-                <div>
-                <button className={PostInfoPageCSS.btn_post} onClick={handleDelete}>
-                    Delete Post
-                </button>
-                <button
-                    className={PostInfoPageCSS.btn_post}
-                    onClick={handleUpdatePost}>
-                    Update Post
-                </button>
-                </div>
-            ) : (
-                <span></span>
-            )}
+                {isOwner ? (
+                    <div>
+                        <button
+                            className={PostInfoPageCSS.btn_post}
+                            onClick={handleDelete}
+                        >
+                            Delete Post
+                        </button>
+                        <button
+                            className={PostInfoPageCSS.btn_post}
+                            onClick={handleUpdatePost}
+                        >
+                            Update Post
+                        </button>
+                    </div>
+                ) : (
+                    <span></span>
+                )}
+            </fieldset>
 
-            <button className={PostInfoPageCSS.btn_post} onClick={e => history.push("/listings")}>
+            <button
+                className={PostInfoPageCSS.btn_post}
+                onClick={(e) => history.push("/listings")}
+            >
                 Go back to listings
             </button>
         </div>

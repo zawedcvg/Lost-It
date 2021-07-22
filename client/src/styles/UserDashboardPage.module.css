@@ -25,8 +25,8 @@ html {
 }
 
 .container {
-    margin: 3% 5% 16rem 10%;
-    padding: 2% 2% 6% 0%;
+    margin: 3% 5% 01rem 10%;
+    padding: 2% 2% 3% 0%;
     border: 1px solid #786c78;
     border-radius: 3rem;
     width: 40%;
@@ -34,12 +34,13 @@ html {
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: white;
+    backdrop-filter: blur(10px);
+    /*background-color: white;*/
 }
 
 .heading {
-    text-align: left;
-    margin-left: 16rem;
+    /*text-align: left;*/
+    margin-left: 20rem;
 }
 
 .top {
@@ -103,4 +104,9 @@ img {
 
 .logout {
     top: 4rem;
+}
+
+.details {
+    font-size: 2.5rem;
+    color: grey;
 }

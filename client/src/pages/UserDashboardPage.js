@@ -4,7 +4,7 @@ import MetaTags from "react-meta-tags";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import UserDashboardPageCSS from "../styles/UserDashboardPage.module.css";
-import userprofile from "../images/userprofile.png"
+import userprofile from "../images/userprofile.png";
 
 const isSmall = (password) => {
     if (password.length < 6) return true;
@@ -75,10 +75,7 @@ function UserDashBoardPage() {
                 <h1 className={UserDashboardPageCSS.heading}>User Dashboard</h1>
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
-                        <img
-                            src={userprofile}
-                            alt="Profile"
-                        />
+                        <img src={userprofile} alt="Profile" />
                         <form className={UserDashboardPageCSS.side}>
                             <button
                                 onClick={(e) =>
@@ -119,8 +116,15 @@ function UserDashBoardPage() {
                         id="userinfo"
                     >
                         <p id="userinfo">
+                            <span className={UserDashboardPageCSS.details}>
+                                Name:
+                            </span>{" "}
+                            <br />
                             {user.name}
                             <br />
+                            <span className={UserDashboardPageCSS.details}>
+                                Email: <br />
+                            </span>
                             {user.email}
                         </p>
                         <button
