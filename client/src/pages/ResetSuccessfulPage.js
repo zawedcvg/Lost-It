@@ -18,14 +18,18 @@ const ResetSuccessfulPage = () => {
 
             <div className={ActivationSuccessfulPageCSS.no_scroll}>
                 <div className={ActivationSuccessfulPageCSS.auth_success}>
-                    <h1 className={ActivationSuccessfulPageCSS.auth_success_text}>
+                    <h1
+                        className={
+                            ActivationSuccessfulPageCSS.auth_success_text
+                        }
+                    >
                         Reset Successful
                     </h1>
                     <Link to="/login">Log In Here</Link>
                 </div>
             </div>
         </div>
-    ); 
+    );
 };
 
 export default ResetSuccessfulPage;

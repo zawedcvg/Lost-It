@@ -38,27 +38,38 @@ function ResetPasswordPage() {
 
     const handleSubmit = async () => {
         if (isSmall(password)) {
-            return setData({...data, err: "Password must be at least 6 characters.", success: ''})
+            return setData({
+                ...data,
+                err: "Password must be at least 6 characters.",
+                success: "",
+            });
         }
 
         if (!isMatch(password, confirmPassword)) {
-            return setData({...data, err: "Password did not match.", success: ''})
+            return setData({
+                ...data,
+                err: "Password did not match.",
+                success: "",
+            });
         }
-        
+
         try {
-            const res = await axios.post('/user/reset', {password : password}, {
-                headers: {Authorization: id}
-            })
+            const res = await axios.post(
+                "/user/reset",
+                { password: password },
+                {
+                    headers: { Authorization: id },
+                }
+            );
 
             console.log(res);
-            setData({...data, err: "", success: res.data.msg});
+            setData({ ...data, err: "", success: res.data.msg });
             history.push("/resetsuccessful");
-
         } catch (error) {
-            error.response.data.msg && setData({...data, err: error.response.data.msg, success: ''})
+            error.response.data.msg &&
+                setData({ ...data, err: error.response.data.msg, success: "" });
         }
-        
-    }
+    };
 
     return (
         <div className={ResetPasswordPageCSS.ResetPasswordPage}>
@@ -79,8 +90,8 @@ function ResetPasswordPage() {
                     </h1>
                     {
                         <div>
-                        {err && <ErrorNotification msg={err} />}
-                        {success && <SuccessNotification msg={success} />}
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
                         </div>
                     }
                     <form formAction="changepassword" onSubmit={handleSubmit}>

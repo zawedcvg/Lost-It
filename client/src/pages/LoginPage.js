@@ -46,7 +46,8 @@ function LoginPage() {
             dispatch(dispatchLogin());
             history.push("/userdashboard");
         } catch (err) {
-            err.response.data.msg && setUser({ ...user, err: err.response.data.msg, success: "" });
+            err.response.data.msg &&
+                setUser({ ...user, err: err.response.data.msg, success: "" });
         }
     };
 
@@ -104,8 +105,8 @@ function LoginPage() {
                 <div className={LoginPageCSS.form_list}>
                     {
                         <div>
-                        {err && <ErrorNotification msg={err} />}
-                        {success && <SuccessNotification msg={success} />}
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
                         </div>
                     }
                     <form

@@ -20,7 +20,8 @@ function ReportItem() {
         success: "",
     });
 
-    const { name, isLost, img, date, location, description, err, success } = item;
+    const { name, isLost, img, date, location, description, err, success } =
+        item;
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
@@ -39,7 +40,6 @@ function ReportItem() {
                     Authorization: access_res.data.access_token,
                 },
             });
-
 
             const toBeReported = {
                 name: name,
@@ -60,7 +60,8 @@ function ReportItem() {
             setItem({ ...item, err: "", success: res.data.msg });
             history.push("/listings");
         } catch (err) {
-            err.response.data.msg && setItem({ ...item, err: err.response.data.msg, success: "" });
+            err.response.data.msg &&
+                setItem({ ...item, err: err.response.data.msg, success: "" });
         }
     };
 
@@ -114,8 +115,8 @@ function ReportItem() {
                     <h1>Report an Item</h1>
                     {
                         <div>
-                        {err && <ErrorNotification msg={err} />}
-                        {success && <SuccessNotification msg={success} />}
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
                         </div>
                     }
                     <form onSubmit={handleSubmit}>

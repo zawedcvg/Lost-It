@@ -1,11 +1,13 @@
-import InfoNotificationCSS from "../styles/InfoNotification.module.css"
+import InfoNotificationCSS from "../styles/InfoNotification.module.css";
 
-const InfoNotification = props => {
+const InfoNotification = (props) => {
     return (
-        <div className={`${InfoNotificationCSS.bar} ${InfoNotificationCSS.info}`}>
+        <div
+            className={`${InfoNotificationCSS.bar} ${InfoNotificationCSS.info}`}
+        >
             {props.msg}
         </div>
-    )
-}
+    );
+};
 
 export default InfoNotification;

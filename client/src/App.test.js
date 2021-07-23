@@ -18,4 +18,3 @@ test("renders the output of the text display on Main Page", () => {
     const linkElement = screen.getByText(/A digitized lost & found system/);
     expect(linkElement).toBeInTheDocument();
 });
-

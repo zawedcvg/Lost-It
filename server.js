@@ -10,7 +10,6 @@ const userRouter = require("./routes/userRouter.js");
 const upload = require("./routes/upload.js");
 const postRouter = require("./routes/postRouter.js");
 
-
 const app = express();
 
 app.use(cors());

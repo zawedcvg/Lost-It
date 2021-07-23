@@ -26,73 +26,79 @@ function App() {
     }
 
     return (
-            <Router>
-                <Switch>
-                    <Route path="/" exact component={MainPage} />
-                    <Route path="/login" exact component={LoginPage} />
-                    <Route path="/register" exact component={RegisterPage} />
-                    <Route
-                        path="/userdashboard"
-                        exact
-                        component={isLogged ? UserDashboardPage : LoginPage}
-                    />
+        <Router>
+            <Switch>
+                <Route path="/" exact component={MainPage} />
+                <Route path="/login" exact component={LoginPage} />
+                <Route path="/register" exact component={RegisterPage} />
+                <Route
+                    path="/userdashboard"
+                    exact
+                    component={isLogged ? UserDashboardPage : LoginPage}
+                />
 
-                    <Route path="/listings" exact component={isLogged ? ListingsPage : LoginPage} />
+                <Route
+                    path="/listings"
+                    exact
+                    component={isLogged ? ListingsPage : LoginPage}
+                />
 
-                    <Route path="/reportitem" exact component={isLogged ? ReportItem : LoginPage} />
+                <Route
+                    path="/reportitem"
+                    exact
+                    component={isLogged ? ReportItem : LoginPage}
+                />
 
-                    <Route
-                        path="/emailhasbeensentforactivation"
-                        exact
-                        component={EmailHasBeenSentForActivationPage}
-                    />
+                <Route
+                    path="/emailhasbeensentforactivation"
+                    exact
+                    component={EmailHasBeenSentForActivationPage}
+                />
 
-                    <Route path="/user/activation/:activation_token" 
-                    exact 
-                    component={ActivationSucessfulPage} />
+                <Route
+                    path="/user/activation/:activation_token"
+                    exact
+                    component={ActivationSucessfulPage}
+                />
 
-                    <Route
-                        path="/emailhasbeensentforreset"
-                        exact
-                        component={EmailHasBeenSentForResetPage}
-                    />
-                    <Route
-                        path="/forgotpassword"
-                        exact
-                        component={ForgotPasswordPage}
-                    />
-                    <Route
-                        path="/user/reset/:id"
-                        exact
-                        component={ResetPasswordPage}
-                    />
-                    <Route
-                        path="/resetsuccessful"
-                        exact
-                        component={ResetSuccessfulPage}
-                    />
+                <Route
+                    path="/emailhasbeensentforreset"
+                    exact
+                    component={EmailHasBeenSentForResetPage}
+                />
+                <Route
+                    path="/forgotpassword"
+                    exact
+                    component={ForgotPasswordPage}
+                />
+                <Route
+                    path="/user/reset/:id"
+                    exact
+                    component={ResetPasswordPage}
+                />
+                <Route
+                    path="/resetsuccessful"
+                    exact
+                    component={ResetSuccessfulPage}
+                />
 
-                    <Route 
-                        path="/updatepost/:id"
-                        exact
-                        component={UpdatePost}
-                    />
+                <Route path="/updatepost/:id" exact component={UpdatePost} />
 
-                    <Route
-                        path="/edituserdetails"
-                        component={isLogged ? EditUserDetailsPage : LoginPage}
-                        exact
-                    />
+                <Route
+                    path="/edituserdetails"
+                    component={isLogged ? EditUserDetailsPage : LoginPage}
+                    exact
+                />
 
-                    <Route path="/savedposts" exact component={SavedPosts} />
+                <Route path="/savedposts" exact component={SavedPosts} />
 
-                    <Route path="/myposts" exact component={MyPosts} />
+                <Route path="/myposts" exact component={MyPosts} />
 
-                    <Route path="/post/:id" exact component={PostInfoPage} />
+                <Route path="/post/:id" exact component={PostInfoPage} />
 
-                    <Route path="/logout" exact component={LogoutPage} />
-                </Switch>
-            </Router>
+                <Route path="/logout" exact component={LogoutPage} />
+            </Switch>
+        </Router>
     );
 }
 

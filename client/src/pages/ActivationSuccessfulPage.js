@@ -44,11 +44,15 @@ const ActivationSuccessfulPage = () => {
                 <div className={ActivationSuccessfulPageCSS.auth_success}>
                     {
                         <div>
-                        {err && <ErrorNotification msg={err} />}
-                        {success && <SuccessNotification msg={success} />}
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
                         </div>
                     }
-                    <h1 className={ActivationSuccessfulPageCSS.auth_success_text}>
+                    <h1
+                        className={
+                            ActivationSuccessfulPageCSS.auth_success_text
+                        }
+                    >
                         Activation Successful
                     </h1>
                     <Link to="/login">Log In Here</Link>

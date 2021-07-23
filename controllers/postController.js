@@ -123,7 +123,7 @@ const postController = {
     },
     likePost: async (req, res) => {
         try {
-            console.log(req.params)
+            console.log(req.params);
             console.log(req.user);
             const post = await Posts.find({
                 _id: req.params.id,
@@ -309,52 +309,52 @@ const postController = {
             return res.status(500).json({ msg: err.message });
         }
     },
-    changeStatus : async (req, res) => {
+    changeStatus: async (req, res) => {
         try {
             const post_id = req.body.post;
             const change = await Posts.findOneAndUpdate(
-                {_id : post_id},
+                { _id: post_id },
                 {
-                    isLost : false
+                    isLost: false,
                 }
-            )
+            );
 
             if (!change) {
-                return res.status(400).json({ 
-                        msg: "This post does not exist." 
-                    });
+                return res.status(400).json({
+                    msg: "This post does not exist.",
+                });
             }
 
             res.json({
-                msg : "Changed Status"
-            })
+                msg: "Changed Status",
+            });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
     },
-    revertStatus : async (req, res) => {
+    revertStatus: async (req, res) => {
         try {
             const post_id = req.body.post;
             const change = await Posts.findOneAndUpdate(
-                {_id : post_id},
+                { _id: post_id },
                 {
-                    isLost : true
+                    isLost: true,
                 }
-            )
+            );
 
             if (!change) {
-                return res.status(400).json({ 
-                        msg: "This post does not exist." 
-                    });
+                return res.status(400).json({
+                    msg: "This post does not exist.",
+                });
             }
 
             res.json({
-                msg : "Changed Status (revert)"
-            })
+                msg: "Changed Status (revert)",
+            });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
-    }
+    },
 };
 
 module.exports = postController;

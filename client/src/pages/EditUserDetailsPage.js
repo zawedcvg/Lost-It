@@ -68,13 +68,27 @@ function EditUserDetailsPage() {
                         }
                     )
                     .then((r) => {
-                        setDetails({ ...details, err: "", success: r.data.msg });
+                        setDetails({
+                            ...details,
+                            err: "",
+                            success: r.data.msg,
+                        });
                     })
-                    .catch(error => setDetails({ ...details, err: error.response.data.msg, success: "" }));
+                    .catch((error) =>
+                        setDetails({
+                            ...details,
+                            err: error.response.data.msg,
+                            success: "",
+                        })
+                    );
             })
-            .catch(error => setDetails({ ...details, err: error.response.data.msg, success: "" }));
-
-        
+            .catch((error) =>
+                setDetails({
+                    ...details,
+                    err: error.response.data.msg,
+                    success: "",
+                })
+            );
     };
 
     const updatePassword = () => {
@@ -110,13 +124,27 @@ function EditUserDetailsPage() {
                         }
                     )
                     .then((r) => {
-                        setDetails({ ...details, err: "", success: r.data.msg });
+                        setDetails({
+                            ...details,
+                            err: "",
+                            success: r.data.msg,
+                        });
                     })
-                    .catch(error => setDetails({ ...details, err: error.response.data.msg, success: "" }));
+                    .catch((error) =>
+                        setDetails({
+                            ...details,
+                            err: error.response.data.msg,
+                            success: "",
+                        })
+                    );
             })
-            .catch(error => setDetails({ ...details, err: error.response.data.msg, success: "" }));
-
-        
+            .catch((error) =>
+                setDetails({
+                    ...details,
+                    err: error.response.data.msg,
+                    success: "",
+                })
+            );
     };
 
     const handleChange = (e) => {
@@ -155,11 +183,15 @@ function EditUserDetailsPage() {
                     }
                     {
                         <div>
-                        {details.err && <ErrorNotification msg={details.err} />}
-                        {details.success && <SuccessNotification msg={details.success} />}
+                            {details.err && (
+                                <ErrorNotification msg={details.err} />
+                            )}
+                            {details.success && (
+                                <SuccessNotification msg={details.success} />
+                            )}
                         </div>
                     }
-                    
+
                     <form>
                         <label
                             className={EditUserDetailsPageCSS.label_edit_user}

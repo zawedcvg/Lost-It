@@ -35,29 +35,35 @@ function UserDashBoardPage() {
                         }
                         setUser(res.data);
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
     }, [isAdmin]);
 
     const handleDeleteUser = () => {
-        axios.post("/user/refresh_token")
-            .then(res => {
-                if (window.confirm("Are you sure you want to delete this account?")) {
-                    axios.delete(`/user/delete/${user._id}`, {
-                        headers : {
-                            Authorization : res.data.access_token
-                        }
-                    })
-                    .then(response => {
-                        setSuccess(response.data.msg);
-                        history.push("/");
-                    })
-                    .catch(error => setErr(error.response.data.msg))
+        axios
+            .post("/user/refresh_token")
+            .then((res) => {
+                if (
+                    window.confirm(
+                        "Are you sure you want to delete this account?"
+                    )
+                ) {
+                    axios
+                        .delete(`/user/delete/${user._id}`, {
+                            headers: {
+                                Authorization: res.data.access_token,
+                            },
+                        })
+                        .then((response) => {
+                            setSuccess(response.data.msg);
+                            history.push("/");
+                        })
+                        .catch((error) => setErr(error.response.data.msg));
                 }
             })
-            .catch(error => setErr(error.response.data.msg))   
-    }
+            .catch((error) => setErr(error.response.data.msg));
+    };
 
     // const handleRequest = () => {
     //     console.log("here1")
@@ -77,40 +83,54 @@ function UserDashBoardPage() {
     // }
 
     const handleRevertStatusToBasicUser = () => {
-        if (window.confirm("Are you sure you want to change your status tp basic user?")) {
-            axios.post("/user/refresh_token")
-                .then(res => {
-                    axios.patch(`/user/update_role/${user._id}`, { role : 0 }, {
-                        headers : {
-                            Authorization : res.data.access_token
-                        }
-                    })
-                    .then(response => {
-                        setSuccess(response.data.msg)
-                    })
-                    .catch(error => setErr(error.response.data.msg));
+        if (
+            window.confirm(
+                "Are you sure you want to change your status tp basic user?"
+            )
+        ) {
+            axios
+                .post("/user/refresh_token")
+                .then((res) => {
+                    axios
+                        .patch(
+                            `/user/update_role/${user._id}`,
+                            { role: 0 },
+                            {
+                                headers: {
+                                    Authorization: res.data.access_token,
+                                },
+                            }
+                        )
+                        .then((response) => {
+                            setSuccess(response.data.msg);
+                        })
+                        .catch((error) => setErr(error.response.data.msg));
                 })
-                .catch(error => setErr(error.response.data.msg));
+                .catch((error) => setErr(error.response.data.msg));
             setIsAdmin(false);
         }
-    }
+    };
 
     const handleGetAllUsers = () => {
-        axios.post("/user/refresh_token")
-            .then(res => {
-                axios.get(`/user/completeinfo`, {
-                    headers : {
-                        Authorization : res.data.access_token
-                    }
-                })
-                .then(response => {
-                    setMessage("Please check your console for all the info")
-                    console.log(response.data.users);
-                })
-                .catch(error => setErr(error.response.data.msg));
+        axios
+            .post("/user/refresh_token")
+            .then((res) => {
+                axios
+                    .get(`/user/completeinfo`, {
+                        headers: {
+                            Authorization: res.data.access_token,
+                        },
+                    })
+                    .then((response) => {
+                        setMessage(
+                            "Please check your console for all the info"
+                        );
+                        console.log(response.data.users);
+                    })
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
-    }
+            .catch((error) => setErr(error.response.data.msg));
+    };
 
     const handleLogout = async (e) => {
         try {
@@ -118,11 +138,11 @@ function UserDashBoardPage() {
                 const res = await axios.post("/user/logout");
                 localStorage.removeItem("firstLogin");
                 localStorage.removeItem("refreshtoken");
-                setSuccess(res.data.msg)
+                setSuccess(res.data.msg);
                 history.push("/logout");
             }
         } catch (err) {
-            setErr(err.response.data.msg)
+            setErr(err.response.data.msg);
         }
     };
 
@@ -145,9 +165,11 @@ function UserDashBoardPage() {
                         <img src={userprofile} alt="Profile" />
                         {
                             <div>
-                            {err && <ErrorNotification msg={err} />}
-                            {success && <SuccessNotification msg={success} />}
-                            {message && <InfoNotification msg={message} />}
+                                {err && <ErrorNotification msg={err} />}
+                                {success && (
+                                    <SuccessNotification msg={success} />
+                                )}
+                                {message && <InfoNotification msg={message} />}
                             </div>
                         }
                         <form className={UserDashboardPageCSS.side}>
@@ -193,31 +215,36 @@ function UserDashBoardPage() {
                                     </button>
                                 ) : <span></span>
                             } */}
-                            {
-                                isAdmin ? (
-                                    <div>
+                            {isAdmin ? (
+                                <div>
                                     <button
-                                        className={UserDashboardPageCSS.btn_entry}
+                                        className={
+                                            UserDashboardPageCSS.btn_entry
+                                        }
                                         onClick={handleDeleteUser}
                                     >
                                         Delete user
                                     </button>
                                     <button
-                                        className={UserDashboardPageCSS.btn_entry}
+                                        className={
+                                            UserDashboardPageCSS.btn_entry
+                                        }
                                         onClick={handleGetAllUsers}
                                     >
                                         Get info about all the users
                                     </button>
                                     <button
-                                        className={UserDashboardPageCSS.btn_entry}
+                                        className={
+                                            UserDashboardPageCSS.btn_entry
+                                        }
                                         onClick={handleRevertStatusToBasicUser}
                                     >
                                         Revert my status to basic user
                                     </button>
-
-                                    </div>
-                                ) : <span></span>
-                            }
+                                </div>
+                            ) : (
+                                <span></span>
+                            )}
                         </form>
                     </div>
                     <div

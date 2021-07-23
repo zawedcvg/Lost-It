@@ -52,7 +52,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isEmpty(name) || isEmpty(password)) {
-
             return setUser({
                 ...user,
                 err: "Please fill in all fields.",
@@ -120,8 +119,8 @@ const Register = () => {
                 <div className={RegisterPageCSS.form_list}>
                     {
                         <div>
-                        {err && <ErrorNotification msg={err} />}
-                        {success && <SuccessNotification msg={success} />}
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
                         </div>
                     }
                     <form

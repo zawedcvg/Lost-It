@@ -46,26 +46,30 @@ const PostInfoPage = () => {
                                 } else {
                                     setIsOwner(false);
                                 }
-                                if (res.data.post.likes.includes(user.data._id)) {
+                                if (
+                                    res.data.post.likes.includes(user.data._id)
+                                ) {
                                     setLiked(true);
                                 } else {
                                     setLiked(false);
-                                }        
+                                }
                                 setItem(res.data.post);
                                 setIsLost(res.data.post.isLost);
                             })
-                            .catch(error => setErr(error.response.data.msg));
+                            .catch((error) => setErr(error.response.data.msg));
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
     }, [saved, isLost, liked]);
 
     const handleDelete = () => {
         axios
             .post("/user/refresh_token")
             .then((response) => {
-                if (window.confirm("Are you sure you want to delete this post?")) {
+                if (
+                    window.confirm("Are you sure you want to delete this post?")
+                ) {
                     axios
                         .delete(`/listings/post/${id}`, {
                             headers: {
@@ -75,11 +79,11 @@ const PostInfoPage = () => {
                         .then((res) => {
                             setSuccess(res.data.msg);
                         })
-                        .catch(error => setErr(error.response.data.msg));
+                        .catch((error) => setErr(error.response.data.msg));
                 }
             })
-            .catch(error => setErr(error.response.data.msg));
-        
+            .catch((error) => setErr(error.response.data.msg));
+
         history.push("/listings");
     };
 
@@ -110,13 +114,13 @@ const PostInfoPage = () => {
                                 }
                             )
                             .then((res) => {
-                                setSuccess(res.data.msg)
+                                setSuccess(res.data.msg);
                             })
-                            .catch(error => setErr(error.response.data.msg));
+                            .catch((error) => setErr(error.response.data.msg));
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
         setSaved(true);
     };
 
@@ -145,11 +149,11 @@ const PostInfoPage = () => {
                             .then((res) => {
                                 setSuccess(res.data.msg);
                             })
-                            .catch(error => setErr(error.response.data.msg));
+                            .catch((error) => setErr(error.response.data.msg));
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
         setSaved(false);
     };
 
@@ -168,11 +172,11 @@ const PostInfoPage = () => {
                         }
                     )
                     .then((res) => {
-                        setSuccess(res.data.msg)
+                        setSuccess(res.data.msg);
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
         setIsLost(false);
     };
 
@@ -191,62 +195,79 @@ const PostInfoPage = () => {
                         }
                     )
                     .then((res) => {
-                        setSuccess(res.data.msg)
+                        setSuccess(res.data.msg);
                     })
-                    .catch(error => setErr(error.response.data.msg));
+                    .catch((error) => setErr(error.response.data.msg));
             })
-            .catch(error => setErr(error.response.data.msg));
+            .catch((error) => setErr(error.response.data.msg));
         setIsLost(true);
     };
 
     const handleLikePost = () => {
-        axios.post("/user/refresh_token")
-                        .then(response => {
-                            axios.get("/user/info", {
-                                headers : {
-                                    Authorization : response.data.access_token
+        axios
+            .post("/user/refresh_token")
+            .then((response) => {
+                axios
+                    .get("/user/info", {
+                        headers: {
+                            Authorization: response.data.access_token,
+                        },
+                    })
+                    .then((r) => {
+                        axios
+                            .patch(
+                                `/listings/post/${id}/like`,
+                                {},
+                                {
+                                    headers: {
+                                        Authorization:
+                                            response.data.access_token,
+                                    },
                                 }
+                            )
+                            .then((res) => {
+                                setSuccess(res.data.msg);
+                                setLiked(true);
                             })
-                            .then(r => {
-                                axios.patch(`/listings/post/${id}/like`, {}, {
-                                    headers : {
-                                        Authorization : response.data.access_token
-                                    }
-                                })
-                                .then(res => {
-                                    setSuccess(res.data.msg);
-                                    setLiked(true);
-                                })
-                                .catch(error => setErr(error.response.data.msg))
-                            }).catch(error => setErr(error.response.data.msg));
-                        })
-                        .catch(error => setErr(error.response.data.msg));
-    }
+                            .catch((error) => setErr(error.response.data.msg));
+                    })
+                    .catch((error) => setErr(error.response.data.msg));
+            })
+            .catch((error) => setErr(error.response.data.msg));
+    };
 
     const handleUnlikePost = () => {
-        axios.post("/user/refresh_token")
-                        .then(response => {
-                            axios.get("/user/info", {
-                                headers : {
-                                    Authorization : response.data.access_token
+        axios
+            .post("/user/refresh_token")
+            .then((response) => {
+                axios
+                    .get("/user/info", {
+                        headers: {
+                            Authorization: response.data.access_token,
+                        },
+                    })
+                    .then((r) => {
+                        axios
+                            .patch(
+                                `/listings/post/${id}/unlike`,
+                                {},
+                                {
+                                    headers: {
+                                        Authorization:
+                                            response.data.access_token,
+                                    },
                                 }
+                            )
+                            .then((res) => {
+                                setSuccess(res.data.msg);
+                                setLiked(false);
                             })
-                            .then(r => {
-                                axios.patch(`/listings/post/${id}/unlike`, {}, {
-                                    headers : {
-                                        Authorization : response.data.access_token
-                                    }
-                                })
-                                .then(res => {
-                                    setSuccess(res.data.msg);
-                                    setLiked(false);
-                                })
-                                .catch(error => setErr(error.response.data.msg))
-                            }).catch(error => setErr(error.response.data.msg));
-                        })
-                        .catch(error => setErr(error.response.data.msg));
-    }
-
+                            .catch((error) => setErr(error.response.data.msg));
+                    })
+                    .catch((error) => setErr(error.response.data.msg));
+            })
+            .catch((error) => setErr(error.response.data.msg));
+    };
 
     return (
         <div className={PostInfoPageCSS.PostInfoPage}>
@@ -291,8 +312,8 @@ const PostInfoPage = () => {
 
             {
                 <div className={PostInfoPageCSS.center_stage}>
-                {err && <ErrorNotification msg={err} />}
-                {success && <SuccessNotification msg={success} />}
+                    {err && <ErrorNotification msg={err} />}
+                    {success && <SuccessNotification msg={success} />}
                 </div>
             }
 
@@ -312,16 +333,21 @@ const PostInfoPage = () => {
                         Unsave Post
                     </button>
                 )}
-                {
-                    liked
-                    ? <button onClick={handleUnlikePost} className={PostInfoPageCSS.btn_post}>
+                {liked ? (
+                    <button
+                        onClick={handleUnlikePost}
+                        className={PostInfoPageCSS.btn_post}
+                    >
                         Unlike Post
-                        </button>
-                    : <button onClick={handleLikePost} className={PostInfoPageCSS.btn_post}>
+                    </button>
+                ) : (
+                    <button
+                        onClick={handleLikePost}
+                        className={PostInfoPageCSS.btn_post}
+                    >
                         Like Post
-                        </button>
-                }
-
+                    </button>
+                )}
             </div>
             <fieldset className={PostInfoPageCSS.owner_rights}>
                 <legend>Owner Rights</legend>

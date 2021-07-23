@@ -59,22 +59,24 @@ const SavedPosts = () => {
             </nav>
             <h1 className="heading">Saved</h1>
             <div className={SavedPostsCSS.listings_body}>
-                {toBeDisplayed.length !== 0 ? 
-                (toBeDisplayed.map((items) => (
-                    <Post
-                        key={items._id}
-                        name={items.name}
-                        type={items.type}
-                        img={items.img}
-                        date={items.date}
-                        time={items.time}
-                        location={items.location}
-                        description={items.description}
-                        link={items._id}
-                        likes={items.likes}
-                    />
-                ))) : 
-                (<p>There are no saved posts.</p>)}
+                {toBeDisplayed.length !== 0 ? (
+                    toBeDisplayed.map((items) => (
+                        <Post
+                            key={items._id}
+                            name={items.name}
+                            type={items.type}
+                            img={items.img}
+                            date={items.date}
+                            time={items.time}
+                            location={items.location}
+                            description={items.description}
+                            link={items._id}
+                            likes={items.likes}
+                        />
+                    ))
+                ) : (
+                    <p>There are no saved posts.</p>
+                )}
             </div>
         </div>
     );

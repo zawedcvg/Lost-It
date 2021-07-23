@@ -43,7 +43,9 @@ const ListingsPage = () => {
 
             if (componentMounted) {
                 setRequiredItems(itemsData.posts);
-                setMessage("<-   Please click on any of the buttons to the left")
+                setMessage(
+                    "<-   Please click on any of the buttons to the left"
+                );
             }
             return () => {
                 componentMounted = false;
@@ -172,7 +174,7 @@ const ListingsPage = () => {
                     </nav>
                     {
                         <span>
-                        {message && <InfoNotification msg={message} />}
+                            {message && <InfoNotification msg={message} />}
                         </span>
                     }
                 </div>
