@@ -45,6 +45,7 @@ function LoginPage() {
             history.push("/userdashboard");
         } catch (err) {
             console.log(err);
+            alert("Incorrect password or email-address");
         }
     };
 

@@ -113,7 +113,7 @@ function ReportItem() {
                     </ul>
                 </nav>
                 <div className={ReportItemCSS.details}>
-                    <h1>Report an Item</h1>
+                    <h1 className={ReportItemCSS.heading}>Report an Item</h1>
                     <form onSubmit={handleSubmit}>
                         <label
                             className={ReportItemCSS.reportitem_label}
@@ -180,7 +180,6 @@ function ReportItem() {
                         >
                             Submit
                         </button>
-                        <span>or</span>
                         <button
                             onClick={(e) => history.push("/listings")}
                             className={`${ReportItemCSS.btn} ${ReportItemCSS.right}`}

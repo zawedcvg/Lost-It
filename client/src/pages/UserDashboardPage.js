@@ -35,24 +35,30 @@ function UserDashBoardPage() {
     }, [isAdmin]);
 
     const handleDeleteUser = () => {
-        axios.post("/user/refresh_token")
-            .then(res => {
-                if (window.confirm("Are you sure you want to delete this account?")) {
-                    axios.delete(`/user/delete/${user._id}`, {
-                        headers : {
-                            Authorization : res.data.access_token
-                        }
-                    })
-                    .then(response => {
-                        alert(response.data.msg);
-                    })
-                    .catch(err => console.log(err))
+        axios
+            .post("/user/refresh_token")
+            .then((res) => {
+                if (
+                    window.confirm(
+                        "Are you sure you want to delete this account?"
+                    )
+                ) {
+                    axios
+                        .delete(`/user/delete/${user._id}`, {
+                            headers: {
+                                Authorization: res.data.access_token,
+                            },
+                        })
+                        .then((response) => {
+                            alert(response.data.msg);
+                        })
+                        .catch((err) => console.log(err));
                 }
             })
-            .catch(err => console.log(err))
-        
+            .catch((err) => console.log(err));
+
         history.push("/");
-    }
+    };
 
     // const handleRequest = () => {
     //     console.log("here1")
@@ -72,21 +78,27 @@ function UserDashBoardPage() {
     // }
 
     const handleRevertStatusToBasicUser = () => {
-        axios.post("/user/refresh_token")
-            .then(res => {
-                axios.patch(`/user/update_role/${user._id}`, { role : 0 }, {
-                    headers : {
-                        Authorization : res.data.access_token
-                    }
-                })
-                .then(response => {
-                    alert(response.data.msg)
-                })
-                .catch(err => console.log(err));
+        axios
+            .post("/user/refresh_token")
+            .then((res) => {
+                axios
+                    .patch(
+                        `/user/update_role/${user._id}`,
+                        { role: 0 },
+                        {
+                            headers: {
+                                Authorization: res.data.access_token,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        alert(response.data.msg);
+                    })
+                    .catch((err) => console.log(err));
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
         setIsAdmin(false);
-    }
+    };
 
     // const handleGetAllUsers = () => {
     //     axios.post("/user/refresh_token")
@@ -178,11 +190,12 @@ function UserDashBoardPage() {
                                     </button>
                                 ) : <span></span>
                             } */}
-                            {
-                                isAdmin ? (
-                                    <div>
+                            {isAdmin ? (
+                                <div>
                                     <button
-                                        className={UserDashboardPageCSS.btn_entry}
+                                        className={
+                                            UserDashboardPageCSS.btn_entry
+                                        }
                                         onClick={handleDeleteUser}
                                     >
                                         Delete user
@@ -194,15 +207,17 @@ function UserDashBoardPage() {
                                         Get info about all the users
                                     </button> */}
                                     <button
-                                        className={UserDashboardPageCSS.btn_entry}
+                                        className={
+                                            UserDashboardPageCSS.btn_entry
+                                        }
                                         onClick={handleRevertStatusToBasicUser}
                                     >
                                         Revert my status to basic user
                                     </button>
-
-                                    </div>
-                                ) : <span></span>
-                            }
+                                </div>
+                            ) : (
+                                <span></span>
+                            )}
                         </form>
                     </div>
                     <div

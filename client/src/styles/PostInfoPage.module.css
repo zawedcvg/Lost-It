@@ -4,6 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    background-image: url(../svg-assets/background-1.svg);
+    height: 100vh;
 }
 .button_list {
     display: flex;
@@ -59,6 +61,7 @@
 }
 fieldset {
     padding: 2rem;
+    backdrop-filter: blur(10px);
 }
 legend {
     font-size: 2rem;
@@ -86,6 +89,7 @@ li {
     position: relative;
     text-decoration: none;
     transition-duration: 0.5s;
+    text-align: right;
 }
 
 li a {
@@ -104,7 +108,7 @@ ul li {
 ul li ul {
     visibility: hidden;
     opacity: 0;
-    min-width: 18rem;
+    min-width: 17rem;
     position: absolute;
     transition: all 0.5s ease;
     margin-top: 1rem;

@@ -7,9 +7,19 @@ html {
     box-sizing: inherit;
 }
 
+.myPostPage {
+    display: flex;
+    height: 100vh;
+    background-image: url(../svg-assets/background-5.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+
 .heading {
     text-align: center;
 }
+
 .listings_body {
     margin: 0 auto;
     width: 60%;

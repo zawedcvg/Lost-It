@@ -6,6 +6,20 @@ html {
 *:after {
     box-sizing: inherit;
 }
+.savedPostsPage {
+    height: 100vh;
+    background-image: url(../svg-assets/background-5.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    /*text-align: center;*/
+    flex-direction: column;
+    /*justify-content: center;*/
+}
 
 .heading {
     text-align: center;
@@ -80,6 +94,8 @@ ul li ul li {
 }
 
 .img1 {
+    background: none;
+    mix-blend-mode: hard-light;
     width: 3rem;
     height: 3rem;
 }

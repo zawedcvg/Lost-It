@@ -8,7 +8,8 @@
     padding: 2rem;
     border: 1px solid black;
     justify-content: flex-start;
-    background-color: white;
+    /*background-color: white;*/
+    backdrop-filter: blur(10px);
     text-align: left;
 }
 

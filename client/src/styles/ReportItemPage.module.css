@@ -105,6 +105,11 @@ h1 {
     height: 475px;
     border: 1px solid black;
 }
+
+.heading {
+    padding-top: 0;
+    margin-top: 0;
+}
 .navigation {
     font-family: monospace;
     position: absolute;
@@ -140,12 +145,13 @@ li:hover {
 
 ul li {
     background: white;
+    /*min-width: 19rem;*/
 }
 
 ul li ul {
     visibility: hidden;
     opacity: 0;
-    min-width: 18rem;
+    /*min-width: 19rem;*/
     /*width: 10rem;*/
     position: absolute;
     transition: all 0.5s ease;
@@ -164,6 +170,7 @@ ul li ul:hover {
 
 ul li ul li {
     background: #f5f5f5;
+    min-width: 18rem;
     clear: both;
     width: 100%;
 }
