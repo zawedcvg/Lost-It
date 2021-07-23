@@ -160,14 +160,6 @@ function EditUserDetailsPage() {
 
     return (
         <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
-            {
-                <div>
-                    {details.err && <ErrorNotification msg={details.err} />}
-                    {details.success && (
-                        <SuccessNotification msg={details.success} />
-                    )}
-                </div>
-            }
             <nav
                 className={EditUserDetailsPageCSS.navigation}
                 role="navigation"
@@ -216,6 +208,7 @@ function EditUserDetailsPage() {
             </MetaTags>
             <div className={EditUserDetailsPageCSS.scroll}>
                 <div className={EditUserDetailsPageCSS.container}>
+                    
                     <h1 className={EditUserDetailsPageCSS.edit_details}>
                         Edit user details
                     </h1>
@@ -225,6 +218,15 @@ function EditUserDetailsPage() {
                         //{user.name}
                         //{user.email}
                         //</p>
+                    }
+
+                    {
+                        <div>
+                            {details.err && <ErrorNotification msg={details.err} />}
+                            {details.success && (
+                                <SuccessNotification msg={details.success} />
+                            )}
+                        </div>
                     }
 
                     <form>
