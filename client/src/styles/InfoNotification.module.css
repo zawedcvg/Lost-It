@@ -8,6 +8,8 @@
     position: relative;
     right: 9px;
     border-radius: 25px;
+    font-size: 1.5rem;
+    margin-left: 2rem;
 }
 
 .info {
@@ -15,3 +17,4 @@
     background: #c9ddff;
     border: 2px solid #4c699b;
 }
+
