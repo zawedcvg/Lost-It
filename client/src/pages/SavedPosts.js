@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import MetaTags from "react-meta-tags";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Post from "./Post";
@@ -27,54 +26,41 @@ const SavedPosts = () => {
     }, []);
 
     return (
-        <div className={SavedPostsCSS.savedPostsPage}>
-            <MetaTags>
-                <meta charSet="UTF-8" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, 
-    initial-scale = 1.0"
-                />
-                <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-                <title>User</title>
-            </MetaTags>
-            <div className={SavedPostsCSS.container}>
-                <nav className={SavedPostsCSS.navigation} role="navigation">
-                    <ul>
-                        <li>
-                            <img
-                                className={SavedPostsCSS.img1}
-                                src="https://image.flaticon.com/icons/png/512/78/78075.png"
-                                alt="thing"
-                            />
-                            <ul class="dropdown">
-                                <li>
-                                    <Link to={`/listings`}>Listings</Link>{" "}
-                                    <br />
-                                </li>
-                                <li>
-                                    <Link to={`/userdashboard`}>Dashboard</Link>{" "}
-                                    <br />
-                                </li>
-                                <li>
-                                    <Link to={`/reportitem`}>
-                                        Report An Item
-                                    </Link>{" "}
-                                </li>
-                                <li>
-                                    <Link to={`/myposts`}>My Posts</Link> <br />
-                                </li>
-                                <li>
-                                    <Link to={`/savedposts`}>Saved Posts</Link>{" "}
-                                    <br />
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <h1 className={SavedPostsCSS.heading}>Saved</h1>
-                <div className={SavedPostsCSS.listings_body}>
-                    {toBeDisplayed.map((items) => (
+        <div>
+            <nav className={SavedPostsCSS.navigation} role="navigation">
+                <ul>
+                    <li>
+                        <img
+                            className={SavedPostsCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                <br />
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <h1 className={SavedPostsCSS.heading}>Saved</h1>
+            <div className={SavedPostsCSS.listings_body}>
+                {toBeDisplayed.length !== 0 ? (
+                    toBeDisplayed.map((items) => (
                         <Post
                             key={items._id}
                             name={items.name}
@@ -87,8 +73,10 @@ const SavedPosts = () => {
                             link={items._id}
                             likes={items.likes}
                         />
-                    ))}
-                </div>
+                    ))
+                ) : (
+                    <p>There are no saved posts.</p>
+                )}
             </div>
         </div>
     );

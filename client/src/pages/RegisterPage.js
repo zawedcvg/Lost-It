@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import RegisterPageCSS from "../styles/RegisterPage.module.css";
 import MetaTags from "react-meta-tags";
 import { useHistory } from "react-router-dom";
+import ErrorNotification from "../notifications/ErrorNotification";
+import SuccessNotification from "../notifications/SuccessNotification";
 
 const isEmpty = (value) => {
     if (!value) return true;
@@ -44,7 +45,6 @@ const Register = () => {
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value, err: "", success: "" });
-        //console.log(user);
     };
 
     const history = useHistory();
@@ -52,8 +52,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isEmpty(name) || isEmpty(password)) {
-            //toast.error("Please fill in all fields.");
-
             return setUser({
                 ...user,
                 err: "Please fill in all fields.",
@@ -62,7 +60,6 @@ const Register = () => {
         }
 
         if (!isEmail(email)) {
-            // toast.error("Invalid email address.");
             return setUser({
                 ...user,
                 err: "Invalid email address.",
@@ -71,7 +68,6 @@ const Register = () => {
         }
 
         if (isSmall(password)) {
-            // toast.error("Password must be at least 6 characters.");
             return (
                 setUser({
                     ...user,
@@ -82,7 +78,6 @@ const Register = () => {
         }
 
         if (!isMatch(password, confirmPassword)) {
-            // toast.error("Passwords did not match.");
             return (
                 setUser({
                     ...user,
@@ -99,10 +94,8 @@ const Register = () => {
                 password,
             });
 
-            // console.log(res);
             setUser({ ...user, err: "", success: res.data.msg });
             history.push("/emailhasbeensentforactivation");
-            // toast.success(res.data.msg);
         } catch (err) {
             err.response.data.msg &&
                 setUser({ ...user, err: err.response.data.msg, success: "" });
@@ -124,6 +117,12 @@ const Register = () => {
             <div className={RegisterPageCSS.scroll}>
                 <h1 className={RegisterPageCSS.signup}>Sign Up</h1>
                 <div className={RegisterPageCSS.form_list}>
+                    {
+                        <div>
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
                     <form
                         formAction="signup"
                         onSubmit={handleSubmit}
@@ -141,17 +140,6 @@ const Register = () => {
                                 id="name"
                             />
                         </label>
-                        {/* <label className={RegisterPageCSS.label_reg}>
-                            Telegram Id:{" "}
-                            <span className={RegisterPageCSS.optional}>
-                                (optional)
-                            </span>
-                            <input
-                                className={RegisterPageCSS.input_reg}
-                                name="Telegram Id"
-                                type="text"
-                            />
-                        </label> */}
                         <label className={RegisterPageCSS.label_reg}>
                             Email Address:
                             <input
@@ -193,17 +181,6 @@ const Register = () => {
                                 onChange={handleChangeInput}
                             />
                         </label>
-
-                        {/* <label
-                            className={`${RegisterPageCSS.sideform} ${RegisterPageCSS.label_reg}`}
-                        >
-                            Re-enter Password:
-                            <input
-                                className={RegisterPageCSS.input_reg}
-                                name="confirmPassword"
-                                type="password"
-                            />
-                        </label> */}
 
                         <button
                             className={RegisterPageCSS.btn}

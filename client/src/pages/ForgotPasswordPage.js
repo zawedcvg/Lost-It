@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ForgotPasswordPageCSS from "../styles/ForgotPasswordPage.module.css";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 const isEmail = (email) => {
     const re =
@@ -25,20 +27,19 @@ function ForgotPasswordPage() {
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value, err: "", success: "" });
-        console.log(data);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isEmail(email)) {
-            return setData({ ...data, err: "Invalid emails.", success: "" });
+            return setData({ ...data, err: "Invalid email", success: "" });
         }
-        console.log(err);
 
         try {
             const res = await axios.post("/user/forgot", { email });
 
             setData({ ...data, err: "", success: res.data.msg });
+
             history.push("/emailhasbeensentforreset");
         } catch (err) {
             err.response.data.msg &&
@@ -63,6 +64,12 @@ function ForgotPasswordPage() {
                     <h1 className={ForgotPasswordPageCSS.email_reset_heading}>
                         Email for resetting password
                     </h1>
+                    {
+                        <div>
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
 
                     <form
                         formAction="enter email for reset"

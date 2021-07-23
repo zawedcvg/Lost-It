@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import MetaTags from "react-meta-tags";
 import EditUserDetailsPageCSS from "../styles/EditUserDetailsPage.module.css";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 const initialState = {
     name: "",
@@ -66,13 +68,27 @@ function EditUserDetailsPage() {
                         }
                     )
                     .then((r) => {
-                        alert(r.data.msg);
+                        setDetails({
+                            ...details,
+                            err: "",
+                            success: r.data.msg,
+                        });
                     })
-                    .catch((err) => console.log(err));
+                    .catch((error) =>
+                        setDetails({
+                            ...details,
+                            err: error.response.data.msg,
+                            success: "",
+                        })
+                    );
             })
-            .catch((err) => console.log(err));
-
-        setDetails({ ...details, err: "", success: "Updated Success!" });
+            .catch((error) =>
+                setDetails({
+                    ...details,
+                    err: error.response.data.msg,
+                    success: "",
+                })
+            );
     };
 
     const updatePassword = () => {
@@ -108,13 +124,27 @@ function EditUserDetailsPage() {
                         }
                     )
                     .then((r) => {
-                        alert(r.data.msg);
+                        setDetails({
+                            ...details,
+                            err: "",
+                            success: r.data.msg,
+                        });
                     })
-                    .catch((err) => console.log(err));
+                    .catch((error) =>
+                        setDetails({
+                            ...details,
+                            err: error.response.data.msg,
+                            success: "",
+                        })
+                    );
             })
-            .catch((err) => console.log(err));
-
-        setDetails({ ...details, err: "", success: "Updated Success!" });
+            .catch((error) =>
+                setDetails({
+                    ...details,
+                    err: error.response.data.msg,
+                    success: "",
+                })
+            );
     };
 
     const handleChange = (e) => {
@@ -125,7 +155,6 @@ function EditUserDetailsPage() {
     const handleUpdate = () => {
         if (name || email) updateInfo();
         if (password) updatePassword();
-        //history.push("/userdashboard");
     };
 
     return (
@@ -152,6 +181,17 @@ function EditUserDetailsPage() {
                         //{user.email}
                         //</p>
                     }
+                    {
+                        <div>
+                            {details.err && (
+                                <ErrorNotification msg={details.err} />
+                            )}
+                            {details.success && (
+                                <SuccessNotification msg={details.success} />
+                            )}
+                        </div>
+                    }
+
                     <form>
                         <label
                             className={EditUserDetailsPageCSS.label_edit_user}
@@ -179,7 +219,7 @@ function EditUserDetailsPage() {
                                     EditUserDetailsPageCSS.input_user_details
                                 }
                                 value={details.email}
-                                //onChange={handleChange}
+                                onChange={handleChange}
                                 name="email"
                                 placeholder={user.email}
                                 type="email"
