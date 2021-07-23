@@ -95,3 +95,72 @@ html {
 .prev_details {
     font-size: 2rem;
 }
+.navigation {
+    font-family: monospace;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+}
+
+ul {
+    /*background: #f5f5f5;*/
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+li {
+    color: black;
+    display: block;
+    float: left;
+    padding: 1.5rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+li a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+ul li {
+    background: white;
+    /*min-width: 19rem;*/
+}
+
+ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    /*min-width: 19rem;*/
+    /*width: 10rem;*/
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    right: 4px;
+    left: auto;
+    display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+ul li ul li {
+    background: #f5f5f5;
+    min-width: 18rem;
+    clear: both;
+    width: 100%;
+}
+
+.img1 {
+    width: 3rem;
+    height: 3rem;
+}

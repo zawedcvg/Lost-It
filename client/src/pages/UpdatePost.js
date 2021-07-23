@@ -1,7 +1,8 @@
 import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import ReportItemCSS from "../styles/ReportItemPage.module.css";
+import UpdatePostCSS from "../styles/UpdatePost.module.css";
 import SuccessNotification from "../notifications/SuccessNotification";
 import ErrorNotification from "../notifications/ErrorNotification";
 
@@ -72,7 +73,39 @@ const UpdatePost = () => {
     };
 
     return (
-        <div>
+        <div className={UpdatePostCSS.UpdatePostPage}>
+            <nav className={UpdatePostCSS.navigation} role="navigation">
+                <ul>
+                    <li>
+                        <img
+                            className={UpdatePostCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/logout`}>Logout</Link>{" "}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
             <h1>Update Post</h1>
             {
                 <div>
@@ -81,12 +114,12 @@ const UpdatePost = () => {
                 </div>
             }
             <label
-                className={ReportItemCSS.reportitem_label}
+                className={UpdatePostCSS.reportitem_label}
                 htmlFor="location"
             >
                 Name that you can give the item :
                 <input
-                    className={`${ReportItemCSS.location} ${ReportItemCSS.reportitem_input}`}
+                    className={`${UpdatePostCSS.location} ${UpdatePostCSS.reportitem_input}`}
                     name="name"
                     type="text"
                     value={name}
@@ -96,13 +129,13 @@ const UpdatePost = () => {
                 />
             </label>
             <label
-                className={ReportItemCSS.reportitem_label}
+                className={UpdatePostCSS.reportitem_label}
                 htmlFor="location"
             >
                 Approximate Location <br />
                 of the Item :
                 <input
-                    className={`${ReportItemCSS.location} ${ReportItemCSS.reportitem_input}`}
+                    className={`${UpdatePostCSS.location} ${UpdatePostCSS.reportitem_input}`}
                     name="location"
                     type="text"
                     value={location}
@@ -112,13 +145,13 @@ const UpdatePost = () => {
                 />
             </label>
             <label
-                className={ReportItemCSS.reportitem_label}
+                className={UpdatePostCSS.reportitem_label}
                 htmlFor="description"
             >
                 Description of the object :
                 <textarea
                     id="description"
-                    className={ReportItemCSS.reportitem_textarea}
+                    className={UpdatePostCSS.reportitem_textarea}
                     name="description"
                     onChange={handleChangeInput}
                     placeholder={post.description}
@@ -127,11 +160,11 @@ const UpdatePost = () => {
                     value={description}
                 ></textarea>
             </label>
-            <label className={ReportItemCSS.reportitem_label} htmlFor="date">
+            <label className={UpdatePostCSS.reportitem_label} htmlFor="date">
                 Date of Happening :
                 <input
                     type="date"
-                    className={`${ReportItemCSS.date_found} ${ReportItemCSS.small} ${ReportItemCSS.reportitem_input}`}
+                    className={`${UpdatePostCSS.date_found} ${UpdatePostCSS.small} ${UpdatePostCSS.reportitem_input}`}
                     name="date"
                     value={date}
                     placeholder={post.date}
@@ -140,7 +173,7 @@ const UpdatePost = () => {
                 />
             </label>
             <button
-                className={ReportItemCSS.btn}
+                className={UpdatePostCSS.btn}
                 type="submit"
                 onClick={handleUpdate}
             >
@@ -149,7 +182,7 @@ const UpdatePost = () => {
             <span>or</span>
             <button
                 onClick={(e) => history.push("/listings")}
-                className={`${ReportItemCSS.btn} ${ReportItemCSS.right}`}
+                className={`${UpdatePostCSS.btn} ${UpdatePostCSS.right}`}
             >
                 Go to listings
             </button>

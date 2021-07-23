@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { useHistory } from "react-router-dom";
 import UserDashboardPageCSS from "../styles/UserDashboardPage.module.css";
@@ -148,6 +149,39 @@ function UserDashBoardPage() {
 
     return (
         <div className={UserDashboardPageCSS.UserDashboardPage}>
+            <nav className={UserDashboardPageCSS.navigation} role="navigation">
+                <ul>
+                    <li>
+                        <img
+                            className={UserDashboardPageCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/logout`}>Logout</Link> <br />
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta
@@ -162,7 +196,11 @@ function UserDashBoardPage() {
                 <h1 className={UserDashboardPageCSS.heading}>User Dashboard</h1>
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
-                        <img src={userprofile} alt="Profile" />
+                        <img
+                            className={UserDashboardPageCSS.profile}
+                            src={userprofile}
+                            alt="Profile"
+                        />
                         {
                             <div>
                                 {err && <ErrorNotification msg={err} />}
@@ -173,14 +211,6 @@ function UserDashBoardPage() {
                             </div>
                         }
                         <form className={UserDashboardPageCSS.side}>
-                            <button
-                                onClick={(e) =>
-                                    history.push("/edituserdetails")
-                                }
-                                className={UserDashboardPageCSS.btn_entry}
-                            >
-                                Edit Details
-                            </button>
                             <button
                                 onClick={(e) => history.push("/listings")}
                                 className={UserDashboardPageCSS.btn_entry}
@@ -193,18 +223,20 @@ function UserDashBoardPage() {
                             >
                                 Report item
                             </button>
-                            <button
-                                className={UserDashboardPageCSS.btn_entry}
-                                onClick={(e) => history.push("/myposts")}
-                            >
-                                View my posts
-                            </button>
-                            <button
-                                className={UserDashboardPageCSS.btn_entry}
-                                onClick={(e) => history.push("/savedposts")}
-                            >
-                                View saved posts
-                            </button>
+                            {
+                                //<button
+                                //className={UserDashboardPageCSS.btn_entry}
+                                //onClick={(e) => history.push("/myposts")}
+                                //>
+                                //View my posts
+                                //</button>
+                                //<button
+                                //className={UserDashboardPageCSS.btn_entry}
+                                //onClick={(e) => history.push("/savedposts")}
+                                //>
+                                //View saved posts
+                                //</button>
+                            }
                             {/* {
                                 !isAdmin ? (
                                     <button
@@ -216,7 +248,11 @@ function UserDashBoardPage() {
                                 ) : <span></span>
                             } */}
                             {isAdmin ? (
-                                <div>
+                                <div
+                                    className={
+                                        UserDashboardPageCSS.admin_things
+                                    }
+                                >
                                     <button
                                         className={
                                             UserDashboardPageCSS.btn_entry
@@ -263,12 +299,22 @@ function UserDashBoardPage() {
                             </span>
                             {user.email}
                         </p>
-                        <button
-                            onClick={handleLogout}
-                            className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}
-                        >
-                            Logout
-                        </button>
+                        <div className={UserDashboardPageCSS.bottom_btn}>
+                            <button
+                                onClick={handleLogout}
+                                className={`${UserDashboardPageCSS.btn_entry} ${UserDashboardPageCSS.logout}`}
+                            >
+                                Logout
+                            </button>
+                            <button
+                                onClick={(e) =>
+                                    history.push("/edituserdetails")
+                                }
+                                className={UserDashboardPageCSS.btn_entry}
+                            >
+                                Edit Details
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

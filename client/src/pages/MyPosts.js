@@ -71,6 +71,15 @@ const MyPosts = () => {
                                         Report An Item
                                     </Link>{" "}
                                 </li>
+                                <li>
+                                    <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                </li>
+                                <li>
+                                    <Link to={`/myposts`}>My Posts</Link>{" "}
+                                </li>
+                                <li>
+                                    <Link to={`/logout`}>Logout</Link>{" "}
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -291,6 +291,16 @@ const PostInfoPage = () => {
                             <li>
                                 <Link to={`/reportitem`}>Report An Item</Link>{" "}
                             </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/logout`}>Logout</Link> <br />
+                            </li>
                         </ul>
                     </li>
                 </ul>

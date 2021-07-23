@@ -107,6 +107,9 @@ function ReportItem() {
                                     <Link to={`/savedposts`}>Saved Posts</Link>{" "}
                                     <br />
                                 </li>
+                                <li>
+                                    <Link to={`/logout`}>Logout</Link> <br />
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -193,7 +196,11 @@ function ReportItem() {
                         </button>
                     </form>
                 </div>
-                <img src={post} alt="something" />
+                <img
+                    className={ReportItemCSS.reportitem_img}
+                    src={post}
+                    alt="something"
+                />
             </div>
         </div>
     );

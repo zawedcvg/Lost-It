@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import MetaTags from "react-meta-tags";
@@ -159,6 +160,42 @@ function EditUserDetailsPage() {
 
     return (
         <div className={EditUserDetailsPageCSS.EditUserDetailsPage}>
+            <nav
+                className={EditUserDetailsPageCSS.navigation}
+                role="navigation"
+            >
+                <ul>
+                    <li>
+                        <img
+                            className={EditUserDetailsPageCSS.img1}
+                            src="https://image.flaticon.com/icons/png/512/78/78075.png"
+                            alt="thing"
+                        />
+                        <ul class="dropdown">
+                            <li>
+                                <Link to={`/listings`}>Listings</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/userdashboard`}>Dashboard</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/reportitem`}>Report An Item</Link>{" "}
+                            </li>
+                            <li>
+                                <Link to={`/myposts`}>My Posts</Link> <br />
+                            </li>
+                            <li>
+                                <Link to={`/savedposts`}>Saved Posts</Link>{" "}
+                                <br />
+                            </li>
+                            <li>
+                                <Link to={`/logout`}>Logout</Link> <br />
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
             <MetaTags>
                 <meta charSet="UTF-8" />
                 <meta

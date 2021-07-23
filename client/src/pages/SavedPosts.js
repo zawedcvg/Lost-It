@@ -26,7 +26,7 @@ const SavedPosts = () => {
     }, []);
 
     return (
-        <div>
+        <div className={SavedPostsCSS.savedPostsPage}>
             <nav className={SavedPostsCSS.navigation} role="navigation">
                 <ul>
                     <li>
@@ -52,6 +52,9 @@ const SavedPosts = () => {
                             <li>
                                 <Link to={`/savedposts`}>Saved Posts</Link>{" "}
                                 <br />
+                            </li>
+                            <li>
+                                <Link to={`/logout`}>Logout</Link> <br />
                             </li>
                         </ul>
                     </li>
