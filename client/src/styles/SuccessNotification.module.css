@@ -12,9 +12,8 @@
 .success {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 45vw;
     color: #2b7515;
     background: #ecffd6;
     border: 2px solid #617c42;
 }
-

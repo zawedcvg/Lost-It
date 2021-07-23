@@ -78,7 +78,9 @@ const SavedPosts = () => {
                         />
                     ))
                 ) : (
-                    <p>There are no saved posts.</p>
+                    <p className={SavedPostsCSS.no_posts}>
+                        There are no saved posts.
+                    </p>
                 )}
             </div>
         </div>
