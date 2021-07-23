@@ -60,7 +60,7 @@ const SavedPosts = () => {
                     </li>
                 </ul>
             </nav>
-            <h1 className={SavedPostsCSS.heading}>Saved</h1>
+            <h1 className={SavedPostsCSS.heading}>Saved Posts </h1>
             <div className={SavedPostsCSS.listings_body}>
                 {toBeDisplayed.length !== 0 ? (
                     toBeDisplayed.map((items) => (

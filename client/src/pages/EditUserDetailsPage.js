@@ -304,7 +304,7 @@ function EditUserDetailsPage() {
                         onClick={(e) => history.push("/userdashboard")}
                         className={EditUserDetailsPageCSS.btn_edit_user}
                     >
-                        Discard Changes
+                        Go back to dashboard
                     </button>
                 </div>
             </div>

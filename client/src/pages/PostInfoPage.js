@@ -61,7 +61,7 @@ const PostInfoPage = () => {
                     .catch((error) => setErr(error.response.data.msg));
             })
             .catch((error) => setErr(error.response.data.msg));
-    }, [saved, isLost, liked]);
+    }, [saved, isLost, liked, id]);
 
     const handleDelete = () => {
         axios

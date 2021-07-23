@@ -40,7 +40,7 @@ const UpdatePost = () => {
                     .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [id]);
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;

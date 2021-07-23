@@ -136,7 +136,6 @@ ul li ul li {
 }
 
 .centre_stage {
+    display: flex;
     justify-content: center;
-    align-content: center;
-    align-items: center;
 }

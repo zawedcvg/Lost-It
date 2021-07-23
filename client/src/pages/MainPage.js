@@ -1,5 +1,4 @@
 import MetaTags from "react-meta-tags";
-import { ReactComponent as Logo } from "../svg-assets/google.svg";
 import MainPageCSS from "../styles/MainPage.module.css";
 import { useHistory } from "react-router-dom";
 
