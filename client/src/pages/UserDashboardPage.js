@@ -86,7 +86,7 @@ function UserDashBoardPage() {
     const handleRevertStatusToBasicUser = () => {
         if (
             window.confirm(
-                "Are you sure you want to change your status tp basic user?"
+                "Are you sure you want to change your status to basic user?"
             )
         ) {
             axios
