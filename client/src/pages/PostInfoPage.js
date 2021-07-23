@@ -9,6 +9,7 @@ const PostInfoPage = () => {
     const [item, setItem] = useState({});
     const [isOwner, setIsOwner] = useState(false);
     const [isLost, setIsLost] = useState("");
+    const [liked, setLiked] = useState("");
     const [saved, setSaved] = useState("");
     const { id } = useParams();
     const history = useHistory();
@@ -43,6 +44,11 @@ const PostInfoPage = () => {
                                 } else {
                                     setIsOwner(false);
                                 }
+                                if (res.data.post.likes.includes(user.data._id)) {
+                                    setLiked(true);
+                                } else {
+                                    setLiked(false);
+                                }        
                                 setItem(res.data.post);
                                 setIsLost(res.data.post.isLost);
                             })
@@ -197,6 +203,58 @@ const PostInfoPage = () => {
         console.log(res);
     };
 
+    const handleLikePost = () => {
+        const res = axios.post("/user/refresh_token")
+                        .then(response => {
+                            axios.get("/user/info", {
+                                headers : {
+                                    Authorization : response.data.access_token
+                                }
+                            })
+                            .then(r => {
+                                axios.patch(`/listings/post/${id}/like`, {}, {
+                                    headers : {
+                                        Authorization : response.data.access_token
+                                    }
+                                })
+                                .then(res => {
+                                    alert(res.data.msg);
+                                    setLiked(true);
+                                    console.log(res);
+                                })
+                                .catch(err => console.log(err))
+                            }).catch(err => console.log(err));
+                        })
+                        .catch(err => console.log(err));
+    }
+
+    const handleUnlikePost = () => {
+        const res = axios.post("/user/refresh_token")
+                        .then(response => {
+                            axios.get("/user/info", {
+                                headers : {
+                                    Authorization : response.data.access_token
+                                }
+                            })
+                            .then(r => {
+                                axios.patch(`/listings/post/${id}/unlike`, {}, {
+                                    headers : {
+                                        Authorization : response.data.access_token
+                                    }
+                                })
+                                .then(res => {
+                                    alert(res.data.msg);
+                                    setLiked(false);
+                                })
+                                .catch(err => console.log(err))
+                            }).catch(err => console.log(err));
+                        })
+                        .catch(err => console.log(err));
+        
+        console.log(res);
+    }
+
+
     return (
         <div className={PostInfoPageCSS.PostInfoPage}>
             <h1 className={PostInfoPageCSS.heading}>Post Info</h1>
@@ -254,6 +312,16 @@ const PostInfoPage = () => {
                         Unsave Post
                     </button>
                 )}
+                {
+                    liked
+                    ? <button onClick={handleUnlikePost}>
+                        Unlike Post
+                        </button>
+                    : <button onClick={handleLikePost}>
+                        Like Post
+                        </button>
+                }
+
             </div>
             <fieldset className={PostInfoPageCSS.owner_rights}>
                 <legend>Owner Rights</legend>
