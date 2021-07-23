@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import post from "../images/post.png";
 import { Link } from "react-router-dom";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 function ReportItem() {
     const [item, setItem] = useState({
@@ -18,7 +20,7 @@ function ReportItem() {
         success: "",
     });
 
-    const { name, isLost, img, date, location, description } = item;
+    const { name, isLost, img, date, location, description, err, success } = item;
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
@@ -31,14 +33,13 @@ function ReportItem() {
         e.preventDefault();
         try {
             const access_res = await axios.post("/user/refresh_token");
-            console.log(access_res);
+
             const userInfo = await axios.get("/user/info", {
                 headers: {
                     Authorization: access_res.data.access_token,
                 },
             });
 
-            console.log(userInfo);
 
             const toBeReported = {
                 name: name,
@@ -50,19 +51,16 @@ function ReportItem() {
                 user: userInfo.data._id,
             };
 
-            console.log(toBeReported);
-
             const res = await axios.post("/listings/posts", toBeReported, {
                 headers: {
                     Authorization: access_res.data.access_token,
                 },
             });
-            console.log(res);
 
             setItem({ ...item, err: "", success: res.data.msg });
             history.push("/listings");
         } catch (err) {
-            err.response.data.msg && setItem({ ...item, err: "", success: "" });
+            err.response.data.msg && setItem({ ...item, err: err.response.data.msg, success: "" });
         }
     };
 
@@ -114,6 +112,12 @@ function ReportItem() {
                 </nav>
                 <div className={ReportItemCSS.details}>
                     <h1>Report an Item</h1>
+                    {
+                        <div>
+                        {err && <ErrorNotification msg={err} />}
+                        {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
                     <form onSubmit={handleSubmit}>
                         <label
                             className={ReportItemCSS.reportitem_label}

@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import MetaTags from "react-meta-tags";
 import ActivationSuccessfulPageCSS from "../styles/ActivationSuccessfulPage.module.css";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 const ActivationSuccessfulPage = () => {
     const { activation_token } = useParams();
@@ -40,6 +42,12 @@ const ActivationSuccessfulPage = () => {
 
             <div className={ActivationSuccessfulPageCSS.no_scroll}>
                 <div className={ActivationSuccessfulPageCSS.auth_success}>
+                    {
+                        <div>
+                        {err && <ErrorNotification msg={err} />}
+                        {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
                     <h1 className={ActivationSuccessfulPageCSS.auth_success_text}>
                         Activation Successful
                     </h1>

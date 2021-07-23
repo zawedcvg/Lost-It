@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
 import ListingsPageCSS from "../styles/ListingsPage.module.css";
 import Post from "./Post";
+import InfoNotification from "../notifications/InfoNotification";
 
 const ListingsPage = () => {
     const [requiredItems, setRequiredItems] = useState([]);
     const [toBeDisplayed, setToBeDisplayed] = useState([]);
+    const [message, setMessage] = useState("");
 
     const getItemsData = async (token) => {
         try {
@@ -41,8 +43,8 @@ const ListingsPage = () => {
 
             if (componentMounted) {
                 setRequiredItems(itemsData.posts);
+                setMessage("<-   Please click on any of the buttons to the left")
             }
-            // console.log(itemsData)
             return () => {
                 componentMounted = false;
             };
@@ -68,7 +70,8 @@ const ListingsPage = () => {
 
     const history = useHistory();
 
-    const obtainListings = (e) => {
+    const obtainListings = () => {
+        setMessage("");
         const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             temp.push(requiredItems[i]);
@@ -76,7 +79,8 @@ const ListingsPage = () => {
         setToBeDisplayed(temp);
     };
 
-    const handleLost = (e) => {
+    const handleLost = () => {
+        setMessage("");
         const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             if (requiredItems[i].isLost) {
@@ -86,7 +90,8 @@ const ListingsPage = () => {
         setToBeDisplayed(temp);
     };
 
-    const handleRecovered = (e) => {
+    const handleRecovered = () => {
+        setMessage("");
         const temp = [];
         for (let i = 0; i < requiredItems.length; i++) {
             if (!requiredItems[i].isLost) {
@@ -103,7 +108,7 @@ const ListingsPage = () => {
                 <meta
                     name="viewport"
                     content="width=device-width, 
-        initial-scale = 1.0"
+                    initial-scale = 1.0"
                 />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                 <title>Document</title>
@@ -165,6 +170,11 @@ const ListingsPage = () => {
                             Both
                         </button>
                     </nav>
+                    {
+                        <span>
+                        {message && <InfoNotification msg={message} />}
+                        </span>
+                    }
                 </div>
                 <div className={ListingsPageCSS.bottom_part}>
                     <div className={ListingsPageCSS.listings_body}>

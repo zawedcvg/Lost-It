@@ -3,6 +3,8 @@ import axios from "axios";
 import MetaTags from "react-meta-tags";
 import { useParams, useHistory } from "react-router-dom";
 import ResetPasswordPageCSS from "../styles/ResetPasswordPage.module.css";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 const isSmall = (password) => {
     if (password.length < 6) return true;
@@ -35,14 +37,16 @@ function ResetPasswordPage() {
     };
 
     const handleSubmit = async () => {
-        if(isSmall(password))
+        if (isSmall(password)) {
             return setData({...data, err: "Password must be at least 6 characters.", success: ''})
+        }
 
-        if(!isMatch(password, confirmPassword))
+        if (!isMatch(password, confirmPassword)) {
             return setData({...data, err: "Password did not match.", success: ''})
+        }
         
         try {
-            const res = await axios.post('/user/reset', {password}, {
+            const res = await axios.post('/user/reset', {password : password}, {
                 headers: {Authorization: id}
             })
 
@@ -50,8 +54,8 @@ function ResetPasswordPage() {
             setData({...data, err: "", success: res.data.msg});
             history.push("/resetsuccessful");
 
-        } catch (err) {
-            setData({...data, err: "errr", success: ''})
+        } catch (error) {
+            error.response.data.msg && setData({...data, err: error.response.data.msg, success: ''})
         }
         
     }
@@ -73,6 +77,12 @@ function ResetPasswordPage() {
                     <h1 className={ResetPasswordPageCSS.reset_heading}>
                         Reset your password
                     </h1>
+                    {
+                        <div>
+                        {err && <ErrorNotification msg={err} />}
+                        {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
                     <form formAction="changepassword" onSubmit={handleSubmit}>
                         <label
                             className={ResetPasswordPageCSS.password_change}

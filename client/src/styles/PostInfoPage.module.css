@@ -130,3 +130,9 @@ ul li ul li {
     width: 3rem;
     height: 3rem;
 }
+
+.centre_stage {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}

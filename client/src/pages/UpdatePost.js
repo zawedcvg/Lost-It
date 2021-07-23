@@ -2,6 +2,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ReportItemCSS from "../styles/ReportItemPage.module.css";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
 
 const initialState = {
     name: "",
@@ -17,6 +19,7 @@ const UpdatePost = () => {
     const [post, setPost] = useState({});
     const [edited, setEdited] = useState(initialState);
     const { id } = useParams();
+    const [message, setMessage] = useState("");
 
     const { name, date, location, description, err, success } = edited;
 
@@ -30,7 +33,6 @@ const UpdatePost = () => {
                 })
                 .then(r => {
                     setPost(r.data.post)
-                    console.log(post);
                 })
                 .catch(err => console.log(err))
             })
@@ -51,8 +53,7 @@ const UpdatePost = () => {
                     }
                 })
                 .then(r => {
-                    console.log(r.data);
-                    alert(r.data.msg);
+                    setMessage(r.data.msg);
                 })
                 .catch(err => console.log(err))
             })
@@ -65,6 +66,12 @@ const UpdatePost = () => {
     return (
         <div>
             <h1>Update Post</h1>
+            {
+                <div>
+                {err && <ErrorNotification msg={err} />}
+                {success && <SuccessNotification msg={message} />}
+                </div>
+            }
             <label
                 className={ReportItemCSS.reportitem_label}
                 htmlFor="location"

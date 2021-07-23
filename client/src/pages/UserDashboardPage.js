@@ -4,10 +4,16 @@ import MetaTags from "react-meta-tags";
 import { useHistory } from "react-router-dom";
 import UserDashboardPageCSS from "../styles/UserDashboardPage.module.css";
 import userprofile from "../images/userprofile.png";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
+import InfoNotification from "../notifications/InfoNotification";
 
 function UserDashBoardPage() {
     const [user, setUser] = useState({});
     const [isAdmin, setIsAdmin] = useState(false);
+    const [err, setErr] = useState("");
+    const [success, setSuccess] = useState("");
+    const [message, setMessage] = useState("");
 
     const history = useHistory();
 
@@ -29,9 +35,9 @@ function UserDashBoardPage() {
                         }
                         setUser(res.data);
                     })
-                    .catch((err) => console.log(err));
+                    .catch(error => setErr(error.response.data.msg));
             })
-            .catch((err) => console.log(err));
+            .catch(error => setErr(error.response.data.msg));
     }, [isAdmin]);
 
     const handleDeleteUser = () => {
@@ -44,14 +50,13 @@ function UserDashBoardPage() {
                         }
                     })
                     .then(response => {
-                        alert(response.data.msg);
+                        setSuccess(response.data.msg);
+                        history.push("/");
                     })
-                    .catch(err => console.log(err))
+                    .catch(error => setErr(error.response.data.msg))
                 }
             })
-            .catch(err => console.log(err))
-        
-        history.push("/");
+            .catch(error => setErr(error.response.data.msg))   
     }
 
     // const handleRequest = () => {
@@ -72,20 +77,22 @@ function UserDashBoardPage() {
     // }
 
     const handleRevertStatusToBasicUser = () => {
-        axios.post("/user/refresh_token")
-            .then(res => {
-                axios.patch(`/user/update_role/${user._id}`, { role : 0 }, {
-                    headers : {
-                        Authorization : res.data.access_token
-                    }
+        if (window.confirm("Are you sure you want to change your status tp basic user?")) {
+            axios.post("/user/refresh_token")
+                .then(res => {
+                    axios.patch(`/user/update_role/${user._id}`, { role : 0 }, {
+                        headers : {
+                            Authorization : res.data.access_token
+                        }
+                    })
+                    .then(response => {
+                        setSuccess(response.data.msg)
+                    })
+                    .catch(error => setErr(error.response.data.msg));
                 })
-                .then(response => {
-                    alert(response.data.msg)
-                })
-                .catch(err => console.log(err));
-            })
-            .catch(err => console.log(err));
-        setIsAdmin(false);
+                .catch(error => setErr(error.response.data.msg));
+            setIsAdmin(false);
+        }
     }
 
     const handleGetAllUsers = () => {
@@ -97,24 +104,25 @@ function UserDashBoardPage() {
                     }
                 })
                 .then(response => {
-                    alert("Please check your console for all the info")
+                    setMessage("Please check your console for all the info")
                     console.log(response.data.users);
                 })
-                .catch(err => console.log(err));
+                .catch(error => setErr(error.response.data.msg));
             })
-            .catch(err => console.log(err));
+            .catch(error => setErr(error.response.data.msg));
     }
 
     const handleLogout = async (e) => {
         try {
-            const res = await axios.post("/user/logout");
-            localStorage.removeItem("firstLogin");
-            localStorage.removeItem("refreshtoken");
-            alert(res.data.msg);
-
-            history.push("/logout");
+            if (window.confirm("Are you sure you want to logout?")) {
+                const res = await axios.post("/user/logout");
+                localStorage.removeItem("firstLogin");
+                localStorage.removeItem("refreshtoken");
+                setSuccess(res.data.msg)
+                history.push("/logout");
+            }
         } catch (err) {
-            console.log("errrrr");
+            setErr(err.response.data.msg)
         }
     };
 
@@ -135,6 +143,13 @@ function UserDashBoardPage() {
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
                         <img src={userprofile} alt="Profile" />
+                        {
+                            <div>
+                            {err && <ErrorNotification msg={err} />}
+                            {success && <SuccessNotification msg={success} />}
+                            {message && <InfoNotification msg={message} />}
+                            </div>
+                        }
                         <form className={UserDashboardPageCSS.side}>
                             <button
                                 onClick={(e) =>

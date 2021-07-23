@@ -5,7 +5,9 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { dispatchLogin } from "../redux/actions/authAction";
 import { useDispatch } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import SuccessNotification from "../notifications/SuccessNotification";
+import ErrorNotification from "../notifications/ErrorNotification";
+// import { toast, ToastContainer } from "react-toastify";
 // import { GoogleLogin } from "react-google-login";
 // import FacebookLogin from 'react-facebook-login';
 
@@ -36,7 +38,7 @@ function LoginPage() {
                 password,
             });
 
-            alert(res.data.msg);
+            //alert(res.data.msg);
             setUser({ ...user, err: "", success: res.data.msg });
 
             localStorage.setItem("firstLogin", true);
@@ -44,7 +46,7 @@ function LoginPage() {
             dispatch(dispatchLogin());
             history.push("/userdashboard");
         } catch (err) {
-            console.log(err);
+            err.response.data.msg && setUser({ ...user, err: err.response.data.msg, success: "" });
         }
     };
 
@@ -98,9 +100,14 @@ function LoginPage() {
             </MetaTags>
 
             <div className={LoginPageCSS.scroll}>
-                <ToastContainer />
                 <h1 className={LoginPageCSS.login}>Log In</h1>
                 <div className={LoginPageCSS.form_list}>
+                    {
+                        <div>
+                        {err && <ErrorNotification msg={err} />}
+                        {success && <SuccessNotification msg={success} />}
+                        </div>
+                    }
                     <form
                         formAction="signin"
                         method="post"
@@ -111,7 +118,7 @@ function LoginPage() {
                             <input
                                 className={LoginPageCSS.login_input}
                                 name="email"
-                                type="text"
+                                type="email"
                                 value={email}
                                 onChange={handleChangeInput}
                                 required
