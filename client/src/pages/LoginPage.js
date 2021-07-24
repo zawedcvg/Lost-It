@@ -38,13 +38,13 @@ function LoginPage() {
                 password,
             });
 
-            //alert(res.data.msg);
             setUser({ ...user, err: "", success: res.data.msg });
 
             localStorage.setItem("firstLogin", true);
 
             dispatch(dispatchLogin());
             history.push("/userdashboard");
+            window.location.reload();
         } catch (err) {
             err.response.data.msg &&
                 setUser({ ...user, err: err.response.data.msg, success: "" });

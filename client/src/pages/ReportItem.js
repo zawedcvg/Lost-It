@@ -196,11 +196,11 @@ function ReportItem() {
                         </button>
                     </form>
                 </div>
-                <img
+                {/* <img
                     className={ReportItemCSS.reportitem_img}
                     src={post}
                     alt="something"
-                />
+                /> */}
             </div>
         </div>
     );
