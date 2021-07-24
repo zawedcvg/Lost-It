@@ -85,20 +85,26 @@ const MyPosts = () => {
                     </ul>
                 </nav>
                 <div className={MyPostsCSS.listings_body}>
-                    {toBeDisplayed.map((items) => (
-                        <Post
-                            key={items._id}
-                            name={items.name}
-                            type={items.type}
-                            img={items.img}
-                            date={items.date}
-                            time={items.time}
-                            location={items.location}
-                            description={items.description}
-                            link={items._id}
-                            likes={items.likes}
-                        />
-                    ))}
+                    {toBeDisplayed.length !== 0 ? (
+                        toBeDisplayed.map((items) => (
+                            <Post
+                                key={items._id}
+                                name={items.name}
+                                type={items.type}
+                                img={items.img}
+                                date={items.date}
+                                time={items.time}
+                                location={items.location}
+                                description={items.description}
+                                link={items._id}
+                                likes={items.likes}
+                            />
+                        ))
+                    ) : (
+                        <p className={MyPostsCSS.no_posts}>
+                            There are no saved posts.
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

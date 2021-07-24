@@ -10,7 +10,7 @@ html {
 .myPostPage {
     display: flex;
     height: 100vh;
-    background-image: url(../svg-assets/background-5.svg);
+    background-image: url(../svg-assets/background-1.svg);
     background-repeat: no-repeat;
     background-size: cover;
     flex-direction: column;
@@ -26,6 +26,7 @@ html {
     border: 1px solid black;
     max-height: 54rem;
     overflow-y: scroll;
+    backdrop-filter: blur(10px);
 }
 .navigation {
     font-family: monospace;
@@ -92,4 +93,8 @@ ul li ul li {
 .img1 {
     width: 3rem;
     height: 3rem;
+}
+.no_posts {
+    font-size: 3rem;
+    text-align: center;
 }
