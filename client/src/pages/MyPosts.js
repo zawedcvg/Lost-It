@@ -102,7 +102,7 @@ const MyPosts = () => {
                         ))
                     ) : (
                         <p className={MyPostsCSS.no_posts}>
-                            There are no saved posts.
+                            There are no posts.
                         </p>
                     )}
                 </div>
