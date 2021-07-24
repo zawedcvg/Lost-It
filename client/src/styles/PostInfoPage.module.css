@@ -25,6 +25,10 @@
     text-align: center;
     margin-right: 2rem;
 }
+.btn_post.delete_btn {
+    background-color: red;
+    color: white;
+}
 .btn_post:hover {
     transform: translate(0.2px, 0.2px);
     box-shadow: 0.3rem 0.3rem 0 #404040;

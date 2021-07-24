@@ -190,7 +190,7 @@ function UserDashBoardPage() {
     initial-scale = 1.0"
                 />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-                <title>User</title>
+                <title>Dashboard</title>
             </MetaTags>
             <div className={UserDashboardPageCSS.scroll}>
                 <h1 className={UserDashboardPageCSS.heading}>User Dashboard</h1>

@@ -384,7 +384,7 @@ const PostInfoPage = () => {
                 {isOwner ? (
                     <div>
                         <button
-                            className={PostInfoPageCSS.btn_post}
+                            className={`${PostInfoPageCSS.btn_post} ${PostInfoPageCSS.delete_btn}`}
                             onClick={handleDelete}
                         >
                             Delete Post

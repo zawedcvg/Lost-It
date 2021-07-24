@@ -40,7 +40,50 @@ const sendMail = (to, url, txt) => {
         to: to,
         subject: { txt },
         html: `
-            <p>${url}</p>
+<div>
+    <table
+        style="
+            border-collapse: collapse;
+            padding: 0;
+            width: 100%;
+            background-color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 40px;
+        "
+        dir="auto"
+    >
+        <p
+            style="
+                border: none;
+                padding: 0;
+                margin: 0;
+                background-color: #ffffff;
+                color: #000000;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 40px;
+                font-weight: 400;
+                line-height: 48px;
+                text-align: center;
+            "
+        >
+            <span style="border: none; padding: 0; margin: 0"
+                ><strong style="border-bottom: 2px solid grey"
+                    >Activation Link
+                </strong>
+                <br />
+                <span style="font-size: 19px; font-style: italic"
+                    >Begin your journey with lost-it</span
+                >
+            </span>
+            <br />
+            <span style="font-size: 20px; text-align: left">
+                To activate your account please click the link below:
+                <br />
+                <a href=${url} style="text-decoration: none">Activate your account</a>
+            </span>
+        </p>
+    </table>
+</div>
         `,
     };
 
