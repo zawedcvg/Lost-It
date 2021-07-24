@@ -24,6 +24,7 @@ html {
     border: 1px solid black;
     max-height: 54rem;
     overflow-y: scroll;
+    backdrop-filter: blur(10px);
 }
 .navigation {
     font-family: monospace;
