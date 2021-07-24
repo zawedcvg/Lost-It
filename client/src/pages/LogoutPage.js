@@ -26,9 +26,16 @@ const LogoutPage = () => {
                             See you soon.
                         </span>
                     </h1>
-                    <span className={LogoutPageCSS.login}>
-                        Click here to <Link to="/login">Log Back In</Link>
-                    </span>
+                    <div>
+                        <span className={LogoutPageCSS.login}>
+                            Click here to <Link to="/login">Log Back In</Link>
+                        </span>
+                    </div>
+                    <div>
+                        <span className={LogoutPageCSS.login}>
+                            Click here to <Link to="/">go to homepage</Link>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

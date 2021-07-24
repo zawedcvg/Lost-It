@@ -24,4 +24,6 @@ router.patch(
 router.post("/requestadmin/:id", auth, userController.requestAdminAccess);
 router.delete("/delete/:id", auth, authAdmin, userController.deleteUser);
 
+router.post("/setimageurl/:id", auth, userController.setImageUrl);
+
 module.exports = router;

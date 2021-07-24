@@ -15,6 +15,8 @@ function UserDashBoardPage() {
     const [err, setErr] = useState("");
     const [success, setSuccess] = useState("");
     const [message, setMessage] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [userId, setUserId] = useState("");
 
     const history = useHistory();
 
@@ -35,11 +37,13 @@ function UserDashBoardPage() {
                             setIsAdmin(false);
                         }
                         setUser(res.data);
+                        setUserId(res.data._id);
+                        setAvatar(res.data.avatar);
                     })
                     .catch((error) => setErr(error.response.data.msg));
             })
             .catch((error) => setErr(error.response.data.msg));
-    }, [isAdmin]);
+    }, [isAdmin, avatar]);
 
     const handleDeleteUser = () => {
         axios
@@ -147,6 +151,73 @@ function UserDashBoardPage() {
         }
     };
 
+
+    const changeAvatar = async(e) => {
+        e.preventDefault()
+        try {
+            const file = e.target.files[0]
+
+            if(!file) return setErr("No files were uploaded.")
+
+            if(file.size > 1024 * 1024)
+                return setErr("Size too large.")
+
+            if(file.type !== 'image/jpeg' && file.type !== 'image/png')
+                return setErr("File format is not supported, try png or jpeg.")
+
+            let formData =  new FormData()
+            formData.append('file', file)
+
+            const access = await axios.post("/user/refresh_token");
+            const res = await axios.post('/api/upload_avatar', formData, {
+                headers: {'content-type': 'multipart/form-data', Authorization: access.data.access_token}
+            })
+
+            const response = await axios.post(`/user/setimageurl/${userId}`, { url : res.data.url }, {
+                headers : {
+                    Authorization : access.data.access_token
+                }
+            })
+
+            setSuccess(response.data.msg);
+            setAvatar(res.data.url)
+            
+        } catch (err) {
+            console.log(err);
+            // setErr(err)
+        }
+    }
+
+    // const handleGiveMeAdminAccess = () => {
+    //     try {
+    //         if (window.confirm("Are you sure you want admin access?")) {
+    //             axios
+    //             .post("/user/refresh_token")
+    //             .then((res) => {
+    //                 axios
+    //                     .patch(
+    //                         `/user/update_role/${user._id}`,
+    //                         { role: 1 },
+    //                         {
+    //                             headers: {
+    //                                 Authorization: res.data.access_token,
+    //                             },
+    //                         }
+    //                     )
+    //                     .then((response) => {
+    //                         setSuccess(response.data.msg);
+    //                     })
+    //                     .catch((error) => setErr(error.response.data.msg));
+    //             })
+    //             .catch((error) => setErr(error.response.data.msg));
+
+    //             setIsAdmin(true);
+    //         }
+    //     } catch (err) {
+    //         setErr(err.response.data.msg);
+    //     }
+    // }
+
     return (
         <div className={UserDashboardPageCSS.UserDashboardPage}>
             <nav className={UserDashboardPageCSS.navigation} role="navigation">
@@ -157,7 +228,7 @@ function UserDashBoardPage() {
                             src="https://image.flaticon.com/icons/png/512/78/78075.png"
                             alt="thing"
                         />
-                        <ul class="dropdown">
+                        <ul className="dropdown">
                             <li>
                                 <Link to={`/listings`}>Listings</Link> <br />
                             </li>
@@ -187,7 +258,7 @@ function UserDashBoardPage() {
                 <meta
                     name="viewport"
                     content="width=device-width, 
-    initial-scale = 1.0"
+                    initial-scale = 1.0"
                 />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                 <title>User</title>
@@ -196,11 +267,22 @@ function UserDashBoardPage() {
                 <h1 className={UserDashboardPageCSS.heading}>User Dashboard</h1>
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
-                        <img
+                        <form>
+                            <img className={UserDashboardPageCSS.profile} src={avatar ? avatar : userprofile} alt="Profile"/>
+                            <br />
+                            <br />
+                            <br />
+                            <label htmlFor="file-upload" className={UserDashboardPageCSS.file_upload}>
+                                Upload Image
+                            </label>
+                            <input type="file" name="file" id="file-upload" onChange={changeAvatar} />
+                        </form>
+                    
+                        {/* <img
                             className={UserDashboardPageCSS.profile}
                             src={userprofile}
                             alt="Profile"
-                        />
+                        /> */}
                         {
                             <div>
                                 {err && <ErrorNotification msg={err} />}

@@ -11,6 +11,7 @@ const ListingsPage = () => {
     const [requiredItems, setRequiredItems] = useState([]);
     const [toBeDisplayed, setToBeDisplayed] = useState([]);
     const [message, setMessage] = useState("");
+    const [caption, setCaption] = useState("");
 
     const getItemsData = async (token) => {
         try {
@@ -46,6 +47,7 @@ const ListingsPage = () => {
                 setMessage(
                     "<-   Please click on any of the buttons to the left"
                 );
+                setCaption("posts now.")
             }
             return () => {
                 componentMounted = false;
@@ -79,6 +81,7 @@ const ListingsPage = () => {
             temp.push(requiredItems[i]);
         }
         setToBeDisplayed(temp);
+        setCaption("items in total.")
     };
 
     const handleLost = () => {
@@ -90,6 +93,7 @@ const ListingsPage = () => {
             }
         }
         setToBeDisplayed(temp);
+        setCaption("items which are lost.")
     };
 
     const handleRecovered = () => {
@@ -101,6 +105,7 @@ const ListingsPage = () => {
             }
         }
         setToBeDisplayed(temp);
+        setCaption("items which have been successfully recovered by owners.")
     };
 
     return (
@@ -220,6 +225,11 @@ const ListingsPage = () => {
                             Go back
                         </button>
                     </form>
+                    <div>
+                        <p>There are </p>
+                        <p>{toBeDisplayed.length}</p>
+                        <p>{caption}</p>
+                    </div>
                 </div>
             </div>
         </div>
