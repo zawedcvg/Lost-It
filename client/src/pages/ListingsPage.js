@@ -47,7 +47,7 @@ const ListingsPage = () => {
                 setMessage(
                     "<-   Please click on any of the buttons to the left"
                 );
-                setCaption("posts now.")
+                setCaption("posts now.");
             }
             return () => {
                 componentMounted = false;
@@ -81,7 +81,7 @@ const ListingsPage = () => {
             temp.push(requiredItems[i]);
         }
         setToBeDisplayed(temp);
-        setCaption("items in total.")
+        setCaption("items in total.");
     };
 
     const handleLost = () => {
@@ -93,7 +93,7 @@ const ListingsPage = () => {
             }
         }
         setToBeDisplayed(temp);
-        setCaption("items which are lost.")
+        setCaption("items which are lost.");
     };
 
     const handleRecovered = () => {
@@ -105,7 +105,7 @@ const ListingsPage = () => {
             }
         }
         setToBeDisplayed(temp);
-        setCaption("items which have been successfully recovered by owners.")
+        setCaption("items which have been successfully recovered by owners.");
     };
 
     return (
@@ -226,11 +226,12 @@ const ListingsPage = () => {
                         </button>
                         <div className={ListingsPageCSS.information}>
                             <p>There are </p>
-                            <p className={ListingsPageCSS.number_info}>{toBeDisplayed.length}</p>
+                            <p className={ListingsPageCSS.number_info}>
+                                {toBeDisplayed.length}
+                            </p>
                             <p>{caption}</p>
                         </div>
                     </form>
-                    
                 </div>
             </div>
         </div>
