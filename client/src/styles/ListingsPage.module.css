@@ -185,3 +185,22 @@ ul li ul li {
     width: 3rem;
     height: 3rem;
 }
+
+.information {
+    
+    border-radius: 25px;
+    font-size: 3rem;
+    border: 2px solid black;
+    background: white;
+    padding: 20px;
+    
+}
+
+.number_info {
+    font-size: 8rem;
+    font-weight: bolder;
+    text-shadow: 5px 3px black, -0.5px -0.5px 43px black;
+    color: white;
+    margin: -20px !important;
+    padding-left: 30px;
+}

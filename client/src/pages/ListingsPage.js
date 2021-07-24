@@ -224,12 +224,13 @@ const ListingsPage = () => {
                         >
                             Go back
                         </button>
+                        <div className={ListingsPageCSS.information}>
+                            <p>There are </p>
+                            <p className={ListingsPageCSS.number_info}>{toBeDisplayed.length}</p>
+                            <p>{caption}</p>
+                        </div>
                     </form>
-                    <div>
-                        <p>There are </p>
-                        <p>{toBeDisplayed.length}</p>
-                        <p>{caption}</p>
-                    </div>
+                    
                 </div>
             </div>
         </div>
