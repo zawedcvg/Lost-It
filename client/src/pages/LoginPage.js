@@ -151,12 +151,12 @@ function LoginPage() {
 
                 <br />
                 <span className={LoginPageCSS.new_user}> New User? </span>
-                <Link className={LoginPageCSS.sign_up} to="/register">
+                <Link className={LoginPageCSS.sign_up} to="/register" style={{color : "blue"}}>
                     Sign Up here
                 </Link>
                 <br />
                 <br />
-                <Link className={LoginPageCSS.forgot} to="/forgotpassword">
+                <Link className={LoginPageCSS.forgot} to="/forgotpassword" style={{color : "blue"}}>
                     Forgot your password?
                 </Link>
             </div>
