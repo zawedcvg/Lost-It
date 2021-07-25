@@ -315,8 +315,8 @@ const PostInfoPage = () => {
                     time={item.time}
                     location={item.location}
                     description={item.description}
-                    likes={item.likes}
-                    link={item.id}
+                    likes={item.likes.length || 0}
+                    link={item._id}
                 />
             </div>
 

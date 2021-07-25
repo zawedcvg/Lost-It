@@ -20,6 +20,12 @@ const Post = (props) => {
                     <span className={PostCSS.post_label}>Description:</span>{" "}
                     {props.description} <br />
                 </span>
+                {/* <span className={PostCSS.post_details}>
+                    <span className={PostCSS.post_label}>Likes:</span>{" "}
+                    {props.likes}
+                    <br />
+                </span> */}
+
                 <br />
                 <br />
                 <br />

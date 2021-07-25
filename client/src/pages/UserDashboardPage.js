@@ -17,6 +17,7 @@ function UserDashBoardPage() {
     const [message, setMessage] = useState("");
     const [avatar, setAvatar] = useState("");
     const [userId, setUserId] = useState("");
+    
 
     const history = useHistory();
 
@@ -39,6 +40,7 @@ function UserDashBoardPage() {
                         setUser(res.data);
                         setUserId(res.data._id);
                         setAvatar(res.data.avatar);
+                        setMessage("A friendly suggestion : just select the image and wait till it changes")
                     })
                     .catch((error) => setErr(error.response.data.msg));
             })
@@ -46,6 +48,7 @@ function UserDashBoardPage() {
     }, [isAdmin, avatar]);
 
     const handleDeleteUser = () => {
+        setMessage("");
         axios
             .post("/user/refresh_token")
             .then((res) => {
@@ -88,6 +91,7 @@ function UserDashBoardPage() {
     // }
 
     const handleRevertStatusToBasicUser = () => {
+        setMessage("");
         if (
             window.confirm(
                 "Are you sure you want to change your status to basic user?"
@@ -138,6 +142,7 @@ function UserDashBoardPage() {
     };
 
     const handleLogout = async (e) => {
+        setMessage("");
         try {
             if (window.confirm("Are you sure you want to logout?")) {
                 const res = await axios.post("/user/logout");
@@ -153,6 +158,7 @@ function UserDashBoardPage() {
 
 
     const changeAvatar = async(e) => {
+        setMessage("");
         e.preventDefault()
         try {
             const file = e.target.files[0]
@@ -245,9 +251,6 @@ function UserDashBoardPage() {
                             <li>
                                 <Link to={`/savedposts`}>Saved Posts</Link>{" "}
                                 <br />
-                            </li>
-                            <li>
-                                <Link to={`/logout`}>Logout</Link> <br />
                             </li>
                         </ul>
                     </li>
