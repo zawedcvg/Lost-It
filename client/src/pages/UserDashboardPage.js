@@ -65,6 +65,8 @@ function UserDashBoardPage() {
                         })
                         .then((response) => {
                             setSuccess(response.data.msg);
+                            localStorage.removeItem("refreshtoken");
+                            localStorage.removeItem("firstLogin");
                             history.push("/");
                         })
                         .catch((error) => setErr(error.response.data.msg));
