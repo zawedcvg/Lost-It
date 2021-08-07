@@ -323,8 +323,8 @@ const PostInfoPage = () => {
             {
                 <div className={PostInfoPageCSS.centre_stage}>
                     <div>
-                    {err && <ErrorNotification msg={err} />}
-                    {success && <SuccessNotification msg={success} />}
+                        {err && <ErrorNotification msg={err} />}
+                        {success && <SuccessNotification msg={success} />}
                     </div>
                 </div>
             }

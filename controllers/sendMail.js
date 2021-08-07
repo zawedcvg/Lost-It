@@ -38,7 +38,7 @@ const sendMail = (to, url, txt) => {
     const mailOptions = {
         from: SENDER_EMAIL_ADDRESS,
         to: to,
-        subject: txt ,
+        subject: txt,
         html: `
 <div>
     <table

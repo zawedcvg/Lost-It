@@ -186,7 +186,7 @@ const Register = () => {
                             className={RegisterPageCSS.btn}
                             type="form"
                             id="something"
-                            style={{color : "blue"}}
+                            style={{ color: "blue" }}
                         >
                             Sign Up
                         </button>

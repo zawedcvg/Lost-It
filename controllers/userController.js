@@ -331,27 +331,31 @@ const userController = {
         }
     },
 
-    setImageUrl : async (req, res) => {
+    setImageUrl: async (req, res) => {
         try {
-            const user = await Users.findByIdAndUpdate(req.params.id, { 
-                $set: { avatar: req.body.url }
-            }, { upsert: true });
+            const user = await Users.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: { avatar: req.body.url },
+                },
+                { upsert: true }
+            );
 
             if (!user) {
                 res.status(400).json({
-                    msg : "Couldn't update the file in database"
-                })
+                    msg: "Couldn't update the file in database",
+                });
             }
 
             res.json({
-                msg : "Changed the avatar!"
-            })
+                msg: "Changed the avatar!",
+            });
         } catch (err) {
             return res.status(500).json({
                 msg: err.message,
             });
         }
-    }
+    },
 };
 
 function validateEmail(email) {

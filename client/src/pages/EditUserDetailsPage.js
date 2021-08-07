@@ -208,7 +208,6 @@ function EditUserDetailsPage() {
             </MetaTags>
             <div className={EditUserDetailsPageCSS.scroll}>
                 <div className={EditUserDetailsPageCSS.container}>
-                    
                     <h1 className={EditUserDetailsPageCSS.edit_details}>
                         Edit user details
                     </h1>
@@ -222,7 +221,9 @@ function EditUserDetailsPage() {
 
                     {
                         <div>
-                            {details.err && <ErrorNotification msg={details.err} />}
+                            {details.err && (
+                                <ErrorNotification msg={details.err} />
+                            )}
                             {details.success && (
                                 <SuccessNotification msg={details.success} />
                             )}

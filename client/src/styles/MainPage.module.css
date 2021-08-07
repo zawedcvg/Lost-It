@@ -91,6 +91,7 @@ strong {
     background-attachment: fixed;
     scroll-snap-align: start;
 }
+
 .option_body {
     position: relative;
     top: 50%;

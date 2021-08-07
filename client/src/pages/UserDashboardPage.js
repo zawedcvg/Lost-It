@@ -17,7 +17,6 @@ function UserDashBoardPage() {
     const [message, setMessage] = useState("");
     const [avatar, setAvatar] = useState("");
     const [userId, setUserId] = useState("");
-    
 
     const history = useHistory();
 
@@ -40,7 +39,9 @@ function UserDashBoardPage() {
                         setUser(res.data);
                         setUserId(res.data._id);
                         setAvatar(res.data.avatar);
-                        setMessage("A friendly suggestion : just select the image and wait till it changes")
+                        setMessage(
+                            "A friendly suggestion : just select the image and wait till it changes"
+                        );
                     })
                     .catch((error) => setErr(error.response.data.msg));
             })
@@ -158,43 +159,47 @@ function UserDashBoardPage() {
         }
     };
 
-
-    const changeAvatar = async(e) => {
+    const changeAvatar = async (e) => {
         setMessage("");
-        e.preventDefault()
+        e.preventDefault();
         try {
-            const file = e.target.files[0]
+            const file = e.target.files[0];
 
-            if(!file) return setErr("No files were uploaded.")
+            if (!file) return setErr("No files were uploaded.");
 
-            if(file.size > 1024 * 1024)
-                return setErr("Size too large.")
+            if (file.size > 1024 * 1024) return setErr("Size too large.");
 
-            if(file.type !== 'image/jpeg' && file.type !== 'image/png')
-                return setErr("File format is not supported, try png or jpeg.")
+            if (file.type !== "image/jpeg" && file.type !== "image/png")
+                return setErr("File format is not supported, try png or jpeg.");
 
-            let formData =  new FormData()
-            formData.append('file', file)
+            let formData = new FormData();
+            formData.append("file", file);
 
             const access = await axios.post("/user/refresh_token");
-            const res = await axios.post('/api/upload_avatar', formData, {
-                headers: {'content-type': 'multipart/form-data', Authorization: access.data.access_token}
-            })
+            const res = await axios.post("/api/upload_avatar", formData, {
+                headers: {
+                    "content-type": "multipart/form-data",
+                    Authorization: access.data.access_token,
+                },
+            });
 
-            const response = await axios.post(`/user/setimageurl/${userId}`, { url : res.data.url }, {
-                headers : {
-                    Authorization : access.data.access_token
+            const response = await axios.post(
+                `/user/setimageurl/${userId}`,
+                { url: res.data.url },
+                {
+                    headers: {
+                        Authorization: access.data.access_token,
+                    },
                 }
-            })
+            );
 
             setSuccess(response.data.msg);
-            setAvatar(res.data.url)
-            
+            setAvatar(res.data.url);
         } catch (err) {
             console.log(err);
             // setErr(err)
         }
-    }
+    };
 
     // const handleGiveMeAdminAccess = () => {
     //     try {
@@ -273,16 +278,28 @@ function UserDashBoardPage() {
                 <div className={UserDashboardPageCSS.container}>
                     <div className={UserDashboardPageCSS.top}>
                         <form>
-                            <img className={UserDashboardPageCSS.profile} src={avatar ? avatar : userprofile} alt="Profile"/>
+                            <img
+                                className={UserDashboardPageCSS.profile}
+                                src={avatar ? avatar : userprofile}
+                                alt="Profile"
+                            />
                             <br />
                             <br />
                             <br />
-                            <label htmlFor="file-upload" className={UserDashboardPageCSS.file_upload}>
+                            <label
+                                htmlFor="file-upload"
+                                className={UserDashboardPageCSS.file_upload}
+                            >
                                 Upload Image
                             </label>
-                            <input type="file" name="file" id="file-upload" onChange={changeAvatar} />
+                            <input
+                                type="file"
+                                name="file"
+                                id="file-upload"
+                                onChange={changeAvatar}
+                            />
                         </form>
-                    
+
                         {/* <img
                             className={UserDashboardPageCSS.profile}
                             src={userprofile}
