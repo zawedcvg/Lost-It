@@ -7,3 +7,5 @@ coverage/
 .vscode/
 .env_old
 
+tmp/
+
